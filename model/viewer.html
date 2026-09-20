@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grid stress · On/off explorer</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3f5f8; color: #172438; font: 15px/1.5 system-ui, sans-serif; }
+    header { padding: 22px 32px; background: #172438; color: white; }
+    header h1 { margin: 0; font-size: 25px; font-weight: 600; }
+    header p { margin: 4px 0 0; color: #cbd6e3; }
+    main { max-width: 1500px; margin: auto; padding: 24px; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; }
+    aside, section { background: white; padding: 22px; border: 1px solid #dbe2ea; border-radius: 10px; }
+    h2 { margin: 0 0 16px; font-size: 17px; font-weight: 600; }
+    .control { margin-bottom: 20px; }
+    .label { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .label input { width: 86px; font: inherit; text-align: right; padding: 3px 5px; border: 1px solid #b9c4d2; border-radius: 4px; }
+    input[type=range] { display: block; width: 100%; margin: 12px 0 0; accent-color: #254cc9; cursor: pointer; }
+    .note { color: #526174; font-size: 13px; margin: 5px 0; }
+    .divider { border-top: 1px solid #e3e8ef; padding-top: 18px; }
+    #status { min-height: 24px; color: #345579; }
+    #status.error { color: #b42318; }
+    #chart { display: block; width: 100%; height: auto; }
+    #chart.pending { opacity: 0.5; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    button { font: inherit; border: 1px solid #c3ccd9; padding: 8px 13px; border-radius: 5px; background: white; color: #172438; cursor: pointer; }
+    button:hover { background: #edf2ff; }
+    button:disabled { opacity: 0.5; cursor: default; }
+    details { margin-top: 20px; }
+    summary { cursor: pointer; }
+    .table-wrap { overflow: auto; max-height: 360px; margin-top: 10px; }
+    table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+    th, td { padding: 6px 10px; border-bottom: 1px solid #e3e8ef; text-align: right; }
+    th { position: sticky; top: 0; background: #edf2f8; }
+    @media(max-width: 800px) { main { grid-template-columns: 1fr; padding: 12px; gap: 12px; } header { padding: 18px; } }
+  </style>
+</head>
+<body>
+  <header><h1>Grid stress · On/off explorer</h1><p>Explore violation probability across every customer combination.</p></header>
+  <main>
+    <aside>
+      <h2>Model inputs</h2>
+      <div id="controls"></div>
+      <p class="note">S, M and L here are loads per active customer. The plot axes show customer counts.</p>
+      <p class="note">Off probability: <strong id="off">50%</strong>. Customers switch independently.</p>
+      <div class="divider"><button id="reset" type="button">Reset inputs</button></div>
+      <p class="note">Release a slider or finish editing a number to update. Seed: 42.</p>
+    </aside>
+    <section>
+      <h2>3D violation probability · fixed perspective</h2>
+      <div id="status" role="status" aria-live="polite">Loading initial simulation…</div>
+      <img id="chart" hidden alt="3D scatter plot of small, medium and large customer counts, colored by estimated violation probability">
+      <p class="note">Blue = 0% observed violations; red = 100%. Zero observed violations does not establish zero risk. A load equal to the threshold is allowed.</p>
+      <div class="actions">
+        <button id="png" type="button" disabled>Download PNG</button>
+        <button id="json" type="button" disabled>Download results JSON</button>
+      </div>
+      <details><summary>Inspect combination probabilities</summary>
+        <div class="table-wrap"><table><thead><tr><th>S</th><th>M</th><th>L</th><th>Violations</th><th>Probability</th></tr></thead><tbody id="rows"></tbody></table></div>
+      </details>
+    </section>
+  </main>
+  <script>
+    const definitions = [
+      ['small', 'Small customer load', 0, 500, 1],
+      ['medium', 'Medium customer load', 0, 500, 1],
+      ['large', 'Large customer load', 0, 500, 1],
+      ['probability', 'On probability (%)', 0, 100, 1],
+      ['customers', 'Total customers', 0, 100, 1],
+      ['threshold', 'Violation threshold', 0, 50000, 1],
+      ['samples', 'Samples per combination', 1000, 50000, 1000]
+    ];
+    const fields = {}, status = document.getElementById('status'), chart = document.getElementById('chart');
+    let defaults, latest, queued = null, busy = false, debounce;
+    const snapshot = () => Object.fromEntries(definitions.map(([key]) => [key, +fields[key].number.value]));
+    function sync(key, value) {
+      fields[key].range.value = value;
+      fields[key].number.value = value;
+      if (key === 'probability') document.getElementById('off').textContent = `${100-value}%`;
+    }
+    function pending() {
+      chart.classList.add('pending');
+      status.textContent = 'Inputs changed · release to update';
+      status.className = '';
+      document.getElementById('png').disabled = document.getElementById('json').disabled = true;
+    }
+    function schedule() {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => { queued = snapshot(); update(); }, 120);
+    }
+    async function update() {
+      if (busy || !queued) return;
+      busy = true;
+      const inputs = queued; queued = null;
+      status.textContent = 'Updating simulation and figure…';
+      try {
+        const started = performance.now();
+        const response = await fetch('/api/evaluate?' + new URLSearchParams(inputs));
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error);
+        if (JSON.stringify(inputs) === JSON.stringify(snapshot())) {
+          latest = payload;
+          chart.src = 'data:image/png;base64,' + payload.png;
+          chart.hidden = false; chart.classList.remove('pending');
+          status.textContent = `${payload.results.length.toLocaleString()} combinations · ${inputs.samples.toLocaleString()} samples each · updated in ${((performance.now()-started)/1000).toFixed(2)} s`;
+          status.className = '';
+          document.getElementById('rows').innerHTML = payload.results.map(row => `<tr><td>${row.S}</td><td>${row.M}</td><td>${row.L}</td><td>${row.violation_count.toLocaleString()}</td><td>${(row.violation_probability*100).toFixed(2)}%</td></tr>`).join('');
+          document.getElementById('png').disabled = document.getElementById('json').disabled = false;
+        }
+      } catch(error) { status.textContent = error.message + ' — adjust an input to retry.'; status.className = 'error'; }
+      finally { busy = false; if (queued) update(); }
+    }
+    function download(url, name) {
+      const link = document.createElement('a'); link.href = url; link.download = name; link.click();
+    }
+    document.getElementById('png').onclick = () => download(chart.src, 'interactive_probability_3d.png');
+    document.getElementById('json').onclick = () => {
+      const data = { inputs: latest.inputs, results: latest.results };
+      const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+      download(url, 'interactive_results.json'); setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+    document.getElementById('reset').onclick = () => { for (const key in defaults) sync(key, defaults[key]); pending(); schedule(); };
+    async function initialize() {
+      const response = await fetch('/api/config');
+      if (!response.ok) throw new Error('Could not load default settings');
+      defaults = await response.json();
+      for (const [key, label, min, max, step] of definitions) {
+        const container = document.createElement('div'); container.className = 'control';
+        container.innerHTML = `<div class="label"><label for="${key}-number">${label}</label><input id="${key}-number" type="number" min="${min}" max="${max}" step="${step}"></div><input id="${key}" aria-label="${label}" type="range" min="${min}" max="${max}" step="${step}">`;
+        document.getElementById('controls').appendChild(container);
+        fields[key] = { range: document.getElementById(key), number: document.getElementById(key+'-number') };
+        sync(key, defaults[key]);
+        fields[key].range.oninput = event => { sync(key, +event.target.value); pending(); };
+        fields[key].range.onchange = schedule;
+        fields[key].number.onchange = event => {
+          const value = Math.min(max, Math.max(min, Math.round(+event.target.value || min)));
+          sync(key, value); pending(); schedule();
+        };
+      }
+      queued = snapshot(); update();
+    }
+    initialize().catch(error => {status.textContent = error.message; status.className = 'error';});
+  </script>
+</body>
+</html>
