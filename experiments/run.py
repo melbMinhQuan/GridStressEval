@@ -1,4 +1,4 @@
-"""Run five independent seeds and publish pooled results for the viewer."""
+"""Run five independent seeds and publish pooled results for the viewers."""
 
 import json
 from datetime import datetime

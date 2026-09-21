@@ -1,4 +1,4 @@
-from pathlib import Path
+"""Generate all-on model figures."""
 
 import matplotlib.pyplot as plt
 

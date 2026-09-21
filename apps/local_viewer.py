@@ -1,4 +1,4 @@
-"""Run: python model/interactive_viewer.py --open
+"""Run: python -m apps.local_viewer --open
 
 Local-only dashboard; no framework or internet connection is required.
 """

@@ -1,19 +1,15 @@
 """Monte Carlo model: independent on/off states for every customer."""
 
 import json
-from pathlib import Path
 
 import numpy as np
 
 
-# Edit these inputs, then run this file to regenerate results.json.
-load_current = {"S": 20, "M": 40, "L": 100}
-threshold = 1000
-num_customers = 40
-p_on = 0.5
-iterations = 10_000  # Samples per customer combination.
-random_seed = 42
-results_path = Path(__file__).resolve().parent / "results.json"
+from gridstress.config import (
+    LOAD_CURRENT as load_current, THRESHOLD as threshold,
+    NUM_CUSTOMERS as num_customers, P_ON as p_on, SAMPLES as iterations,
+    SEED as random_seed, RESULTS_PATH as results_path, compositions,
+)
 
 
 def evaluate_all_combinations(
@@ -46,23 +42,19 @@ def evaluate_all_combinations(
 
     rng = np.random.default_rng(seed)
     results = []
-    for small in range(total_customers + 1):
-        for medium in range(total_customers - small + 1):
-            large = total_customers - small - medium
-            active_load = (
-                currents["S"] * rng.binomial(small, probability_on, samples)
-                + currents["M"] * rng.binomial(medium, probability_on, samples)
-                + currents["L"] * rng.binomial(large, probability_on, samples)
-            )
-            violation_count = int(np.count_nonzero(active_load > limit))
-            results.append({
-                "S": small,
-                "M": medium,
-                "L": large,
-                "iterations": samples,
-                "violation_count": violation_count,
-                "violation_probability": violation_count / samples,
-            })
+    for small, medium, large in compositions(total_customers):
+        active_load = (
+            currents["S"] * rng.binomial(small, probability_on, samples)
+            + currents["M"] * rng.binomial(medium, probability_on, samples)
+            + currents["L"] * rng.binomial(large, probability_on, samples)
+        )
+        violation_count = int(np.count_nonzero(active_load > limit))
+        results.append({
+            "S": small, "M": medium, "L": large,
+            "iterations": samples,
+            "violation_count": violation_count,
+            "violation_probability": violation_count / samples,
+        })
     return results
 
 
@@ -82,6 +74,7 @@ def run_model():
         },
         "results": results,
     }
+    results_path.parent.mkdir(parents=True, exist_ok=True)
     results_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"Evaluated {len(results)} combinations, {iterations:,} samples each.")
     print(f"Saved results: {results_path}")

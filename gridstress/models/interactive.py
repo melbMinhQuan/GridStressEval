@@ -1,4 +1,4 @@
-"""Reusable Monte Carlo samples for the local interactive viewer.
+"""Reusable Monte Carlo samples for the interactive viewers.
 
 Samples are shared across allocations (common random numbers). Each allocation
 still has independent customers and trials; estimates across allocations are

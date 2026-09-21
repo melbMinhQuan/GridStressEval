@@ -1,4 +1,4 @@
-"""Plot saved Monte Carlo probabilities; run model_full.py first."""
+"""Generate figures from the published Monte Carlo results."""
 
 import json
 from pathlib import Path

@@ -1,4 +1,4 @@
-"""Run with: python3 -m streamlit run model/streamlit_app.py"""
+"""Run with: python3 -m streamlit run apps/streamlit_app.py"""
 
 import json
 from pathlib import Path
