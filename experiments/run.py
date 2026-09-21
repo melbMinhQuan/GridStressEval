@@ -2,16 +2,20 @@
 
 import json
 from datetime import datetime
-from pathlib import Path
 from time import perf_counter
 
-from model_full import evaluate_all_combinations, load_current, threshold, num_customers, p_on
-import plot_full
+from gridstress.models.monte_carlo import evaluate_all_combinations
+from gridstress.config import (
+    LOAD_CURRENT as load_current, THRESHOLD as threshold,
+    NUM_CUSTOMERS as num_customers, P_ON as p_on,
+    EXPERIMENTS_DIRECTORY, RESULTS_PATH,
+)
+from gridstress.plotting.probabilities import plot_results
+from gridstress.results import overall_probability
 
 
 def main():
-    root = Path(__file__).resolve().parent
-    directory = root / 'experiments' / datetime.now().strftime('%Y%m%d_%H%M%S')
+    directory = EXPERIMENTS_DIRECTORY / datetime.now().strftime('%Y%m%d_%H%M%S_%f')
     directory.mkdir(parents=True)
     seeds = [42, 43, 44, 45, 46]
     samples = 100_000
@@ -27,35 +31,30 @@ def main():
         payload = dict(inputs=inputs, results=rows)
         (directory / f'seed_{seed}.json').write_text(json.dumps(payload, indent=2))
         run = dict(seed=seed, seconds=seconds,
-                   overall_probability=sum(r['violation_count'] for r in rows) / (len(rows)*samples))
+                   overall_probability=overall_probability(rows)['violation_probability'])
         runs.append(run)
         print(json.dumps(run), flush=True)
         if pooled is None:
             pooled = [dict(r) for r in rows]
         else:
             for target, row in zip(pooled, rows):
-                assert all(target[k] == row[k] for k in ('S', 'M', 'L'))
                 target['iterations'] += row['iterations']
                 target['violation_count'] += row['violation_count']
     for row in pooled:
         row['violation_probability'] = row['violation_count'] / row['iterations']
-    total = sum(r['iterations'] for r in pooled)
-    violations = sum(r['violation_count'] for r in pooled)
     payload = dict(inputs=dict(inputs, iterations=samples*len(seeds), random_seed=None,
                                random_seeds=seeds, samples_per_seed=samples),
                    results=pooled,
-                   overall=dict(violation_count=violations, iterations=total,
-                                violation_probability=violations/total,
-                                composition_weighting='uniform'))
+                   overall=overall_probability(pooled))
     summary = dict(runs=runs, simulation_seconds=sum(r['seconds'] for r in runs),
                    overall=payload['overall'])
     (directory / 'summary.json').write_text(json.dumps(summary, indent=2))
     (directory / 'pooled_results.json').write_text(json.dumps(payload, indent=2))
-    previous = root / 'results.json'
+    previous = RESULTS_PATH
     if previous.exists():
         (directory / 'previous_results.json').write_bytes(previous.read_bytes())
     previous.write_text(json.dumps(payload, indent=2))
-    for path in plot_full.plot_results(payload):
+    for path in plot_results(payload):
         print(path, flush=True)
     print(json.dumps(summary, indent=2), flush=True)
     print(f'Experiment saved to {directory}', flush=True)

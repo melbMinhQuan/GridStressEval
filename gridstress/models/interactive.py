@@ -3,19 +3,15 @@
 Samples are shared across allocations (common random numbers). Each allocation
 still has independent customers and trials; estimates across allocations are
 correlated, which makes slider comparisons smoother. This uses a different
-random stream layout from model_full.py, but the same probability model.
+random stream layout from models.monte_carlo, but the same probability model.
 """
 
 from functools import lru_cache
-from pathlib import Path
 
 import numpy as np
 
 
-CACHE_DIRECTORY = Path(__file__).resolve().parent / "cache"
-SEED = 42
-MAX_CUSTOMERS = 100
-MAX_SAMPLES = 100_000
+from gridstress.config import CACHE_DIRECTORY, SEED, MAX_CUSTOMERS, MAX_SAMPLES, compositions
 
 
 @lru_cache(maxsize=3)
@@ -46,7 +42,7 @@ def active_counts(customers, samples, probability_percent):
                 counts[group, size - 1]
                 + (rng.random(samples) < probability_percent / 100)
             )
-    CACHE_DIRECTORY.mkdir(exist_ok=True)
+    CACHE_DIRECTORY.mkdir(parents=True, exist_ok=True)
     temporary = CACHE_DIRECTORY / "latest_active_counts.pending.npz"
     np.savez_compressed(temporary, key=key, counts=counts)
     temporary.replace(path)
@@ -80,12 +76,10 @@ def _evaluate(small, medium, large, customers, probability, threshold, samples):
     weighted = [counts[i].astype(np.int32) * weight
                 for i, weight in enumerate((small, medium, large))]
     rows = []
-    for s in range(customers + 1):
-        for m in range(customers - s + 1):
-            l = customers - s - m
-            loads = weighted[0][s] + weighted[1][m] + weighted[2][l]
-            violations = int(np.count_nonzero(loads > threshold))
-            rows.append({"S": s, "M": m, "L": l,
-                         "iterations": samples, "violation_count": violations,
-                         "violation_probability": violations / samples})
+    for s, m, l in compositions(customers):
+        loads = weighted[0][s] + weighted[1][m] + weighted[2][l]
+        violations = int(np.count_nonzero(loads > threshold))
+        rows.append({"S": s, "M": m, "L": l,
+                     "iterations": samples, "violation_count": violations,
+                     "violation_probability": violations / samples})
     return rows

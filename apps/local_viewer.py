@@ -20,37 +20,25 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.ticker import MaxNLocator, PercentFormatter
 
-from interactive_engine import evaluate, SEED
-from model_full import load_current, threshold, num_customers, p_on, iterations
+from gridstress.models.interactive import evaluate
+from gridstress.config import SEED
+from gridstress.results import load_results, viewer_settings
 
 
 ROOT = Path(__file__).resolve().parent
 LOCK = threading.Lock()
-DEFAULTS = {"small": load_current["S"], "medium": load_current["M"],
-            "large": load_current["L"], "customers": num_customers,
-            "probability": round(p_on * 100), "threshold": threshold,
-            "samples": iterations}
 
 # Load the published batch run once at startup. Its pooled sample count is
 # distinct from the per-seed count used for fresh interactive simulations.
-SAVED = json.loads((ROOT / 'results.json').read_text())
-SAVED_SETTINGS = {
-    'small': SAVED['inputs']['load_current']['S'],
-    'medium': SAVED['inputs']['load_current']['M'],
-    'large': SAVED['inputs']['load_current']['L'],
-    'customers': SAVED['inputs']['num_customers'],
-    'probability': round(SAVED['inputs']['p_on'] * 100),
-    'threshold': SAVED['inputs']['threshold'],
-    'samples': SAVED['inputs'].get('samples_per_seed', SAVED['inputs']['iterations']),
-}
-DEFAULTS = dict(SAVED_SETTINGS)
+SAVED = load_results()
+DEFAULTS = viewer_settings(SAVED)
 
 
 @lru_cache(maxsize=8)
 def render(settings_json):
     settings = json.loads(settings_json)
     started = perf_counter()
-    saved_run = settings == SAVED_SETTINGS
+    saved_run = settings == DEFAULTS
     rows = SAVED['results'] if saved_run else evaluate(settings)
     sample_description = (
         f"{len(SAVED['inputs']['random_seeds'])} seeds x {settings['samples']:,} samples"

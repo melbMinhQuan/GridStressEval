@@ -9,8 +9,9 @@ from time import perf_counter
 import plotly.graph_objects as go
 import streamlit as st
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from interactive_engine import evaluate
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from gridstress.models.interactive import evaluate
+from gridstress.results import load_results, viewer_settings, overall_probability
 
 
 st.set_page_config(page_title="Load violation probability", layout="wide")
@@ -24,7 +25,7 @@ def simulation_lock():
 
 @st.cache_data(max_entries=1)
 def saved_results():
-    return json.loads(Path(__file__).with_name("results.json").read_text())
+    return load_results()
 
 
 @st.cache_data(max_entries=16, show_spinner=False)
@@ -35,12 +36,7 @@ def simulate(settings):
 
 saved = saved_results()
 inputs = saved["inputs"]
-defaults = dict(small=inputs["load_current"]["S"],
-                medium=inputs["load_current"]["M"],
-                large=inputs["load_current"]["L"],
-                probability=round(inputs["p_on"] * 100),
-                customers=inputs["num_customers"], threshold=inputs["threshold"],
-                samples=inputs.get("samples_per_seed", inputs["iterations"]))
+defaults = viewer_settings(saved)
 
 with st.sidebar:
     st.subheader("Model inputs")
@@ -80,9 +76,8 @@ figure.update_layout(
 )
 st.plotly_chart(figure, use_container_width=True)
 chart_seconds = perf_counter() - chart_started
-violations = sum(r["violation_count"] for r in rows)
-trials = sum(r["iterations"] for r in rows)
-st.markdown(f"**Overall Probability: {violations / trials:.2%}**")
+overall = overall_probability(rows)
+st.markdown(f"**Overall Probability: {overall['violation_probability']:.2%}**")
 
 with st.expander("Run details and timing"):
     st.write("Saved five-seed batch" if is_saved and inputs.get("random_seeds")
@@ -91,10 +86,10 @@ with st.expander("Run details and timing"):
     st.write(f"Chart preparation and serialization: {chart_seconds:.3f} s")
     st.caption("Server-side timings exclude browser rendering, network latency and app startup. "
                "Repeated settings may use cached results. Compositions are equally weighted.")
-    st.write(f"{violations:,} violating trials / {trials:,} total trials")
+    st.write(f"{overall['violation_count']:,} violating trials / {overall['iterations']:,} total trials")
 
 export = dict(inputs=inputs if is_saved else dict(settings, random_seed=42),
               source="saved_batch" if is_saved else "interactive_simulation",
-              results=rows, overall_probability=violations / trials)
+              results=rows, overall_probability=overall['violation_probability'])
 st.download_button("Download results JSON", json.dumps(export, indent=2),
                    file_name="streamlit_results.json", mime="application/json")

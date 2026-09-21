@@ -1,15 +1,14 @@
 """Generate figures from the published Monte Carlo results."""
 
-import json
-from pathlib import Path
-
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.ticker import PercentFormatter
 
 
-output_directory = Path(__file__).resolve().parent / "plot"
-results_path = Path(__file__).resolve().parent / "results.json"
+from gridstress.config import FIGURES_DIRECTORY
+from gridstress.results import load_results
+
+output_directory = FIGURES_DIRECTORY / "on_off"
 
 
 def plot_results(payload):
@@ -71,8 +70,5 @@ def plot_results(payload):
 
 
 if __name__ == "__main__":
-    if not results_path.exists():
-        raise SystemExit("Run python model/model_full.py first to create results.json.")
-    payload = json.loads(results_path.read_text(encoding="utf-8"))
-    for path in plot_results(payload):
+    for path in plot_results(load_results()):
         print(f"Saved figure: {path}")

@@ -3,21 +3,21 @@
 Run from the repository root:
 
 ```sh
-python3 -m pip install -r model/requirements.txt
-python3 -m streamlit run model/streamlit_app.py
+python3 -m pip install -r requirements.txt
+python3 -m streamlit run apps/streamlit_app.py
 ```
 
-The default settings load `model/results.json`, including the pooled five-seed
+The default settings load `data/results.json`, including the pooled five-seed
 experiment. Changed settings use the existing interactive simulation engine
 (seed 42). Rotation and hovering happen in the browser. Repeated settings use
 cached results. Overall probability appears below the plot.
 
 ## Cloud deployment
 
-Push these files and the current model/results.json to your GitHub repository.
+Push these files and the current data/results.json to your GitHub repository.
 In Streamlit Community Cloud, create an app using that repository and branch,
-set the entrypoint to `model/streamlit_app.py`, and select Python 3.11 in the
-advanced settings. Dependencies are in `model/requirements.txt` beside the app.
+set the entrypoint to `apps/streamlit_app.py`, and select Python 3.11 in the
+advanced settings. Dependencies are in the root `requirements.txt`.
 Do not include local caches, logs or bytecode as deployment requirements.
 
 ## Measuring cloud speed

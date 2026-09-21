@@ -2,11 +2,12 @@
 
 import matplotlib.pyplot as plt
 
-from model_all_on import evaluate_all_combinations, num_customers, threshold
+from gridstress.models.all_on import evaluate_all_combinations, num_customers, threshold
+from gridstress.config import FIGURES_DIRECTORY
 
 
 # All generated figures are stored in this folder.
-output_directory = Path(__file__).resolve().parent / "plot"
+output_directory = FIGURES_DIRECTORY / "all_on"
 
 
 def split_results(results):
