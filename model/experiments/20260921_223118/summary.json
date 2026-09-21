@@ -1,0 +1,36 @@
+{
+  "runs": [
+    {
+      "seed": 42,
+      "seconds": 11.88530966709368,
+      "overall_probability": 0.4962894425087108
+    },
+    {
+      "seed": 43,
+      "seconds": 11.820654457900673,
+      "overall_probability": 0.49624636469221833
+    },
+    {
+      "seed": 44,
+      "seconds": 11.75065908418037,
+      "overall_probability": 0.4963003832752613
+    },
+    {
+      "seed": 45,
+      "seconds": 11.783405666938052,
+      "overall_probability": 0.49627411149825784
+    },
+    {
+      "seed": 46,
+      "seconds": 11.883343458874151,
+      "overall_probability": 0.496245493612079
+    }
+  ],
+  "simulation_seconds": 59.123372334986925,
+  "overall": {
+    "violation_count": 213644734,
+    "iterations": 430500000,
+    "violation_probability": 0.49627115911730546,
+    "composition_weighting": "uniform"
+  }
+}

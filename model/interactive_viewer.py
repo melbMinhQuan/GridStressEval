@@ -31,12 +31,32 @@ DEFAULTS = {"small": load_current["S"], "medium": load_current["M"],
             "probability": round(p_on * 100), "threshold": threshold,
             "samples": iterations}
 
+# Load the published batch run once at startup. Its pooled sample count is
+# distinct from the per-seed count used for fresh interactive simulations.
+SAVED = json.loads((ROOT / 'results.json').read_text())
+SAVED_SETTINGS = {
+    'small': SAVED['inputs']['load_current']['S'],
+    'medium': SAVED['inputs']['load_current']['M'],
+    'large': SAVED['inputs']['load_current']['L'],
+    'customers': SAVED['inputs']['num_customers'],
+    'probability': round(SAVED['inputs']['p_on'] * 100),
+    'threshold': SAVED['inputs']['threshold'],
+    'samples': SAVED['inputs'].get('samples_per_seed', SAVED['inputs']['iterations']),
+}
+DEFAULTS = dict(SAVED_SETTINGS)
+
 
 @lru_cache(maxsize=8)
 def render(settings_json):
     settings = json.loads(settings_json)
     started = perf_counter()
-    rows = evaluate(settings)
+    saved_run = settings == SAVED_SETTINGS
+    rows = SAVED['results'] if saved_run else evaluate(settings)
+    sample_description = (
+        f"{len(SAVED['inputs']['random_seeds'])} seeds x {settings['samples']:,} samples"
+        if saved_run and SAVED['inputs'].get('random_seeds')
+        else f"{settings['samples']:,} samples"
+    )
     compute_seconds = perf_counter() - started
     figure = Figure(figsize=(10, 7.5), dpi=130)
     FigureCanvasAgg(figure)
@@ -64,14 +84,19 @@ def render(settings_json):
     figure.suptitle(
         f"P(load > {settings['threshold']:,})  |  {settings['customers']} customers\n"
         f"Loads S/M/L: {settings['small']} / {settings['medium']} / {settings['large']}"
-        f"  |  p(on): {settings['probability']}%  |  {settings['samples']:,} samples",
+        f"  |  p(on): {settings['probability']}%  |  {sample_description}",
         fontsize=12, y=0.96,
     )
     figure.subplots_adjust(left=0.10, right=0.91, bottom=0.09, top=0.91)
     output = BytesIO()
     figure.savefig(output, format="png", bbox_inches="tight", pad_inches=0.3)
     return {
-        "inputs": {**settings, "random_seed": SEED}, "results": rows,
+        "inputs": {**settings,
+                   "random_seed": SAVED['inputs'].get('random_seed') if saved_run else SEED,
+                   "random_seeds": SAVED['inputs'].get('random_seeds') if saved_run else [SEED]},
+        "results": rows,
+        "source": "saved_batch" if saved_run else "interactive_simulation",
+        "batch_inputs": SAVED['inputs'] if saved_run else None,
         "png": base64.b64encode(output.getvalue()).decode("ascii"),
         "simulation_seconds": round(compute_seconds, 4),
     }

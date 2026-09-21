@@ -15,7 +15,7 @@ import numpy as np
 CACHE_DIRECTORY = Path(__file__).resolve().parent / "cache"
 SEED = 42
 MAX_CUSTOMERS = 100
-MAX_SAMPLES = 50_000
+MAX_SAMPLES = 100_000
 
 
 @lru_cache(maxsize=3)

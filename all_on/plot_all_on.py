@@ -19,7 +19,7 @@ def split_results(results):
 def plot_3d(results):
     """Create and save the 3D S/M/L combination plot."""
     violations, non_violations = split_results(results)
-    figure = plt.figure(figsize=(10, 8))
+    figure = plt.figure(figsize=(11, 8))
     axis = figure.add_subplot(111, projection="3d")
 
     for points, color, label in (
@@ -38,10 +38,19 @@ def plot_3d(results):
 
     axis.set_xlabel("Small customers (S)")
     axis.set_ylabel("Medium customers (M)")
-    axis.set_zlabel("Large customers (L)")
+    axis.text2D(
+        -0.06,
+        0.5,
+        "Large customers (L)",
+        transform=axis.transAxes,
+        rotation=90,
+        va="center",
+        ha="center",
+    )
     axis.set_title("All customers ON: threshold violations")
+    axis.view_init(elev=25, azim=45)
     axis.legend()
-    figure.tight_layout()
+    figure.subplots_adjust(left=0.08, right=0.96, bottom=0.08, top=0.9)
 
     file_path = output_directory / "violations_3d.png"
     figure.savefig(file_path, dpi=300, bbox_inches="tight")

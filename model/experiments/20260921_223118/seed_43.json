@@ -1,0 +1,6904 @@
+{
+  "inputs": {
+    "load_current": {
+      "S": 20,
+      "M": 40,
+      "L": 100
+    },
+    "threshold": 1000,
+    "num_customers": 40,
+    "p_on": 0.5,
+    "iterations": 100000,
+    "random_seed": 43
+  },
+  "results": [
+    {
+      "S": 0,
+      "M": 0,
+      "L": 40,
+      "iterations": 100000,
+      "violation_count": 99893,
+      "violation_probability": 0.99893
+    },
+    {
+      "S": 0,
+      "M": 1,
+      "L": 39,
+      "iterations": 100000,
+      "violation_count": 99897,
+      "violation_probability": 0.99897
+    },
+    {
+      "S": 0,
+      "M": 2,
+      "L": 38,
+      "iterations": 100000,
+      "violation_count": 99882,
+      "violation_probability": 0.99882
+    },
+    {
+      "S": 0,
+      "M": 3,
+      "L": 37,
+      "iterations": 100000,
+      "violation_count": 99866,
+      "violation_probability": 0.99866
+    },
+    {
+      "S": 0,
+      "M": 4,
+      "L": 36,
+      "iterations": 100000,
+      "violation_count": 99835,
+      "violation_probability": 0.99835
+    },
+    {
+      "S": 0,
+      "M": 5,
+      "L": 35,
+      "iterations": 100000,
+      "violation_count": 99811,
+      "violation_probability": 0.99811
+    },
+    {
+      "S": 0,
+      "M": 6,
+      "L": 34,
+      "iterations": 100000,
+      "violation_count": 99719,
+      "violation_probability": 0.99719
+    },
+    {
+      "S": 0,
+      "M": 7,
+      "L": 33,
+      "iterations": 100000,
+      "violation_count": 99671,
+      "violation_probability": 0.99671
+    },
+    {
+      "S": 0,
+      "M": 8,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99590,
+      "violation_probability": 0.9959
+    },
+    {
+      "S": 0,
+      "M": 9,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 99465,
+      "violation_probability": 0.99465
+    },
+    {
+      "S": 0,
+      "M": 10,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 99265,
+      "violation_probability": 0.99265
+    },
+    {
+      "S": 0,
+      "M": 11,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 99198,
+      "violation_probability": 0.99198
+    },
+    {
+      "S": 0,
+      "M": 12,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 98938,
+      "violation_probability": 0.98938
+    },
+    {
+      "S": 0,
+      "M": 13,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 98685,
+      "violation_probability": 0.98685
+    },
+    {
+      "S": 0,
+      "M": 14,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 98408,
+      "violation_probability": 0.98408
+    },
+    {
+      "S": 0,
+      "M": 15,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 98031,
+      "violation_probability": 0.98031
+    },
+    {
+      "S": 0,
+      "M": 16,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 97597,
+      "violation_probability": 0.97597
+    },
+    {
+      "S": 0,
+      "M": 17,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 97110,
+      "violation_probability": 0.9711
+    },
+    {
+      "S": 0,
+      "M": 18,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 96523,
+      "violation_probability": 0.96523
+    },
+    {
+      "S": 0,
+      "M": 19,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 95709,
+      "violation_probability": 0.95709
+    },
+    {
+      "S": 0,
+      "M": 20,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 94787,
+      "violation_probability": 0.94787
+    },
+    {
+      "S": 0,
+      "M": 21,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 93564,
+      "violation_probability": 0.93564
+    },
+    {
+      "S": 0,
+      "M": 22,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 92213,
+      "violation_probability": 0.92213
+    },
+    {
+      "S": 0,
+      "M": 23,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 90645,
+      "violation_probability": 0.90645
+    },
+    {
+      "S": 0,
+      "M": 24,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 88601,
+      "violation_probability": 0.88601
+    },
+    {
+      "S": 0,
+      "M": 25,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 86091,
+      "violation_probability": 0.86091
+    },
+    {
+      "S": 0,
+      "M": 26,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 83662,
+      "violation_probability": 0.83662
+    },
+    {
+      "S": 0,
+      "M": 27,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 80504,
+      "violation_probability": 0.80504
+    },
+    {
+      "S": 0,
+      "M": 28,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 76698,
+      "violation_probability": 0.76698
+    },
+    {
+      "S": 0,
+      "M": 29,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 72440,
+      "violation_probability": 0.7244
+    },
+    {
+      "S": 0,
+      "M": 30,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 67803,
+      "violation_probability": 0.67803
+    },
+    {
+      "S": 0,
+      "M": 31,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 62463,
+      "violation_probability": 0.62463
+    },
+    {
+      "S": 0,
+      "M": 32,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 56524,
+      "violation_probability": 0.56524
+    },
+    {
+      "S": 0,
+      "M": 33,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 49867,
+      "violation_probability": 0.49867
+    },
+    {
+      "S": 0,
+      "M": 34,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 43353,
+      "violation_probability": 0.43353
+    },
+    {
+      "S": 0,
+      "M": 35,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 35948,
+      "violation_probability": 0.35948
+    },
+    {
+      "S": 0,
+      "M": 36,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 28323,
+      "violation_probability": 0.28323
+    },
+    {
+      "S": 0,
+      "M": 37,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 21016,
+      "violation_probability": 0.21016
+    },
+    {
+      "S": 0,
+      "M": 38,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 14913,
+      "violation_probability": 0.14913
+    },
+    {
+      "S": 0,
+      "M": 39,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 9670,
+      "violation_probability": 0.0967
+    },
+    {
+      "S": 0,
+      "M": 40,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 4017,
+      "violation_probability": 0.04017
+    },
+    {
+      "S": 1,
+      "M": 0,
+      "L": 39,
+      "iterations": 100000,
+      "violation_count": 99885,
+      "violation_probability": 0.99885
+    },
+    {
+      "S": 1,
+      "M": 1,
+      "L": 38,
+      "iterations": 100000,
+      "violation_count": 99865,
+      "violation_probability": 0.99865
+    },
+    {
+      "S": 1,
+      "M": 2,
+      "L": 37,
+      "iterations": 100000,
+      "violation_count": 99850,
+      "violation_probability": 0.9985
+    },
+    {
+      "S": 1,
+      "M": 3,
+      "L": 36,
+      "iterations": 100000,
+      "violation_count": 99798,
+      "violation_probability": 0.99798
+    },
+    {
+      "S": 1,
+      "M": 4,
+      "L": 35,
+      "iterations": 100000,
+      "violation_count": 99772,
+      "violation_probability": 0.99772
+    },
+    {
+      "S": 1,
+      "M": 5,
+      "L": 34,
+      "iterations": 100000,
+      "violation_count": 99693,
+      "violation_probability": 0.99693
+    },
+    {
+      "S": 1,
+      "M": 6,
+      "L": 33,
+      "iterations": 100000,
+      "violation_count": 99577,
+      "violation_probability": 0.99577
+    },
+    {
+      "S": 1,
+      "M": 7,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99575,
+      "violation_probability": 0.99575
+    },
+    {
+      "S": 1,
+      "M": 8,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 99408,
+      "violation_probability": 0.99408
+    },
+    {
+      "S": 1,
+      "M": 9,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 99293,
+      "violation_probability": 0.99293
+    },
+    {
+      "S": 1,
+      "M": 10,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 99119,
+      "violation_probability": 0.99119
+    },
+    {
+      "S": 1,
+      "M": 11,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 98929,
+      "violation_probability": 0.98929
+    },
+    {
+      "S": 1,
+      "M": 12,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 98649,
+      "violation_probability": 0.98649
+    },
+    {
+      "S": 1,
+      "M": 13,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 98389,
+      "violation_probability": 0.98389
+    },
+    {
+      "S": 1,
+      "M": 14,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 97824,
+      "violation_probability": 0.97824
+    },
+    {
+      "S": 1,
+      "M": 15,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 97450,
+      "violation_probability": 0.9745
+    },
+    {
+      "S": 1,
+      "M": 16,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 96866,
+      "violation_probability": 0.96866
+    },
+    {
+      "S": 1,
+      "M": 17,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 96098,
+      "violation_probability": 0.96098
+    },
+    {
+      "S": 1,
+      "M": 18,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 95214,
+      "violation_probability": 0.95214
+    },
+    {
+      "S": 1,
+      "M": 19,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 94337,
+      "violation_probability": 0.94337
+    },
+    {
+      "S": 1,
+      "M": 20,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 93177,
+      "violation_probability": 0.93177
+    },
+    {
+      "S": 1,
+      "M": 21,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 91657,
+      "violation_probability": 0.91657
+    },
+    {
+      "S": 1,
+      "M": 22,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 89739,
+      "violation_probability": 0.89739
+    },
+    {
+      "S": 1,
+      "M": 23,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 87780,
+      "violation_probability": 0.8778
+    },
+    {
+      "S": 1,
+      "M": 24,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 85395,
+      "violation_probability": 0.85395
+    },
+    {
+      "S": 1,
+      "M": 25,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 82464,
+      "violation_probability": 0.82464
+    },
+    {
+      "S": 1,
+      "M": 26,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 79050,
+      "violation_probability": 0.7905
+    },
+    {
+      "S": 1,
+      "M": 27,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 75347,
+      "violation_probability": 0.75347
+    },
+    {
+      "S": 1,
+      "M": 28,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 70960,
+      "violation_probability": 0.7096
+    },
+    {
+      "S": 1,
+      "M": 29,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 65917,
+      "violation_probability": 0.65917
+    },
+    {
+      "S": 1,
+      "M": 30,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 60531,
+      "violation_probability": 0.60531
+    },
+    {
+      "S": 1,
+      "M": 31,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 54381,
+      "violation_probability": 0.54381
+    },
+    {
+      "S": 1,
+      "M": 32,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 48006,
+      "violation_probability": 0.48006
+    },
+    {
+      "S": 1,
+      "M": 33,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 40623,
+      "violation_probability": 0.40623
+    },
+    {
+      "S": 1,
+      "M": 34,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 33579,
+      "violation_probability": 0.33579
+    },
+    {
+      "S": 1,
+      "M": 35,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 26029,
+      "violation_probability": 0.26029
+    },
+    {
+      "S": 1,
+      "M": 36,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 19195,
+      "violation_probability": 0.19195
+    },
+    {
+      "S": 1,
+      "M": 37,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 12862,
+      "violation_probability": 0.12862
+    },
+    {
+      "S": 1,
+      "M": 38,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 7748,
+      "violation_probability": 0.07748
+    },
+    {
+      "S": 1,
+      "M": 39,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 4096,
+      "violation_probability": 0.04096
+    },
+    {
+      "S": 2,
+      "M": 0,
+      "L": 38,
+      "iterations": 100000,
+      "violation_count": 99882,
+      "violation_probability": 0.99882
+    },
+    {
+      "S": 2,
+      "M": 1,
+      "L": 37,
+      "iterations": 100000,
+      "violation_count": 99851,
+      "violation_probability": 0.99851
+    },
+    {
+      "S": 2,
+      "M": 2,
+      "L": 36,
+      "iterations": 100000,
+      "violation_count": 99764,
+      "violation_probability": 0.99764
+    },
+    {
+      "S": 2,
+      "M": 3,
+      "L": 35,
+      "iterations": 100000,
+      "violation_count": 99771,
+      "violation_probability": 0.99771
+    },
+    {
+      "S": 2,
+      "M": 4,
+      "L": 34,
+      "iterations": 100000,
+      "violation_count": 99672,
+      "violation_probability": 0.99672
+    },
+    {
+      "S": 2,
+      "M": 5,
+      "L": 33,
+      "iterations": 100000,
+      "violation_count": 99597,
+      "violation_probability": 0.99597
+    },
+    {
+      "S": 2,
+      "M": 6,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99437,
+      "violation_probability": 0.99437
+    },
+    {
+      "S": 2,
+      "M": 7,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 99377,
+      "violation_probability": 0.99377
+    },
+    {
+      "S": 2,
+      "M": 8,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 99240,
+      "violation_probability": 0.9924
+    },
+    {
+      "S": 2,
+      "M": 9,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 99031,
+      "violation_probability": 0.99031
+    },
+    {
+      "S": 2,
+      "M": 10,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 98780,
+      "violation_probability": 0.9878
+    },
+    {
+      "S": 2,
+      "M": 11,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 98474,
+      "violation_probability": 0.98474
+    },
+    {
+      "S": 2,
+      "M": 12,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 98155,
+      "violation_probability": 0.98155
+    },
+    {
+      "S": 2,
+      "M": 13,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 97698,
+      "violation_probability": 0.97698
+    },
+    {
+      "S": 2,
+      "M": 14,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 97301,
+      "violation_probability": 0.97301
+    },
+    {
+      "S": 2,
+      "M": 15,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 96648,
+      "violation_probability": 0.96648
+    },
+    {
+      "S": 2,
+      "M": 16,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 95904,
+      "violation_probability": 0.95904
+    },
+    {
+      "S": 2,
+      "M": 17,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 94997,
+      "violation_probability": 0.94997
+    },
+    {
+      "S": 2,
+      "M": 18,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 93932,
+      "violation_probability": 0.93932
+    },
+    {
+      "S": 2,
+      "M": 19,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 92637,
+      "violation_probability": 0.92637
+    },
+    {
+      "S": 2,
+      "M": 20,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 91083,
+      "violation_probability": 0.91083
+    },
+    {
+      "S": 2,
+      "M": 21,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 89062,
+      "violation_probability": 0.89062
+    },
+    {
+      "S": 2,
+      "M": 22,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 86886,
+      "violation_probability": 0.86886
+    },
+    {
+      "S": 2,
+      "M": 23,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 84333,
+      "violation_probability": 0.84333
+    },
+    {
+      "S": 2,
+      "M": 24,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 81170,
+      "violation_probability": 0.8117
+    },
+    {
+      "S": 2,
+      "M": 25,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 77890,
+      "violation_probability": 0.7789
+    },
+    {
+      "S": 2,
+      "M": 26,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 73815,
+      "violation_probability": 0.73815
+    },
+    {
+      "S": 2,
+      "M": 27,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 69388,
+      "violation_probability": 0.69388
+    },
+    {
+      "S": 2,
+      "M": 28,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 64176,
+      "violation_probability": 0.64176
+    },
+    {
+      "S": 2,
+      "M": 29,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 58612,
+      "violation_probability": 0.58612
+    },
+    {
+      "S": 2,
+      "M": 30,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 52067,
+      "violation_probability": 0.52067
+    },
+    {
+      "S": 2,
+      "M": 31,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 45334,
+      "violation_probability": 0.45334
+    },
+    {
+      "S": 2,
+      "M": 32,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 38442,
+      "violation_probability": 0.38442
+    },
+    {
+      "S": 2,
+      "M": 33,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 31201,
+      "violation_probability": 0.31201
+    },
+    {
+      "S": 2,
+      "M": 34,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 24023,
+      "violation_probability": 0.24023
+    },
+    {
+      "S": 2,
+      "M": 35,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 17029,
+      "violation_probability": 0.17029
+    },
+    {
+      "S": 2,
+      "M": 36,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 11374,
+      "violation_probability": 0.11374
+    },
+    {
+      "S": 2,
+      "M": 37,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 6547,
+      "violation_probability": 0.06547
+    },
+    {
+      "S": 2,
+      "M": 38,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 3167,
+      "violation_probability": 0.03167
+    },
+    {
+      "S": 3,
+      "M": 0,
+      "L": 37,
+      "iterations": 100000,
+      "violation_count": 99827,
+      "violation_probability": 0.99827
+    },
+    {
+      "S": 3,
+      "M": 1,
+      "L": 36,
+      "iterations": 100000,
+      "violation_count": 99771,
+      "violation_probability": 0.99771
+    },
+    {
+      "S": 3,
+      "M": 2,
+      "L": 35,
+      "iterations": 100000,
+      "violation_count": 99687,
+      "violation_probability": 0.99687
+    },
+    {
+      "S": 3,
+      "M": 3,
+      "L": 34,
+      "iterations": 100000,
+      "violation_count": 99631,
+      "violation_probability": 0.99631
+    },
+    {
+      "S": 3,
+      "M": 4,
+      "L": 33,
+      "iterations": 100000,
+      "violation_count": 99532,
+      "violation_probability": 0.99532
+    },
+    {
+      "S": 3,
+      "M": 5,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99444,
+      "violation_probability": 0.99444
+    },
+    {
+      "S": 3,
+      "M": 6,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 99320,
+      "violation_probability": 0.9932
+    },
+    {
+      "S": 3,
+      "M": 7,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 99115,
+      "violation_probability": 0.99115
+    },
+    {
+      "S": 3,
+      "M": 8,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 98923,
+      "violation_probability": 0.98923
+    },
+    {
+      "S": 3,
+      "M": 9,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 98715,
+      "violation_probability": 0.98715
+    },
+    {
+      "S": 3,
+      "M": 10,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 98392,
+      "violation_probability": 0.98392
+    },
+    {
+      "S": 3,
+      "M": 11,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 97957,
+      "violation_probability": 0.97957
+    },
+    {
+      "S": 3,
+      "M": 12,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 97489,
+      "violation_probability": 0.97489
+    },
+    {
+      "S": 3,
+      "M": 13,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 97011,
+      "violation_probability": 0.97011
+    },
+    {
+      "S": 3,
+      "M": 14,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 96322,
+      "violation_probability": 0.96322
+    },
+    {
+      "S": 3,
+      "M": 15,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 95569,
+      "violation_probability": 0.95569
+    },
+    {
+      "S": 3,
+      "M": 16,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 94512,
+      "violation_probability": 0.94512
+    },
+    {
+      "S": 3,
+      "M": 17,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 93352,
+      "violation_probability": 0.93352
+    },
+    {
+      "S": 3,
+      "M": 18,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 91987,
+      "violation_probability": 0.91987
+    },
+    {
+      "S": 3,
+      "M": 19,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 90184,
+      "violation_probability": 0.90184
+    },
+    {
+      "S": 3,
+      "M": 20,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 88408,
+      "violation_probability": 0.88408
+    },
+    {
+      "S": 3,
+      "M": 21,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 85957,
+      "violation_probability": 0.85957
+    },
+    {
+      "S": 3,
+      "M": 22,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 83364,
+      "violation_probability": 0.83364
+    },
+    {
+      "S": 3,
+      "M": 23,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 80174,
+      "violation_probability": 0.80174
+    },
+    {
+      "S": 3,
+      "M": 24,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 76495,
+      "violation_probability": 0.76495
+    },
+    {
+      "S": 3,
+      "M": 25,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 72392,
+      "violation_probability": 0.72392
+    },
+    {
+      "S": 3,
+      "M": 26,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 67778,
+      "violation_probability": 0.67778
+    },
+    {
+      "S": 3,
+      "M": 27,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 62193,
+      "violation_probability": 0.62193
+    },
+    {
+      "S": 3,
+      "M": 28,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 56156,
+      "violation_probability": 0.56156
+    },
+    {
+      "S": 3,
+      "M": 29,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 50199,
+      "violation_probability": 0.50199
+    },
+    {
+      "S": 3,
+      "M": 30,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 43261,
+      "violation_probability": 0.43261
+    },
+    {
+      "S": 3,
+      "M": 31,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 36000,
+      "violation_probability": 0.36
+    },
+    {
+      "S": 3,
+      "M": 32,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 29293,
+      "violation_probability": 0.29293
+    },
+    {
+      "S": 3,
+      "M": 33,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 21822,
+      "violation_probability": 0.21822
+    },
+    {
+      "S": 3,
+      "M": 34,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 15396,
+      "violation_probability": 0.15396
+    },
+    {
+      "S": 3,
+      "M": 35,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 9949,
+      "violation_probability": 0.09949
+    },
+    {
+      "S": 3,
+      "M": 36,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 5519,
+      "violation_probability": 0.05519
+    },
+    {
+      "S": 3,
+      "M": 37,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 2505,
+      "violation_probability": 0.02505
+    },
+    {
+      "S": 4,
+      "M": 0,
+      "L": 36,
+      "iterations": 100000,
+      "violation_count": 99810,
+      "violation_probability": 0.9981
+    },
+    {
+      "S": 4,
+      "M": 1,
+      "L": 35,
+      "iterations": 100000,
+      "violation_count": 99717,
+      "violation_probability": 0.99717
+    },
+    {
+      "S": 4,
+      "M": 2,
+      "L": 34,
+      "iterations": 100000,
+      "violation_count": 99585,
+      "violation_probability": 0.99585
+    },
+    {
+      "S": 4,
+      "M": 3,
+      "L": 33,
+      "iterations": 100000,
+      "violation_count": 99495,
+      "violation_probability": 0.99495
+    },
+    {
+      "S": 4,
+      "M": 4,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99346,
+      "violation_probability": 0.99346
+    },
+    {
+      "S": 4,
+      "M": 5,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 99210,
+      "violation_probability": 0.9921
+    },
+    {
+      "S": 4,
+      "M": 6,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 99099,
+      "violation_probability": 0.99099
+    },
+    {
+      "S": 4,
+      "M": 7,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 98875,
+      "violation_probability": 0.98875
+    },
+    {
+      "S": 4,
+      "M": 8,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 98487,
+      "violation_probability": 0.98487
+    },
+    {
+      "S": 4,
+      "M": 9,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 98216,
+      "violation_probability": 0.98216
+    },
+    {
+      "S": 4,
+      "M": 10,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 97788,
+      "violation_probability": 0.97788
+    },
+    {
+      "S": 4,
+      "M": 11,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 97283,
+      "violation_probability": 0.97283
+    },
+    {
+      "S": 4,
+      "M": 12,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 96754,
+      "violation_probability": 0.96754
+    },
+    {
+      "S": 4,
+      "M": 13,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 96068,
+      "violation_probability": 0.96068
+    },
+    {
+      "S": 4,
+      "M": 14,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 94992,
+      "violation_probability": 0.94992
+    },
+    {
+      "S": 4,
+      "M": 15,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 93920,
+      "violation_probability": 0.9392
+    },
+    {
+      "S": 4,
+      "M": 16,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 92751,
+      "violation_probability": 0.92751
+    },
+    {
+      "S": 4,
+      "M": 17,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 91486,
+      "violation_probability": 0.91486
+    },
+    {
+      "S": 4,
+      "M": 18,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 89612,
+      "violation_probability": 0.89612
+    },
+    {
+      "S": 4,
+      "M": 19,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 87423,
+      "violation_probability": 0.87423
+    },
+    {
+      "S": 4,
+      "M": 20,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 85048,
+      "violation_probability": 0.85048
+    },
+    {
+      "S": 4,
+      "M": 21,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 81941,
+      "violation_probability": 0.81941
+    },
+    {
+      "S": 4,
+      "M": 22,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 78874,
+      "violation_probability": 0.78874
+    },
+    {
+      "S": 4,
+      "M": 23,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 74792,
+      "violation_probability": 0.74792
+    },
+    {
+      "S": 4,
+      "M": 24,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 70503,
+      "violation_probability": 0.70503
+    },
+    {
+      "S": 4,
+      "M": 25,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 65899,
+      "violation_probability": 0.65899
+    },
+    {
+      "S": 4,
+      "M": 26,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 60438,
+      "violation_probability": 0.60438
+    },
+    {
+      "S": 4,
+      "M": 27,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 54397,
+      "violation_probability": 0.54397
+    },
+    {
+      "S": 4,
+      "M": 28,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 47914,
+      "violation_probability": 0.47914
+    },
+    {
+      "S": 4,
+      "M": 29,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 41145,
+      "violation_probability": 0.41145
+    },
+    {
+      "S": 4,
+      "M": 30,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 33842,
+      "violation_probability": 0.33842
+    },
+    {
+      "S": 4,
+      "M": 31,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 26579,
+      "violation_probability": 0.26579
+    },
+    {
+      "S": 4,
+      "M": 32,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 19676,
+      "violation_probability": 0.19676
+    },
+    {
+      "S": 4,
+      "M": 33,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 13685,
+      "violation_probability": 0.13685
+    },
+    {
+      "S": 4,
+      "M": 34,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 8416,
+      "violation_probability": 0.08416
+    },
+    {
+      "S": 4,
+      "M": 35,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 4585,
+      "violation_probability": 0.04585
+    },
+    {
+      "S": 4,
+      "M": 36,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 1946,
+      "violation_probability": 0.01946
+    },
+    {
+      "S": 5,
+      "M": 0,
+      "L": 35,
+      "iterations": 100000,
+      "violation_count": 99699,
+      "violation_probability": 0.99699
+    },
+    {
+      "S": 5,
+      "M": 1,
+      "L": 34,
+      "iterations": 100000,
+      "violation_count": 99591,
+      "violation_probability": 0.99591
+    },
+    {
+      "S": 5,
+      "M": 2,
+      "L": 33,
+      "iterations": 100000,
+      "violation_count": 99429,
+      "violation_probability": 0.99429
+    },
+    {
+      "S": 5,
+      "M": 3,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99329,
+      "violation_probability": 0.99329
+    },
+    {
+      "S": 5,
+      "M": 4,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 99157,
+      "violation_probability": 0.99157
+    },
+    {
+      "S": 5,
+      "M": 5,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 99003,
+      "violation_probability": 0.99003
+    },
+    {
+      "S": 5,
+      "M": 6,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 98727,
+      "violation_probability": 0.98727
+    },
+    {
+      "S": 5,
+      "M": 7,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 98440,
+      "violation_probability": 0.9844
+    },
+    {
+      "S": 5,
+      "M": 8,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 98161,
+      "violation_probability": 0.98161
+    },
+    {
+      "S": 5,
+      "M": 9,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 97625,
+      "violation_probability": 0.97625
+    },
+    {
+      "S": 5,
+      "M": 10,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 97044,
+      "violation_probability": 0.97044
+    },
+    {
+      "S": 5,
+      "M": 11,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 96527,
+      "violation_probability": 0.96527
+    },
+    {
+      "S": 5,
+      "M": 12,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 95669,
+      "violation_probability": 0.95669
+    },
+    {
+      "S": 5,
+      "M": 13,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 94735,
+      "violation_probability": 0.94735
+    },
+    {
+      "S": 5,
+      "M": 14,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 93649,
+      "violation_probability": 0.93649
+    },
+    {
+      "S": 5,
+      "M": 15,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 92320,
+      "violation_probability": 0.9232
+    },
+    {
+      "S": 5,
+      "M": 16,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 90679,
+      "violation_probability": 0.90679
+    },
+    {
+      "S": 5,
+      "M": 17,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 88793,
+      "violation_probability": 0.88793
+    },
+    {
+      "S": 5,
+      "M": 18,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 86623,
+      "violation_probability": 0.86623
+    },
+    {
+      "S": 5,
+      "M": 19,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 84021,
+      "violation_probability": 0.84021
+    },
+    {
+      "S": 5,
+      "M": 20,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 81053,
+      "violation_probability": 0.81053
+    },
+    {
+      "S": 5,
+      "M": 21,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 77760,
+      "violation_probability": 0.7776
+    },
+    {
+      "S": 5,
+      "M": 22,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 73295,
+      "violation_probability": 0.73295
+    },
+    {
+      "S": 5,
+      "M": 23,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 69067,
+      "violation_probability": 0.69067
+    },
+    {
+      "S": 5,
+      "M": 24,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 63965,
+      "violation_probability": 0.63965
+    },
+    {
+      "S": 5,
+      "M": 25,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 57814,
+      "violation_probability": 0.57814
+    },
+    {
+      "S": 5,
+      "M": 26,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 52007,
+      "violation_probability": 0.52007
+    },
+    {
+      "S": 5,
+      "M": 27,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 45552,
+      "violation_probability": 0.45552
+    },
+    {
+      "S": 5,
+      "M": 28,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 38590,
+      "violation_probability": 0.3859
+    },
+    {
+      "S": 5,
+      "M": 29,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 31501,
+      "violation_probability": 0.31501
+    },
+    {
+      "S": 5,
+      "M": 30,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 24502,
+      "violation_probability": 0.24502
+    },
+    {
+      "S": 5,
+      "M": 31,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 17788,
+      "violation_probability": 0.17788
+    },
+    {
+      "S": 5,
+      "M": 32,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 12249,
+      "violation_probability": 0.12249
+    },
+    {
+      "S": 5,
+      "M": 33,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 7284,
+      "violation_probability": 0.07284
+    },
+    {
+      "S": 5,
+      "M": 34,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 3728,
+      "violation_probability": 0.03728
+    },
+    {
+      "S": 5,
+      "M": 35,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 1453,
+      "violation_probability": 0.01453
+    },
+    {
+      "S": 6,
+      "M": 0,
+      "L": 34,
+      "iterations": 100000,
+      "violation_count": 99527,
+      "violation_probability": 0.99527
+    },
+    {
+      "S": 6,
+      "M": 1,
+      "L": 33,
+      "iterations": 100000,
+      "violation_count": 99400,
+      "violation_probability": 0.994
+    },
+    {
+      "S": 6,
+      "M": 2,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99261,
+      "violation_probability": 0.99261
+    },
+    {
+      "S": 6,
+      "M": 3,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 99072,
+      "violation_probability": 0.99072
+    },
+    {
+      "S": 6,
+      "M": 4,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 98889,
+      "violation_probability": 0.98889
+    },
+    {
+      "S": 6,
+      "M": 5,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 98657,
+      "violation_probability": 0.98657
+    },
+    {
+      "S": 6,
+      "M": 6,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 98342,
+      "violation_probability": 0.98342
+    },
+    {
+      "S": 6,
+      "M": 7,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 97906,
+      "violation_probability": 0.97906
+    },
+    {
+      "S": 6,
+      "M": 8,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 97510,
+      "violation_probability": 0.9751
+    },
+    {
+      "S": 6,
+      "M": 9,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 96911,
+      "violation_probability": 0.96911
+    },
+    {
+      "S": 6,
+      "M": 10,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 96106,
+      "violation_probability": 0.96106
+    },
+    {
+      "S": 6,
+      "M": 11,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 95241,
+      "violation_probability": 0.95241
+    },
+    {
+      "S": 6,
+      "M": 12,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 94380,
+      "violation_probability": 0.9438
+    },
+    {
+      "S": 6,
+      "M": 13,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 93162,
+      "violation_probability": 0.93162
+    },
+    {
+      "S": 6,
+      "M": 14,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 91742,
+      "violation_probability": 0.91742
+    },
+    {
+      "S": 6,
+      "M": 15,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 90052,
+      "violation_probability": 0.90052
+    },
+    {
+      "S": 6,
+      "M": 16,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 87912,
+      "violation_probability": 0.87912
+    },
+    {
+      "S": 6,
+      "M": 17,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 85667,
+      "violation_probability": 0.85667
+    },
+    {
+      "S": 6,
+      "M": 18,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 82986,
+      "violation_probability": 0.82986
+    },
+    {
+      "S": 6,
+      "M": 19,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 79764,
+      "violation_probability": 0.79764
+    },
+    {
+      "S": 6,
+      "M": 20,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 76163,
+      "violation_probability": 0.76163
+    },
+    {
+      "S": 6,
+      "M": 21,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 71984,
+      "violation_probability": 0.71984
+    },
+    {
+      "S": 6,
+      "M": 22,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 67384,
+      "violation_probability": 0.67384
+    },
+    {
+      "S": 6,
+      "M": 23,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 61908,
+      "violation_probability": 0.61908
+    },
+    {
+      "S": 6,
+      "M": 24,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 56270,
+      "violation_probability": 0.5627
+    },
+    {
+      "S": 6,
+      "M": 25,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 50005,
+      "violation_probability": 0.50005
+    },
+    {
+      "S": 6,
+      "M": 26,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 43292,
+      "violation_probability": 0.43292
+    },
+    {
+      "S": 6,
+      "M": 27,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 36510,
+      "violation_probability": 0.3651
+    },
+    {
+      "S": 6,
+      "M": 28,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 29621,
+      "violation_probability": 0.29621
+    },
+    {
+      "S": 6,
+      "M": 29,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 22547,
+      "violation_probability": 0.22547
+    },
+    {
+      "S": 6,
+      "M": 30,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 16172,
+      "violation_probability": 0.16172
+    },
+    {
+      "S": 6,
+      "M": 31,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 10672,
+      "violation_probability": 0.10672
+    },
+    {
+      "S": 6,
+      "M": 32,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 6166,
+      "violation_probability": 0.06166
+    },
+    {
+      "S": 6,
+      "M": 33,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 2956,
+      "violation_probability": 0.02956
+    },
+    {
+      "S": 6,
+      "M": 34,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 1090,
+      "violation_probability": 0.0109
+    },
+    {
+      "S": 7,
+      "M": 0,
+      "L": 33,
+      "iterations": 100000,
+      "violation_count": 99307,
+      "violation_probability": 0.99307
+    },
+    {
+      "S": 7,
+      "M": 1,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99192,
+      "violation_probability": 0.99192
+    },
+    {
+      "S": 7,
+      "M": 2,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 99002,
+      "violation_probability": 0.99002
+    },
+    {
+      "S": 7,
+      "M": 3,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 98759,
+      "violation_probability": 0.98759
+    },
+    {
+      "S": 7,
+      "M": 4,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 98512,
+      "violation_probability": 0.98512
+    },
+    {
+      "S": 7,
+      "M": 5,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 98166,
+      "violation_probability": 0.98166
+    },
+    {
+      "S": 7,
+      "M": 6,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 97711,
+      "violation_probability": 0.97711
+    },
+    {
+      "S": 7,
+      "M": 7,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 97194,
+      "violation_probability": 0.97194
+    },
+    {
+      "S": 7,
+      "M": 8,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 96581,
+      "violation_probability": 0.96581
+    },
+    {
+      "S": 7,
+      "M": 9,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 95877,
+      "violation_probability": 0.95877
+    },
+    {
+      "S": 7,
+      "M": 10,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 95026,
+      "violation_probability": 0.95026
+    },
+    {
+      "S": 7,
+      "M": 11,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 93974,
+      "violation_probability": 0.93974
+    },
+    {
+      "S": 7,
+      "M": 12,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 92622,
+      "violation_probability": 0.92622
+    },
+    {
+      "S": 7,
+      "M": 13,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 91230,
+      "violation_probability": 0.9123
+    },
+    {
+      "S": 7,
+      "M": 14,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 89372,
+      "violation_probability": 0.89372
+    },
+    {
+      "S": 7,
+      "M": 15,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 87274,
+      "violation_probability": 0.87274
+    },
+    {
+      "S": 7,
+      "M": 16,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 84746,
+      "violation_probability": 0.84746
+    },
+    {
+      "S": 7,
+      "M": 17,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 81596,
+      "violation_probability": 0.81596
+    },
+    {
+      "S": 7,
+      "M": 18,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 78745,
+      "violation_probability": 0.78745
+    },
+    {
+      "S": 7,
+      "M": 19,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 74823,
+      "violation_probability": 0.74823
+    },
+    {
+      "S": 7,
+      "M": 20,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 70449,
+      "violation_probability": 0.70449
+    },
+    {
+      "S": 7,
+      "M": 21,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 65164,
+      "violation_probability": 0.65164
+    },
+    {
+      "S": 7,
+      "M": 22,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 60283,
+      "violation_probability": 0.60283
+    },
+    {
+      "S": 7,
+      "M": 23,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 54261,
+      "violation_probability": 0.54261
+    },
+    {
+      "S": 7,
+      "M": 24,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 47670,
+      "violation_probability": 0.4767
+    },
+    {
+      "S": 7,
+      "M": 25,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 40864,
+      "violation_probability": 0.40864
+    },
+    {
+      "S": 7,
+      "M": 26,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 34459,
+      "violation_probability": 0.34459
+    },
+    {
+      "S": 7,
+      "M": 27,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 27158,
+      "violation_probability": 0.27158
+    },
+    {
+      "S": 7,
+      "M": 28,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 20710,
+      "violation_probability": 0.2071
+    },
+    {
+      "S": 7,
+      "M": 29,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 14396,
+      "violation_probability": 0.14396
+    },
+    {
+      "S": 7,
+      "M": 30,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 9267,
+      "violation_probability": 0.09267
+    },
+    {
+      "S": 7,
+      "M": 31,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 5214,
+      "violation_probability": 0.05214
+    },
+    {
+      "S": 7,
+      "M": 32,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 2200,
+      "violation_probability": 0.022
+    },
+    {
+      "S": 7,
+      "M": 33,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 839,
+      "violation_probability": 0.00839
+    },
+    {
+      "S": 8,
+      "M": 0,
+      "L": 32,
+      "iterations": 100000,
+      "violation_count": 99051,
+      "violation_probability": 0.99051
+    },
+    {
+      "S": 8,
+      "M": 1,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 98899,
+      "violation_probability": 0.98899
+    },
+    {
+      "S": 8,
+      "M": 2,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 98607,
+      "violation_probability": 0.98607
+    },
+    {
+      "S": 8,
+      "M": 3,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 98385,
+      "violation_probability": 0.98385
+    },
+    {
+      "S": 8,
+      "M": 4,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 97992,
+      "violation_probability": 0.97992
+    },
+    {
+      "S": 8,
+      "M": 5,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 97572,
+      "violation_probability": 0.97572
+    },
+    {
+      "S": 8,
+      "M": 6,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 96970,
+      "violation_probability": 0.9697
+    },
+    {
+      "S": 8,
+      "M": 7,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 96384,
+      "violation_probability": 0.96384
+    },
+    {
+      "S": 8,
+      "M": 8,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 95520,
+      "violation_probability": 0.9552
+    },
+    {
+      "S": 8,
+      "M": 9,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 94575,
+      "violation_probability": 0.94575
+    },
+    {
+      "S": 8,
+      "M": 10,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 93439,
+      "violation_probability": 0.93439
+    },
+    {
+      "S": 8,
+      "M": 11,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 92068,
+      "violation_probability": 0.92068
+    },
+    {
+      "S": 8,
+      "M": 12,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 90564,
+      "violation_probability": 0.90564
+    },
+    {
+      "S": 8,
+      "M": 13,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 88759,
+      "violation_probability": 0.88759
+    },
+    {
+      "S": 8,
+      "M": 14,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 86301,
+      "violation_probability": 0.86301
+    },
+    {
+      "S": 8,
+      "M": 15,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 83780,
+      "violation_probability": 0.8378
+    },
+    {
+      "S": 8,
+      "M": 16,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 80514,
+      "violation_probability": 0.80514
+    },
+    {
+      "S": 8,
+      "M": 17,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 77007,
+      "violation_probability": 0.77007
+    },
+    {
+      "S": 8,
+      "M": 18,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 73411,
+      "violation_probability": 0.73411
+    },
+    {
+      "S": 8,
+      "M": 19,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 68581,
+      "violation_probability": 0.68581
+    },
+    {
+      "S": 8,
+      "M": 20,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 63622,
+      "violation_probability": 0.63622
+    },
+    {
+      "S": 8,
+      "M": 21,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 57874,
+      "violation_probability": 0.57874
+    },
+    {
+      "S": 8,
+      "M": 22,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 52253,
+      "violation_probability": 0.52253
+    },
+    {
+      "S": 8,
+      "M": 23,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 45702,
+      "violation_probability": 0.45702
+    },
+    {
+      "S": 8,
+      "M": 24,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 39137,
+      "violation_probability": 0.39137
+    },
+    {
+      "S": 8,
+      "M": 25,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 32056,
+      "violation_probability": 0.32056
+    },
+    {
+      "S": 8,
+      "M": 26,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 25071,
+      "violation_probability": 0.25071
+    },
+    {
+      "S": 8,
+      "M": 27,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 18673,
+      "violation_probability": 0.18673
+    },
+    {
+      "S": 8,
+      "M": 28,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 12944,
+      "violation_probability": 0.12944
+    },
+    {
+      "S": 8,
+      "M": 29,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 7950,
+      "violation_probability": 0.0795
+    },
+    {
+      "S": 8,
+      "M": 30,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 4123,
+      "violation_probability": 0.04123
+    },
+    {
+      "S": 8,
+      "M": 31,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 1806,
+      "violation_probability": 0.01806
+    },
+    {
+      "S": 8,
+      "M": 32,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 604,
+      "violation_probability": 0.00604
+    },
+    {
+      "S": 9,
+      "M": 0,
+      "L": 31,
+      "iterations": 100000,
+      "violation_count": 98726,
+      "violation_probability": 0.98726
+    },
+    {
+      "S": 9,
+      "M": 1,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 98614,
+      "violation_probability": 0.98614
+    },
+    {
+      "S": 9,
+      "M": 2,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 98209,
+      "violation_probability": 0.98209
+    },
+    {
+      "S": 9,
+      "M": 3,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 97828,
+      "violation_probability": 0.97828
+    },
+    {
+      "S": 9,
+      "M": 4,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 97314,
+      "violation_probability": 0.97314
+    },
+    {
+      "S": 9,
+      "M": 5,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 96755,
+      "violation_probability": 0.96755
+    },
+    {
+      "S": 9,
+      "M": 6,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 96046,
+      "violation_probability": 0.96046
+    },
+    {
+      "S": 9,
+      "M": 7,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 95107,
+      "violation_probability": 0.95107
+    },
+    {
+      "S": 9,
+      "M": 8,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 94140,
+      "violation_probability": 0.9414
+    },
+    {
+      "S": 9,
+      "M": 9,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 92833,
+      "violation_probability": 0.92833
+    },
+    {
+      "S": 9,
+      "M": 10,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 91580,
+      "violation_probability": 0.9158
+    },
+    {
+      "S": 9,
+      "M": 11,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 89755,
+      "violation_probability": 0.89755
+    },
+    {
+      "S": 9,
+      "M": 12,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 87773,
+      "violation_probability": 0.87773
+    },
+    {
+      "S": 9,
+      "M": 13,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 85471,
+      "violation_probability": 0.85471
+    },
+    {
+      "S": 9,
+      "M": 14,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 83080,
+      "violation_probability": 0.8308
+    },
+    {
+      "S": 9,
+      "M": 15,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 79421,
+      "violation_probability": 0.79421
+    },
+    {
+      "S": 9,
+      "M": 16,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 75937,
+      "violation_probability": 0.75937
+    },
+    {
+      "S": 9,
+      "M": 17,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 71865,
+      "violation_probability": 0.71865
+    },
+    {
+      "S": 9,
+      "M": 18,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 66959,
+      "violation_probability": 0.66959
+    },
+    {
+      "S": 9,
+      "M": 19,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 61858,
+      "violation_probability": 0.61858
+    },
+    {
+      "S": 9,
+      "M": 20,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 56203,
+      "violation_probability": 0.56203
+    },
+    {
+      "S": 9,
+      "M": 21,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 50047,
+      "violation_probability": 0.50047
+    },
+    {
+      "S": 9,
+      "M": 22,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 43296,
+      "violation_probability": 0.43296
+    },
+    {
+      "S": 9,
+      "M": 23,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 36737,
+      "violation_probability": 0.36737
+    },
+    {
+      "S": 9,
+      "M": 24,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 29985,
+      "violation_probability": 0.29985
+    },
+    {
+      "S": 9,
+      "M": 25,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 23025,
+      "violation_probability": 0.23025
+    },
+    {
+      "S": 9,
+      "M": 26,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 16760,
+      "violation_probability": 0.1676
+    },
+    {
+      "S": 9,
+      "M": 27,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 11368,
+      "violation_probability": 0.11368
+    },
+    {
+      "S": 9,
+      "M": 28,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 6739,
+      "violation_probability": 0.06739
+    },
+    {
+      "S": 9,
+      "M": 29,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 3448,
+      "violation_probability": 0.03448
+    },
+    {
+      "S": 9,
+      "M": 30,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 1370,
+      "violation_probability": 0.0137
+    },
+    {
+      "S": 9,
+      "M": 31,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 415,
+      "violation_probability": 0.00415
+    },
+    {
+      "S": 10,
+      "M": 0,
+      "L": 30,
+      "iterations": 100000,
+      "violation_count": 98339,
+      "violation_probability": 0.98339
+    },
+    {
+      "S": 10,
+      "M": 1,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 98039,
+      "violation_probability": 0.98039
+    },
+    {
+      "S": 10,
+      "M": 2,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 97591,
+      "violation_probability": 0.97591
+    },
+    {
+      "S": 10,
+      "M": 3,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 97125,
+      "violation_probability": 0.97125
+    },
+    {
+      "S": 10,
+      "M": 4,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 96481,
+      "violation_probability": 0.96481
+    },
+    {
+      "S": 10,
+      "M": 5,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 95775,
+      "violation_probability": 0.95775
+    },
+    {
+      "S": 10,
+      "M": 6,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 94762,
+      "violation_probability": 0.94762
+    },
+    {
+      "S": 10,
+      "M": 7,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 93816,
+      "violation_probability": 0.93816
+    },
+    {
+      "S": 10,
+      "M": 8,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 92537,
+      "violation_probability": 0.92537
+    },
+    {
+      "S": 10,
+      "M": 9,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 90895,
+      "violation_probability": 0.90895
+    },
+    {
+      "S": 10,
+      "M": 10,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 89005,
+      "violation_probability": 0.89005
+    },
+    {
+      "S": 10,
+      "M": 11,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 86795,
+      "violation_probability": 0.86795
+    },
+    {
+      "S": 10,
+      "M": 12,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 84585,
+      "violation_probability": 0.84585
+    },
+    {
+      "S": 10,
+      "M": 13,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 81267,
+      "violation_probability": 0.81267
+    },
+    {
+      "S": 10,
+      "M": 14,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 78269,
+      "violation_probability": 0.78269
+    },
+    {
+      "S": 10,
+      "M": 15,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 74560,
+      "violation_probability": 0.7456
+    },
+    {
+      "S": 10,
+      "M": 16,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 70102,
+      "violation_probability": 0.70102
+    },
+    {
+      "S": 10,
+      "M": 17,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 65184,
+      "violation_probability": 0.65184
+    },
+    {
+      "S": 10,
+      "M": 18,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 59826,
+      "violation_probability": 0.59826
+    },
+    {
+      "S": 10,
+      "M": 19,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 54298,
+      "violation_probability": 0.54298
+    },
+    {
+      "S": 10,
+      "M": 20,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 47692,
+      "violation_probability": 0.47692
+    },
+    {
+      "S": 10,
+      "M": 21,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 41190,
+      "violation_probability": 0.4119
+    },
+    {
+      "S": 10,
+      "M": 22,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 34542,
+      "violation_probability": 0.34542
+    },
+    {
+      "S": 10,
+      "M": 23,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 27447,
+      "violation_probability": 0.27447
+    },
+    {
+      "S": 10,
+      "M": 24,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 20846,
+      "violation_probability": 0.20846
+    },
+    {
+      "S": 10,
+      "M": 25,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 15212,
+      "violation_probability": 0.15212
+    },
+    {
+      "S": 10,
+      "M": 26,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 9997,
+      "violation_probability": 0.09997
+    },
+    {
+      "S": 10,
+      "M": 27,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 5675,
+      "violation_probability": 0.05675
+    },
+    {
+      "S": 10,
+      "M": 28,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 2783,
+      "violation_probability": 0.02783
+    },
+    {
+      "S": 10,
+      "M": 29,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 1100,
+      "violation_probability": 0.011
+    },
+    {
+      "S": 10,
+      "M": 30,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 325,
+      "violation_probability": 0.00325
+    },
+    {
+      "S": 11,
+      "M": 0,
+      "L": 29,
+      "iterations": 100000,
+      "violation_count": 97873,
+      "violation_probability": 0.97873
+    },
+    {
+      "S": 11,
+      "M": 1,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 97383,
+      "violation_probability": 0.97383
+    },
+    {
+      "S": 11,
+      "M": 2,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 96880,
+      "violation_probability": 0.9688
+    },
+    {
+      "S": 11,
+      "M": 3,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 96148,
+      "violation_probability": 0.96148
+    },
+    {
+      "S": 11,
+      "M": 4,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 95307,
+      "violation_probability": 0.95307
+    },
+    {
+      "S": 11,
+      "M": 5,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 94394,
+      "violation_probability": 0.94394
+    },
+    {
+      "S": 11,
+      "M": 6,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 93272,
+      "violation_probability": 0.93272
+    },
+    {
+      "S": 11,
+      "M": 7,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 91874,
+      "violation_probability": 0.91874
+    },
+    {
+      "S": 11,
+      "M": 8,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 90309,
+      "violation_probability": 0.90309
+    },
+    {
+      "S": 11,
+      "M": 9,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 88287,
+      "violation_probability": 0.88287
+    },
+    {
+      "S": 11,
+      "M": 10,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 85984,
+      "violation_probability": 0.85984
+    },
+    {
+      "S": 11,
+      "M": 11,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 83526,
+      "violation_probability": 0.83526
+    },
+    {
+      "S": 11,
+      "M": 12,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 80303,
+      "violation_probability": 0.80303
+    },
+    {
+      "S": 11,
+      "M": 13,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 76898,
+      "violation_probability": 0.76898
+    },
+    {
+      "S": 11,
+      "M": 14,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 73093,
+      "violation_probability": 0.73093
+    },
+    {
+      "S": 11,
+      "M": 15,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 68584,
+      "violation_probability": 0.68584
+    },
+    {
+      "S": 11,
+      "M": 16,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 63565,
+      "violation_probability": 0.63565
+    },
+    {
+      "S": 11,
+      "M": 17,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 58086,
+      "violation_probability": 0.58086
+    },
+    {
+      "S": 11,
+      "M": 18,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 51983,
+      "violation_probability": 0.51983
+    },
+    {
+      "S": 11,
+      "M": 19,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 45551,
+      "violation_probability": 0.45551
+    },
+    {
+      "S": 11,
+      "M": 20,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 39250,
+      "violation_probability": 0.3925
+    },
+    {
+      "S": 11,
+      "M": 21,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 32147,
+      "violation_probability": 0.32147
+    },
+    {
+      "S": 11,
+      "M": 22,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 25817,
+      "violation_probability": 0.25817
+    },
+    {
+      "S": 11,
+      "M": 23,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 19198,
+      "violation_probability": 0.19198
+    },
+    {
+      "S": 11,
+      "M": 24,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 13358,
+      "violation_probability": 0.13358
+    },
+    {
+      "S": 11,
+      "M": 25,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 8532,
+      "violation_probability": 0.08532
+    },
+    {
+      "S": 11,
+      "M": 26,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 4659,
+      "violation_probability": 0.04659
+    },
+    {
+      "S": 11,
+      "M": 27,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 2181,
+      "violation_probability": 0.02181
+    },
+    {
+      "S": 11,
+      "M": 28,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 773,
+      "violation_probability": 0.00773
+    },
+    {
+      "S": 11,
+      "M": 29,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 212,
+      "violation_probability": 0.00212
+    },
+    {
+      "S": 12,
+      "M": 0,
+      "L": 28,
+      "iterations": 100000,
+      "violation_count": 97150,
+      "violation_probability": 0.9715
+    },
+    {
+      "S": 12,
+      "M": 1,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 96705,
+      "violation_probability": 0.96705
+    },
+    {
+      "S": 12,
+      "M": 2,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 95936,
+      "violation_probability": 0.95936
+    },
+    {
+      "S": 12,
+      "M": 3,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 95032,
+      "violation_probability": 0.95032
+    },
+    {
+      "S": 12,
+      "M": 4,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 93987,
+      "violation_probability": 0.93987
+    },
+    {
+      "S": 12,
+      "M": 5,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 92845,
+      "violation_probability": 0.92845
+    },
+    {
+      "S": 12,
+      "M": 6,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 91274,
+      "violation_probability": 0.91274
+    },
+    {
+      "S": 12,
+      "M": 7,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 89631,
+      "violation_probability": 0.89631
+    },
+    {
+      "S": 12,
+      "M": 8,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 87520,
+      "violation_probability": 0.8752
+    },
+    {
+      "S": 12,
+      "M": 9,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 85115,
+      "violation_probability": 0.85115
+    },
+    {
+      "S": 12,
+      "M": 10,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 82284,
+      "violation_probability": 0.82284
+    },
+    {
+      "S": 12,
+      "M": 11,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 79193,
+      "violation_probability": 0.79193
+    },
+    {
+      "S": 12,
+      "M": 12,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 75694,
+      "violation_probability": 0.75694
+    },
+    {
+      "S": 12,
+      "M": 13,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 71437,
+      "violation_probability": 0.71437
+    },
+    {
+      "S": 12,
+      "M": 14,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 66617,
+      "violation_probability": 0.66617
+    },
+    {
+      "S": 12,
+      "M": 15,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 61836,
+      "violation_probability": 0.61836
+    },
+    {
+      "S": 12,
+      "M": 16,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 56302,
+      "violation_probability": 0.56302
+    },
+    {
+      "S": 12,
+      "M": 17,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 50152,
+      "violation_probability": 0.50152
+    },
+    {
+      "S": 12,
+      "M": 18,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 43429,
+      "violation_probability": 0.43429
+    },
+    {
+      "S": 12,
+      "M": 19,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 36928,
+      "violation_probability": 0.36928
+    },
+    {
+      "S": 12,
+      "M": 20,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 30144,
+      "violation_probability": 0.30144
+    },
+    {
+      "S": 12,
+      "M": 21,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 23521,
+      "violation_probability": 0.23521
+    },
+    {
+      "S": 12,
+      "M": 22,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 17353,
+      "violation_probability": 0.17353
+    },
+    {
+      "S": 12,
+      "M": 23,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 11975,
+      "violation_probability": 0.11975
+    },
+    {
+      "S": 12,
+      "M": 24,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 7361,
+      "violation_probability": 0.07361
+    },
+    {
+      "S": 12,
+      "M": 25,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 4036,
+      "violation_probability": 0.04036
+    },
+    {
+      "S": 12,
+      "M": 26,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 1681,
+      "violation_probability": 0.01681
+    },
+    {
+      "S": 12,
+      "M": 27,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 545,
+      "violation_probability": 0.00545
+    },
+    {
+      "S": 12,
+      "M": 28,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 130,
+      "violation_probability": 0.0013
+    },
+    {
+      "S": 13,
+      "M": 0,
+      "L": 27,
+      "iterations": 100000,
+      "violation_count": 96341,
+      "violation_probability": 0.96341
+    },
+    {
+      "S": 13,
+      "M": 1,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 95648,
+      "violation_probability": 0.95648
+    },
+    {
+      "S": 13,
+      "M": 2,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 94616,
+      "violation_probability": 0.94616
+    },
+    {
+      "S": 13,
+      "M": 3,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 93590,
+      "violation_probability": 0.9359
+    },
+    {
+      "S": 13,
+      "M": 4,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 92268,
+      "violation_probability": 0.92268
+    },
+    {
+      "S": 13,
+      "M": 5,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 90581,
+      "violation_probability": 0.90581
+    },
+    {
+      "S": 13,
+      "M": 6,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 88828,
+      "violation_probability": 0.88828
+    },
+    {
+      "S": 13,
+      "M": 7,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 86571,
+      "violation_probability": 0.86571
+    },
+    {
+      "S": 13,
+      "M": 8,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 84515,
+      "violation_probability": 0.84515
+    },
+    {
+      "S": 13,
+      "M": 9,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 81197,
+      "violation_probability": 0.81197
+    },
+    {
+      "S": 13,
+      "M": 10,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 77958,
+      "violation_probability": 0.77958
+    },
+    {
+      "S": 13,
+      "M": 11,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 74231,
+      "violation_probability": 0.74231
+    },
+    {
+      "S": 13,
+      "M": 12,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 69734,
+      "violation_probability": 0.69734
+    },
+    {
+      "S": 13,
+      "M": 13,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 65139,
+      "violation_probability": 0.65139
+    },
+    {
+      "S": 13,
+      "M": 14,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 59876,
+      "violation_probability": 0.59876
+    },
+    {
+      "S": 13,
+      "M": 15,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 54155,
+      "violation_probability": 0.54155
+    },
+    {
+      "S": 13,
+      "M": 16,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 48055,
+      "violation_probability": 0.48055
+    },
+    {
+      "S": 13,
+      "M": 17,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 41639,
+      "violation_probability": 0.41639
+    },
+    {
+      "S": 13,
+      "M": 18,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 34726,
+      "violation_probability": 0.34726
+    },
+    {
+      "S": 13,
+      "M": 19,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 27968,
+      "violation_probability": 0.27968
+    },
+    {
+      "S": 13,
+      "M": 20,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 21621,
+      "violation_probability": 0.21621
+    },
+    {
+      "S": 13,
+      "M": 21,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 15617,
+      "violation_probability": 0.15617
+    },
+    {
+      "S": 13,
+      "M": 22,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 10549,
+      "violation_probability": 0.10549
+    },
+    {
+      "S": 13,
+      "M": 23,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 6431,
+      "violation_probability": 0.06431
+    },
+    {
+      "S": 13,
+      "M": 24,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 3296,
+      "violation_probability": 0.03296
+    },
+    {
+      "S": 13,
+      "M": 25,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 1350,
+      "violation_probability": 0.0135
+    },
+    {
+      "S": 13,
+      "M": 26,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 401,
+      "violation_probability": 0.00401
+    },
+    {
+      "S": 13,
+      "M": 27,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 76,
+      "violation_probability": 0.00076
+    },
+    {
+      "S": 14,
+      "M": 0,
+      "L": 26,
+      "iterations": 100000,
+      "violation_count": 95292,
+      "violation_probability": 0.95292
+    },
+    {
+      "S": 14,
+      "M": 1,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 94296,
+      "violation_probability": 0.94296
+    },
+    {
+      "S": 14,
+      "M": 2,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 93127,
+      "violation_probability": 0.93127
+    },
+    {
+      "S": 14,
+      "M": 3,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 91659,
+      "violation_probability": 0.91659
+    },
+    {
+      "S": 14,
+      "M": 4,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 89838,
+      "violation_probability": 0.89838
+    },
+    {
+      "S": 14,
+      "M": 5,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 88200,
+      "violation_probability": 0.882
+    },
+    {
+      "S": 14,
+      "M": 6,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 85759,
+      "violation_probability": 0.85759
+    },
+    {
+      "S": 14,
+      "M": 7,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 83325,
+      "violation_probability": 0.83325
+    },
+    {
+      "S": 14,
+      "M": 8,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 80197,
+      "violation_probability": 0.80197
+    },
+    {
+      "S": 14,
+      "M": 9,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 76723,
+      "violation_probability": 0.76723
+    },
+    {
+      "S": 14,
+      "M": 10,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 72734,
+      "violation_probability": 0.72734
+    },
+    {
+      "S": 14,
+      "M": 11,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 68265,
+      "violation_probability": 0.68265
+    },
+    {
+      "S": 14,
+      "M": 12,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 63459,
+      "violation_probability": 0.63459
+    },
+    {
+      "S": 14,
+      "M": 13,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 58153,
+      "violation_probability": 0.58153
+    },
+    {
+      "S": 14,
+      "M": 14,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 52127,
+      "violation_probability": 0.52127
+    },
+    {
+      "S": 14,
+      "M": 15,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 45492,
+      "violation_probability": 0.45492
+    },
+    {
+      "S": 14,
+      "M": 16,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 39126,
+      "violation_probability": 0.39126
+    },
+    {
+      "S": 14,
+      "M": 17,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 32504,
+      "violation_probability": 0.32504
+    },
+    {
+      "S": 14,
+      "M": 18,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 25923,
+      "violation_probability": 0.25923
+    },
+    {
+      "S": 14,
+      "M": 19,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 19561,
+      "violation_probability": 0.19561
+    },
+    {
+      "S": 14,
+      "M": 20,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 14205,
+      "violation_probability": 0.14205
+    },
+    {
+      "S": 14,
+      "M": 21,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 8991,
+      "violation_probability": 0.08991
+    },
+    {
+      "S": 14,
+      "M": 22,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 5379,
+      "violation_probability": 0.05379
+    },
+    {
+      "S": 14,
+      "M": 23,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 2612,
+      "violation_probability": 0.02612
+    },
+    {
+      "S": 14,
+      "M": 24,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 1049,
+      "violation_probability": 0.01049
+    },
+    {
+      "S": 14,
+      "M": 25,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 285,
+      "violation_probability": 0.00285
+    },
+    {
+      "S": 14,
+      "M": 26,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 51,
+      "violation_probability": 0.00051
+    },
+    {
+      "S": 15,
+      "M": 0,
+      "L": 25,
+      "iterations": 100000,
+      "violation_count": 93987,
+      "violation_probability": 0.93987
+    },
+    {
+      "S": 15,
+      "M": 1,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 92446,
+      "violation_probability": 0.92446
+    },
+    {
+      "S": 15,
+      "M": 2,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 90934,
+      "violation_probability": 0.90934
+    },
+    {
+      "S": 15,
+      "M": 3,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 89467,
+      "violation_probability": 0.89467
+    },
+    {
+      "S": 15,
+      "M": 4,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 87287,
+      "violation_probability": 0.87287
+    },
+    {
+      "S": 15,
+      "M": 5,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 84966,
+      "violation_probability": 0.84966
+    },
+    {
+      "S": 15,
+      "M": 6,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 82196,
+      "violation_probability": 0.82196
+    },
+    {
+      "S": 15,
+      "M": 7,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 78970,
+      "violation_probability": 0.7897
+    },
+    {
+      "S": 15,
+      "M": 8,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 75408,
+      "violation_probability": 0.75408
+    },
+    {
+      "S": 15,
+      "M": 9,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 71426,
+      "violation_probability": 0.71426
+    },
+    {
+      "S": 15,
+      "M": 10,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 66502,
+      "violation_probability": 0.66502
+    },
+    {
+      "S": 15,
+      "M": 11,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 61519,
+      "violation_probability": 0.61519
+    },
+    {
+      "S": 15,
+      "M": 12,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 56084,
+      "violation_probability": 0.56084
+    },
+    {
+      "S": 15,
+      "M": 13,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 49877,
+      "violation_probability": 0.49877
+    },
+    {
+      "S": 15,
+      "M": 14,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 43836,
+      "violation_probability": 0.43836
+    },
+    {
+      "S": 15,
+      "M": 15,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 37305,
+      "violation_probability": 0.37305
+    },
+    {
+      "S": 15,
+      "M": 16,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 30811,
+      "violation_probability": 0.30811
+    },
+    {
+      "S": 15,
+      "M": 17,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 24311,
+      "violation_probability": 0.24311
+    },
+    {
+      "S": 15,
+      "M": 18,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 17999,
+      "violation_probability": 0.17999
+    },
+    {
+      "S": 15,
+      "M": 19,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 12564,
+      "violation_probability": 0.12564
+    },
+    {
+      "S": 15,
+      "M": 20,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 7912,
+      "violation_probability": 0.07912
+    },
+    {
+      "S": 15,
+      "M": 21,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 4450,
+      "violation_probability": 0.0445
+    },
+    {
+      "S": 15,
+      "M": 22,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 2015,
+      "violation_probability": 0.02015
+    },
+    {
+      "S": 15,
+      "M": 23,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 716,
+      "violation_probability": 0.00716
+    },
+    {
+      "S": 15,
+      "M": 24,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 178,
+      "violation_probability": 0.00178
+    },
+    {
+      "S": 15,
+      "M": 25,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 22,
+      "violation_probability": 0.00022
+    },
+    {
+      "S": 16,
+      "M": 0,
+      "L": 24,
+      "iterations": 100000,
+      "violation_count": 92106,
+      "violation_probability": 0.92106
+    },
+    {
+      "S": 16,
+      "M": 1,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 90511,
+      "violation_probability": 0.90511
+    },
+    {
+      "S": 16,
+      "M": 2,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 88696,
+      "violation_probability": 0.88696
+    },
+    {
+      "S": 16,
+      "M": 3,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 86530,
+      "violation_probability": 0.8653
+    },
+    {
+      "S": 16,
+      "M": 4,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 84037,
+      "violation_probability": 0.84037
+    },
+    {
+      "S": 16,
+      "M": 5,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 81124,
+      "violation_probability": 0.81124
+    },
+    {
+      "S": 16,
+      "M": 6,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 77430,
+      "violation_probability": 0.7743
+    },
+    {
+      "S": 16,
+      "M": 7,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 73709,
+      "violation_probability": 0.73709
+    },
+    {
+      "S": 16,
+      "M": 8,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 69567,
+      "violation_probability": 0.69567
+    },
+    {
+      "S": 16,
+      "M": 9,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 65379,
+      "violation_probability": 0.65379
+    },
+    {
+      "S": 16,
+      "M": 10,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 59559,
+      "violation_probability": 0.59559
+    },
+    {
+      "S": 16,
+      "M": 11,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 53942,
+      "violation_probability": 0.53942
+    },
+    {
+      "S": 16,
+      "M": 12,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 47810,
+      "violation_probability": 0.4781
+    },
+    {
+      "S": 16,
+      "M": 13,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 41508,
+      "violation_probability": 0.41508
+    },
+    {
+      "S": 16,
+      "M": 14,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 34896,
+      "violation_probability": 0.34896
+    },
+    {
+      "S": 16,
+      "M": 15,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 28704,
+      "violation_probability": 0.28704
+    },
+    {
+      "S": 16,
+      "M": 16,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 22194,
+      "violation_probability": 0.22194
+    },
+    {
+      "S": 16,
+      "M": 17,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 16386,
+      "violation_probability": 0.16386
+    },
+    {
+      "S": 16,
+      "M": 18,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 11020,
+      "violation_probability": 0.1102
+    },
+    {
+      "S": 16,
+      "M": 19,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 6821,
+      "violation_probability": 0.06821
+    },
+    {
+      "S": 16,
+      "M": 20,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 3626,
+      "violation_probability": 0.03626
+    },
+    {
+      "S": 16,
+      "M": 21,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 1579,
+      "violation_probability": 0.01579
+    },
+    {
+      "S": 16,
+      "M": 22,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 515,
+      "violation_probability": 0.00515
+    },
+    {
+      "S": 16,
+      "M": 23,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 125,
+      "violation_probability": 0.00125
+    },
+    {
+      "S": 16,
+      "M": 24,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 18,
+      "violation_probability": 0.00018
+    },
+    {
+      "S": 17,
+      "M": 0,
+      "L": 23,
+      "iterations": 100000,
+      "violation_count": 89709,
+      "violation_probability": 0.89709
+    },
+    {
+      "S": 17,
+      "M": 1,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 87645,
+      "violation_probability": 0.87645
+    },
+    {
+      "S": 17,
+      "M": 2,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 85453,
+      "violation_probability": 0.85453
+    },
+    {
+      "S": 17,
+      "M": 3,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 82869,
+      "violation_probability": 0.82869
+    },
+    {
+      "S": 17,
+      "M": 4,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 79834,
+      "violation_probability": 0.79834
+    },
+    {
+      "S": 17,
+      "M": 5,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 76409,
+      "violation_probability": 0.76409
+    },
+    {
+      "S": 17,
+      "M": 6,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 72662,
+      "violation_probability": 0.72662
+    },
+    {
+      "S": 17,
+      "M": 7,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 67826,
+      "violation_probability": 0.67826
+    },
+    {
+      "S": 17,
+      "M": 8,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 63161,
+      "violation_probability": 0.63161
+    },
+    {
+      "S": 17,
+      "M": 9,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 57676,
+      "violation_probability": 0.57676
+    },
+    {
+      "S": 17,
+      "M": 10,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 52143,
+      "violation_probability": 0.52143
+    },
+    {
+      "S": 17,
+      "M": 11,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 45731,
+      "violation_probability": 0.45731
+    },
+    {
+      "S": 17,
+      "M": 12,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 39252,
+      "violation_probability": 0.39252
+    },
+    {
+      "S": 17,
+      "M": 13,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 32980,
+      "violation_probability": 0.3298
+    },
+    {
+      "S": 17,
+      "M": 14,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 26435,
+      "violation_probability": 0.26435
+    },
+    {
+      "S": 17,
+      "M": 15,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 20275,
+      "violation_probability": 0.20275
+    },
+    {
+      "S": 17,
+      "M": 16,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 14678,
+      "violation_probability": 0.14678
+    },
+    {
+      "S": 17,
+      "M": 17,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 9704,
+      "violation_probability": 0.09704
+    },
+    {
+      "S": 17,
+      "M": 18,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 5885,
+      "violation_probability": 0.05885
+    },
+    {
+      "S": 17,
+      "M": 19,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 3018,
+      "violation_probability": 0.03018
+    },
+    {
+      "S": 17,
+      "M": 20,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 1235,
+      "violation_probability": 0.01235
+    },
+    {
+      "S": 17,
+      "M": 21,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 352,
+      "violation_probability": 0.00352
+    },
+    {
+      "S": 17,
+      "M": 22,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 63,
+      "violation_probability": 0.00063
+    },
+    {
+      "S": 17,
+      "M": 23,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 3,
+      "violation_probability": 3e-05
+    },
+    {
+      "S": 18,
+      "M": 0,
+      "L": 22,
+      "iterations": 100000,
+      "violation_count": 86955,
+      "violation_probability": 0.86955
+    },
+    {
+      "S": 18,
+      "M": 1,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 84393,
+      "violation_probability": 0.84393
+    },
+    {
+      "S": 18,
+      "M": 2,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 81860,
+      "violation_probability": 0.8186
+    },
+    {
+      "S": 18,
+      "M": 3,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 78738,
+      "violation_probability": 0.78738
+    },
+    {
+      "S": 18,
+      "M": 4,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 75102,
+      "violation_probability": 0.75102
+    },
+    {
+      "S": 18,
+      "M": 5,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 70995,
+      "violation_probability": 0.70995
+    },
+    {
+      "S": 18,
+      "M": 6,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 66357,
+      "violation_probability": 0.66357
+    },
+    {
+      "S": 18,
+      "M": 7,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 61585,
+      "violation_probability": 0.61585
+    },
+    {
+      "S": 18,
+      "M": 8,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 55782,
+      "violation_probability": 0.55782
+    },
+    {
+      "S": 18,
+      "M": 9,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 50015,
+      "violation_probability": 0.50015
+    },
+    {
+      "S": 18,
+      "M": 10,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 43702,
+      "violation_probability": 0.43702
+    },
+    {
+      "S": 18,
+      "M": 11,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 37400,
+      "violation_probability": 0.374
+    },
+    {
+      "S": 18,
+      "M": 12,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 30916,
+      "violation_probability": 0.30916
+    },
+    {
+      "S": 18,
+      "M": 13,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 24552,
+      "violation_probability": 0.24552
+    },
+    {
+      "S": 18,
+      "M": 14,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 18445,
+      "violation_probability": 0.18445
+    },
+    {
+      "S": 18,
+      "M": 15,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 13120,
+      "violation_probability": 0.1312
+    },
+    {
+      "S": 18,
+      "M": 16,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 8534,
+      "violation_probability": 0.08534
+    },
+    {
+      "S": 18,
+      "M": 17,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 4939,
+      "violation_probability": 0.04939
+    },
+    {
+      "S": 18,
+      "M": 18,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 2350,
+      "violation_probability": 0.0235
+    },
+    {
+      "S": 18,
+      "M": 19,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 918,
+      "violation_probability": 0.00918
+    },
+    {
+      "S": 18,
+      "M": 20,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 210,
+      "violation_probability": 0.0021
+    },
+    {
+      "S": 18,
+      "M": 21,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 55,
+      "violation_probability": 0.00055
+    },
+    {
+      "S": 18,
+      "M": 22,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 2,
+      "violation_probability": 2e-05
+    },
+    {
+      "S": 19,
+      "M": 0,
+      "L": 21,
+      "iterations": 100000,
+      "violation_count": 83634,
+      "violation_probability": 0.83634
+    },
+    {
+      "S": 19,
+      "M": 1,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 80694,
+      "violation_probability": 0.80694
+    },
+    {
+      "S": 19,
+      "M": 2,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 77339,
+      "violation_probability": 0.77339
+    },
+    {
+      "S": 19,
+      "M": 3,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 73376,
+      "violation_probability": 0.73376
+    },
+    {
+      "S": 19,
+      "M": 4,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 69590,
+      "violation_probability": 0.6959
+    },
+    {
+      "S": 19,
+      "M": 5,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 64688,
+      "violation_probability": 0.64688
+    },
+    {
+      "S": 19,
+      "M": 6,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 59252,
+      "violation_probability": 0.59252
+    },
+    {
+      "S": 19,
+      "M": 7,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 54037,
+      "violation_probability": 0.54037
+    },
+    {
+      "S": 19,
+      "M": 8,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 47646,
+      "violation_probability": 0.47646
+    },
+    {
+      "S": 19,
+      "M": 9,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 41905,
+      "violation_probability": 0.41905
+    },
+    {
+      "S": 19,
+      "M": 10,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 35122,
+      "violation_probability": 0.35122
+    },
+    {
+      "S": 19,
+      "M": 11,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 28833,
+      "violation_probability": 0.28833
+    },
+    {
+      "S": 19,
+      "M": 12,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 22677,
+      "violation_probability": 0.22677
+    },
+    {
+      "S": 19,
+      "M": 13,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 16892,
+      "violation_probability": 0.16892
+    },
+    {
+      "S": 19,
+      "M": 14,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 11605,
+      "violation_probability": 0.11605
+    },
+    {
+      "S": 19,
+      "M": 15,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 7404,
+      "violation_probability": 0.07404
+    },
+    {
+      "S": 19,
+      "M": 16,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 4148,
+      "violation_probability": 0.04148
+    },
+    {
+      "S": 19,
+      "M": 17,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 1951,
+      "violation_probability": 0.01951
+    },
+    {
+      "S": 19,
+      "M": 18,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 671,
+      "violation_probability": 0.00671
+    },
+    {
+      "S": 19,
+      "M": 19,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 180,
+      "violation_probability": 0.0018
+    },
+    {
+      "S": 19,
+      "M": 20,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 23,
+      "violation_probability": 0.00023
+    },
+    {
+      "S": 19,
+      "M": 21,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 4,
+      "violation_probability": 4e-05
+    },
+    {
+      "S": 20,
+      "M": 0,
+      "L": 20,
+      "iterations": 100000,
+      "violation_count": 79353,
+      "violation_probability": 0.79353
+    },
+    {
+      "S": 20,
+      "M": 1,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 76168,
+      "violation_probability": 0.76168
+    },
+    {
+      "S": 20,
+      "M": 2,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 72022,
+      "violation_probability": 0.72022
+    },
+    {
+      "S": 20,
+      "M": 3,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 68142,
+      "violation_probability": 0.68142
+    },
+    {
+      "S": 20,
+      "M": 4,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 62741,
+      "violation_probability": 0.62741
+    },
+    {
+      "S": 20,
+      "M": 5,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 57744,
+      "violation_probability": 0.57744
+    },
+    {
+      "S": 20,
+      "M": 6,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 52034,
+      "violation_probability": 0.52034
+    },
+    {
+      "S": 20,
+      "M": 7,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 46054,
+      "violation_probability": 0.46054
+    },
+    {
+      "S": 20,
+      "M": 8,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 39854,
+      "violation_probability": 0.39854
+    },
+    {
+      "S": 20,
+      "M": 9,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 32897,
+      "violation_probability": 0.32897
+    },
+    {
+      "S": 20,
+      "M": 10,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 27006,
+      "violation_probability": 0.27006
+    },
+    {
+      "S": 20,
+      "M": 11,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 20935,
+      "violation_probability": 0.20935
+    },
+    {
+      "S": 20,
+      "M": 12,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 15399,
+      "violation_probability": 0.15399
+    },
+    {
+      "S": 20,
+      "M": 13,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 10468,
+      "violation_probability": 0.10468
+    },
+    {
+      "S": 20,
+      "M": 14,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 6305,
+      "violation_probability": 0.06305
+    },
+    {
+      "S": 20,
+      "M": 15,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 3366,
+      "violation_probability": 0.03366
+    },
+    {
+      "S": 20,
+      "M": 16,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 1531,
+      "violation_probability": 0.01531
+    },
+    {
+      "S": 20,
+      "M": 17,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 479,
+      "violation_probability": 0.00479
+    },
+    {
+      "S": 20,
+      "M": 18,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 116,
+      "violation_probability": 0.00116
+    },
+    {
+      "S": 20,
+      "M": 19,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 10,
+      "violation_probability": 0.0001
+    },
+    {
+      "S": 20,
+      "M": 20,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 2,
+      "violation_probability": 2e-05
+    },
+    {
+      "S": 21,
+      "M": 0,
+      "L": 19,
+      "iterations": 100000,
+      "violation_count": 74662,
+      "violation_probability": 0.74662
+    },
+    {
+      "S": 21,
+      "M": 1,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 70618,
+      "violation_probability": 0.70618
+    },
+    {
+      "S": 21,
+      "M": 2,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 66234,
+      "violation_probability": 0.66234
+    },
+    {
+      "S": 21,
+      "M": 3,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 60990,
+      "violation_probability": 0.6099
+    },
+    {
+      "S": 21,
+      "M": 4,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 55826,
+      "violation_probability": 0.55826
+    },
+    {
+      "S": 21,
+      "M": 5,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 49678,
+      "violation_probability": 0.49678
+    },
+    {
+      "S": 21,
+      "M": 6,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 44128,
+      "violation_probability": 0.44128
+    },
+    {
+      "S": 21,
+      "M": 7,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 37527,
+      "violation_probability": 0.37527
+    },
+    {
+      "S": 21,
+      "M": 8,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 31193,
+      "violation_probability": 0.31193
+    },
+    {
+      "S": 21,
+      "M": 9,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 24788,
+      "violation_probability": 0.24788
+    },
+    {
+      "S": 21,
+      "M": 10,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 19223,
+      "violation_probability": 0.19223
+    },
+    {
+      "S": 21,
+      "M": 11,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 13697,
+      "violation_probability": 0.13697
+    },
+    {
+      "S": 21,
+      "M": 12,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 9074,
+      "violation_probability": 0.09074
+    },
+    {
+      "S": 21,
+      "M": 13,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 5346,
+      "violation_probability": 0.05346
+    },
+    {
+      "S": 21,
+      "M": 14,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 2851,
+      "violation_probability": 0.02851
+    },
+    {
+      "S": 21,
+      "M": 15,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 1180,
+      "violation_probability": 0.0118
+    },
+    {
+      "S": 21,
+      "M": 16,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 346,
+      "violation_probability": 0.00346
+    },
+    {
+      "S": 21,
+      "M": 17,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 65,
+      "violation_probability": 0.00065
+    },
+    {
+      "S": 21,
+      "M": 18,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 3,
+      "violation_probability": 3e-05
+    },
+    {
+      "S": 21,
+      "M": 19,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 22,
+      "M": 0,
+      "L": 18,
+      "iterations": 100000,
+      "violation_count": 69071,
+      "violation_probability": 0.69071
+    },
+    {
+      "S": 22,
+      "M": 1,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 64594,
+      "violation_probability": 0.64594
+    },
+    {
+      "S": 22,
+      "M": 2,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 59434,
+      "violation_probability": 0.59434
+    },
+    {
+      "S": 22,
+      "M": 3,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 53938,
+      "violation_probability": 0.53938
+    },
+    {
+      "S": 22,
+      "M": 4,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 48137,
+      "violation_probability": 0.48137
+    },
+    {
+      "S": 22,
+      "M": 5,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 41642,
+      "violation_probability": 0.41642
+    },
+    {
+      "S": 22,
+      "M": 6,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 35414,
+      "violation_probability": 0.35414
+    },
+    {
+      "S": 22,
+      "M": 7,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 29193,
+      "violation_probability": 0.29193
+    },
+    {
+      "S": 22,
+      "M": 8,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 23173,
+      "violation_probability": 0.23173
+    },
+    {
+      "S": 22,
+      "M": 9,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 17345,
+      "violation_probability": 0.17345
+    },
+    {
+      "S": 22,
+      "M": 10,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 12181,
+      "violation_probability": 0.12181
+    },
+    {
+      "S": 22,
+      "M": 11,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 7834,
+      "violation_probability": 0.07834
+    },
+    {
+      "S": 22,
+      "M": 12,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 4631,
+      "violation_probability": 0.04631
+    },
+    {
+      "S": 22,
+      "M": 13,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 2299,
+      "violation_probability": 0.02299
+    },
+    {
+      "S": 22,
+      "M": 14,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 812,
+      "violation_probability": 0.00812
+    },
+    {
+      "S": 22,
+      "M": 15,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 252,
+      "violation_probability": 0.00252
+    },
+    {
+      "S": 22,
+      "M": 16,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 30,
+      "violation_probability": 0.0003
+    },
+    {
+      "S": 22,
+      "M": 17,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 5,
+      "violation_probability": 5e-05
+    },
+    {
+      "S": 22,
+      "M": 18,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 23,
+      "M": 0,
+      "L": 17,
+      "iterations": 100000,
+      "violation_count": 63019,
+      "violation_probability": 0.63019
+    },
+    {
+      "S": 23,
+      "M": 1,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 57652,
+      "violation_probability": 0.57652
+    },
+    {
+      "S": 23,
+      "M": 2,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 51721,
+      "violation_probability": 0.51721
+    },
+    {
+      "S": 23,
+      "M": 3,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 45882,
+      "violation_probability": 0.45882
+    },
+    {
+      "S": 23,
+      "M": 4,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 39721,
+      "violation_probability": 0.39721
+    },
+    {
+      "S": 23,
+      "M": 5,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 33475,
+      "violation_probability": 0.33475
+    },
+    {
+      "S": 23,
+      "M": 6,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 27157,
+      "violation_probability": 0.27157
+    },
+    {
+      "S": 23,
+      "M": 7,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 21293,
+      "violation_probability": 0.21293
+    },
+    {
+      "S": 23,
+      "M": 8,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 15739,
+      "violation_probability": 0.15739
+    },
+    {
+      "S": 23,
+      "M": 9,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 10964,
+      "violation_probability": 0.10964
+    },
+    {
+      "S": 23,
+      "M": 10,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 6884,
+      "violation_probability": 0.06884
+    },
+    {
+      "S": 23,
+      "M": 11,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 3822,
+      "violation_probability": 0.03822
+    },
+    {
+      "S": 23,
+      "M": 12,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 1841,
+      "violation_probability": 0.01841
+    },
+    {
+      "S": 23,
+      "M": 13,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 662,
+      "violation_probability": 0.00662
+    },
+    {
+      "S": 23,
+      "M": 14,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 151,
+      "violation_probability": 0.00151
+    },
+    {
+      "S": 23,
+      "M": 15,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 33,
+      "violation_probability": 0.00033
+    },
+    {
+      "S": 23,
+      "M": 16,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 23,
+      "M": 17,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 24,
+      "M": 0,
+      "L": 16,
+      "iterations": 100000,
+      "violation_count": 55779,
+      "violation_probability": 0.55779
+    },
+    {
+      "S": 24,
+      "M": 1,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 50226,
+      "violation_probability": 0.50226
+    },
+    {
+      "S": 24,
+      "M": 2,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 43999,
+      "violation_probability": 0.43999
+    },
+    {
+      "S": 24,
+      "M": 3,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 37844,
+      "violation_probability": 0.37844
+    },
+    {
+      "S": 24,
+      "M": 4,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 31467,
+      "violation_probability": 0.31467
+    },
+    {
+      "S": 24,
+      "M": 5,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 25304,
+      "violation_probability": 0.25304
+    },
+    {
+      "S": 24,
+      "M": 6,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 19487,
+      "violation_probability": 0.19487
+    },
+    {
+      "S": 24,
+      "M": 7,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 14258,
+      "violation_probability": 0.14258
+    },
+    {
+      "S": 24,
+      "M": 8,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 9434,
+      "violation_probability": 0.09434
+    },
+    {
+      "S": 24,
+      "M": 9,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 5875,
+      "violation_probability": 0.05875
+    },
+    {
+      "S": 24,
+      "M": 10,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 3159,
+      "violation_probability": 0.03159
+    },
+    {
+      "S": 24,
+      "M": 11,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 1392,
+      "violation_probability": 0.01392
+    },
+    {
+      "S": 24,
+      "M": 12,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 449,
+      "violation_probability": 0.00449
+    },
+    {
+      "S": 24,
+      "M": 13,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 104,
+      "violation_probability": 0.00104
+    },
+    {
+      "S": 24,
+      "M": 14,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 9,
+      "violation_probability": 9e-05
+    },
+    {
+      "S": 24,
+      "M": 15,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 1,
+      "violation_probability": 1e-05
+    },
+    {
+      "S": 24,
+      "M": 16,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 25,
+      "M": 0,
+      "L": 15,
+      "iterations": 100000,
+      "violation_count": 47882,
+      "violation_probability": 0.47882
+    },
+    {
+      "S": 25,
+      "M": 1,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 41885,
+      "violation_probability": 0.41885
+    },
+    {
+      "S": 25,
+      "M": 2,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 35624,
+      "violation_probability": 0.35624
+    },
+    {
+      "S": 25,
+      "M": 3,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 29422,
+      "violation_probability": 0.29422
+    },
+    {
+      "S": 25,
+      "M": 4,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 23513,
+      "violation_probability": 0.23513
+    },
+    {
+      "S": 25,
+      "M": 5,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 17855,
+      "violation_probability": 0.17855
+    },
+    {
+      "S": 25,
+      "M": 6,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 12751,
+      "violation_probability": 0.12751
+    },
+    {
+      "S": 25,
+      "M": 7,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 8422,
+      "violation_probability": 0.08422
+    },
+    {
+      "S": 25,
+      "M": 8,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 5132,
+      "violation_probability": 0.05132
+    },
+    {
+      "S": 25,
+      "M": 9,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 2602,
+      "violation_probability": 0.02602
+    },
+    {
+      "S": 25,
+      "M": 10,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 1025,
+      "violation_probability": 0.01025
+    },
+    {
+      "S": 25,
+      "M": 11,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 318,
+      "violation_probability": 0.00318
+    },
+    {
+      "S": 25,
+      "M": 12,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 62,
+      "violation_probability": 0.00062
+    },
+    {
+      "S": 25,
+      "M": 13,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 5,
+      "violation_probability": 5e-05
+    },
+    {
+      "S": 25,
+      "M": 14,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 25,
+      "M": 15,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 26,
+      "M": 0,
+      "L": 14,
+      "iterations": 100000,
+      "violation_count": 39993,
+      "violation_probability": 0.39993
+    },
+    {
+      "S": 26,
+      "M": 1,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 33594,
+      "violation_probability": 0.33594
+    },
+    {
+      "S": 26,
+      "M": 2,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 27622,
+      "violation_probability": 0.27622
+    },
+    {
+      "S": 26,
+      "M": 3,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 21694,
+      "violation_probability": 0.21694
+    },
+    {
+      "S": 26,
+      "M": 4,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 16100,
+      "violation_probability": 0.161
+    },
+    {
+      "S": 26,
+      "M": 5,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 11484,
+      "violation_probability": 0.11484
+    },
+    {
+      "S": 26,
+      "M": 6,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 7424,
+      "violation_probability": 0.07424
+    },
+    {
+      "S": 26,
+      "M": 7,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 4318,
+      "violation_probability": 0.04318
+    },
+    {
+      "S": 26,
+      "M": 8,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 2062,
+      "violation_probability": 0.02062
+    },
+    {
+      "S": 26,
+      "M": 9,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 834,
+      "violation_probability": 0.00834
+    },
+    {
+      "S": 26,
+      "M": 10,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 247,
+      "violation_probability": 0.00247
+    },
+    {
+      "S": 26,
+      "M": 11,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 30,
+      "violation_probability": 0.0003
+    },
+    {
+      "S": 26,
+      "M": 12,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 3,
+      "violation_probability": 3e-05
+    },
+    {
+      "S": 26,
+      "M": 13,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 26,
+      "M": 14,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 27,
+      "M": 0,
+      "L": 13,
+      "iterations": 100000,
+      "violation_count": 31932,
+      "violation_probability": 0.31932
+    },
+    {
+      "S": 27,
+      "M": 1,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 25827,
+      "violation_probability": 0.25827
+    },
+    {
+      "S": 27,
+      "M": 2,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 20115,
+      "violation_probability": 0.20115
+    },
+    {
+      "S": 27,
+      "M": 3,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 14934,
+      "violation_probability": 0.14934
+    },
+    {
+      "S": 27,
+      "M": 4,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 10084,
+      "violation_probability": 0.10084
+    },
+    {
+      "S": 27,
+      "M": 5,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 6572,
+      "violation_probability": 0.06572
+    },
+    {
+      "S": 27,
+      "M": 6,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 3574,
+      "violation_probability": 0.03574
+    },
+    {
+      "S": 27,
+      "M": 7,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 1716,
+      "violation_probability": 0.01716
+    },
+    {
+      "S": 27,
+      "M": 8,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 592,
+      "violation_probability": 0.00592
+    },
+    {
+      "S": 27,
+      "M": 9,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 135,
+      "violation_probability": 0.00135
+    },
+    {
+      "S": 27,
+      "M": 10,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 18,
+      "violation_probability": 0.00018
+    },
+    {
+      "S": 27,
+      "M": 11,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 1,
+      "violation_probability": 1e-05
+    },
+    {
+      "S": 27,
+      "M": 12,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 27,
+      "M": 13,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 28,
+      "M": 0,
+      "L": 12,
+      "iterations": 100000,
+      "violation_count": 23933,
+      "violation_probability": 0.23933
+    },
+    {
+      "S": 28,
+      "M": 1,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 18560,
+      "violation_probability": 0.1856
+    },
+    {
+      "S": 28,
+      "M": 2,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 13433,
+      "violation_probability": 0.13433
+    },
+    {
+      "S": 28,
+      "M": 3,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 8905,
+      "violation_probability": 0.08905
+    },
+    {
+      "S": 28,
+      "M": 4,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 5444,
+      "violation_probability": 0.05444
+    },
+    {
+      "S": 28,
+      "M": 5,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 3016,
+      "violation_probability": 0.03016
+    },
+    {
+      "S": 28,
+      "M": 6,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 1316,
+      "violation_probability": 0.01316
+    },
+    {
+      "S": 28,
+      "M": 7,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 457,
+      "violation_probability": 0.00457
+    },
+    {
+      "S": 28,
+      "M": 8,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 87,
+      "violation_probability": 0.00087
+    },
+    {
+      "S": 28,
+      "M": 9,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 4,
+      "violation_probability": 4e-05
+    },
+    {
+      "S": 28,
+      "M": 10,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 28,
+      "M": 11,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 28,
+      "M": 12,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 29,
+      "M": 0,
+      "L": 11,
+      "iterations": 100000,
+      "violation_count": 16694,
+      "violation_probability": 0.16694
+    },
+    {
+      "S": 29,
+      "M": 1,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 12074,
+      "violation_probability": 0.12074
+    },
+    {
+      "S": 29,
+      "M": 2,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 7784,
+      "violation_probability": 0.07784
+    },
+    {
+      "S": 29,
+      "M": 3,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 4813,
+      "violation_probability": 0.04813
+    },
+    {
+      "S": 29,
+      "M": 4,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 2401,
+      "violation_probability": 0.02401
+    },
+    {
+      "S": 29,
+      "M": 5,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 1015,
+      "violation_probability": 0.01015
+    },
+    {
+      "S": 29,
+      "M": 6,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 290,
+      "violation_probability": 0.0029
+    },
+    {
+      "S": 29,
+      "M": 7,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 53,
+      "violation_probability": 0.00053
+    },
+    {
+      "S": 29,
+      "M": 8,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 5,
+      "violation_probability": 5e-05
+    },
+    {
+      "S": 29,
+      "M": 9,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 29,
+      "M": 10,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 29,
+      "M": 11,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 30,
+      "M": 0,
+      "L": 10,
+      "iterations": 100000,
+      "violation_count": 10692,
+      "violation_probability": 0.10692
+    },
+    {
+      "S": 30,
+      "M": 1,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 6914,
+      "violation_probability": 0.06914
+    },
+    {
+      "S": 30,
+      "M": 2,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 3946,
+      "violation_probability": 0.03946
+    },
+    {
+      "S": 30,
+      "M": 3,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 1928,
+      "violation_probability": 0.01928
+    },
+    {
+      "S": 30,
+      "M": 4,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 772,
+      "violation_probability": 0.00772
+    },
+    {
+      "S": 30,
+      "M": 5,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 221,
+      "violation_probability": 0.00221
+    },
+    {
+      "S": 30,
+      "M": 6,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 27,
+      "violation_probability": 0.00027
+    },
+    {
+      "S": 30,
+      "M": 7,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 1,
+      "violation_probability": 1e-05
+    },
+    {
+      "S": 30,
+      "M": 8,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 30,
+      "M": 9,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 30,
+      "M": 10,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 31,
+      "M": 0,
+      "L": 9,
+      "iterations": 100000,
+      "violation_count": 6038,
+      "violation_probability": 0.06038
+    },
+    {
+      "S": 31,
+      "M": 1,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 3351,
+      "violation_probability": 0.03351
+    },
+    {
+      "S": 31,
+      "M": 2,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 1592,
+      "violation_probability": 0.01592
+    },
+    {
+      "S": 31,
+      "M": 3,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 555,
+      "violation_probability": 0.00555
+    },
+    {
+      "S": 31,
+      "M": 4,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 136,
+      "violation_probability": 0.00136
+    },
+    {
+      "S": 31,
+      "M": 5,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 18,
+      "violation_probability": 0.00018
+    },
+    {
+      "S": 31,
+      "M": 6,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 31,
+      "M": 7,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 31,
+      "M": 8,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 31,
+      "M": 9,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 32,
+      "M": 0,
+      "L": 8,
+      "iterations": 100000,
+      "violation_count": 2767,
+      "violation_probability": 0.02767
+    },
+    {
+      "S": 32,
+      "M": 1,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 1276,
+      "violation_probability": 0.01276
+    },
+    {
+      "S": 32,
+      "M": 2,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 436,
+      "violation_probability": 0.00436
+    },
+    {
+      "S": 32,
+      "M": 3,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 98,
+      "violation_probability": 0.00098
+    },
+    {
+      "S": 32,
+      "M": 4,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 7,
+      "violation_probability": 7e-05
+    },
+    {
+      "S": 32,
+      "M": 5,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 32,
+      "M": 6,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 32,
+      "M": 7,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 32,
+      "M": 8,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 33,
+      "M": 0,
+      "L": 7,
+      "iterations": 100000,
+      "violation_count": 948,
+      "violation_probability": 0.00948
+    },
+    {
+      "S": 33,
+      "M": 1,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 272,
+      "violation_probability": 0.00272
+    },
+    {
+      "S": 33,
+      "M": 2,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 46,
+      "violation_probability": 0.00046
+    },
+    {
+      "S": 33,
+      "M": 3,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 3,
+      "violation_probability": 3e-05
+    },
+    {
+      "S": 33,
+      "M": 4,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 33,
+      "M": 5,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 33,
+      "M": 6,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 33,
+      "M": 7,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 34,
+      "M": 0,
+      "L": 6,
+      "iterations": 100000,
+      "violation_count": 207,
+      "violation_probability": 0.00207
+    },
+    {
+      "S": 34,
+      "M": 1,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 14,
+      "violation_probability": 0.00014
+    },
+    {
+      "S": 34,
+      "M": 2,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 34,
+      "M": 3,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 34,
+      "M": 4,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 34,
+      "M": 5,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 34,
+      "M": 6,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 35,
+      "M": 0,
+      "L": 5,
+      "iterations": 100000,
+      "violation_count": 10,
+      "violation_probability": 0.0001
+    },
+    {
+      "S": 35,
+      "M": 1,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 35,
+      "M": 2,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 35,
+      "M": 3,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 35,
+      "M": 4,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 35,
+      "M": 5,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 36,
+      "M": 0,
+      "L": 4,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 36,
+      "M": 1,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 36,
+      "M": 2,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 36,
+      "M": 3,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 36,
+      "M": 4,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 37,
+      "M": 0,
+      "L": 3,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 37,
+      "M": 1,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 37,
+      "M": 2,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 37,
+      "M": 3,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 38,
+      "M": 0,
+      "L": 2,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 38,
+      "M": 1,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 38,
+      "M": 2,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 39,
+      "M": 0,
+      "L": 1,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 39,
+      "M": 1,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    },
+    {
+      "S": 40,
+      "M": 0,
+      "L": 0,
+      "iterations": 100000,
+      "violation_count": 0,
+      "violation_probability": 0.0
+    }
+  ]
+}

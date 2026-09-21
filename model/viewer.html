@@ -7,9 +7,6 @@
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f3f5f8; color: #172438; font: 15px/1.5 system-ui, sans-serif; }
-    header { padding: 22px 32px; background: #172438; color: white; }
-    header h1 { margin: 0; font-size: 25px; font-weight: 600; }
-    header p { margin: 4px 0 0; color: #cbd6e3; }
     main { max-width: 1500px; margin: auto; padding: 24px; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; }
     aside, section { background: white; padding: 22px; border: 1px solid #dbe2ea; border-radius: 10px; }
     h2 { margin: 0 0 16px; font-size: 17px; font-weight: 600; }
@@ -20,9 +17,12 @@
     .note { color: #526174; font-size: 13px; margin: 5px 0; }
     .divider { border-top: 1px solid #e3e8ef; padding-top: 18px; }
     #status { min-height: 24px; color: #345579; }
+    #status:empty { display: none; }
     #status.error { color: #b42318; }
     #chart { display: block; width: 100%; height: auto; }
     #chart.pending { opacity: 0.5; }
+    #overall { margin: 12px 0; padding: 10px 14px; background: #edf2ff; border-radius: 8px; }
+    #overall-value { font-weight: 600; }
     .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
     button { font: inherit; border: 1px solid #c3ccd9; padding: 8px 13px; border-radius: 5px; background: white; color: #172438; cursor: pointer; }
     button:hover { background: #edf2ff; }
@@ -33,25 +33,23 @@
     table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
     th, td { padding: 6px 10px; border-bottom: 1px solid #e3e8ef; text-align: right; }
     th { position: sticky; top: 0; background: #edf2f8; }
-    @media(max-width: 800px) { main { grid-template-columns: 1fr; padding: 12px; gap: 12px; } header { padding: 18px; } }
+    @media(max-width: 800px) { main { grid-template-columns: 1fr; padding: 12px; gap: 12px; } }
   </style>
 </head>
 <body>
-  <header><h1>Grid stress · On/off explorer</h1><p>Explore violation probability across every customer combination.</p></header>
   <main>
     <aside>
       <h2>Model inputs</h2>
       <div id="controls"></div>
-      <p class="note">S, M and L here are loads per active customer. The plot axes show customer counts.</p>
-      <p class="note">Off probability: <strong id="off">50%</strong>. Customers switch independently.</p>
       <div class="divider"><button id="reset" type="button">Reset inputs</button></div>
-      <p class="note">Release a slider or finish editing a number to update. Seed: 42.</p>
     </aside>
     <section>
-      <h2>3D violation probability · fixed perspective</h2>
       <div id="status" role="status" aria-live="polite">Loading initial simulation…</div>
       <img id="chart" hidden alt="3D scatter plot of small, medium and large customer counts, colored by estimated violation probability">
-      <p class="note">Blue = 0% observed violations; red = 100%. Zero observed violations does not establish zero risk. A load equal to the threshold is allowed.</p>
+      <div id="overall" hidden aria-live="polite">
+        <span>Overall Probability:</span>
+        <strong id="overall-value"></strong>
+      </div>
       <div class="actions">
         <button id="png" type="button" disabled>Download PNG</button>
         <button id="json" type="button" disabled>Download results JSON</button>
@@ -69,7 +67,7 @@
       ['probability', 'On probability (%)', 0, 100, 1],
       ['customers', 'Total customers', 0, 100, 1],
       ['threshold', 'Violation threshold', 0, 50000, 1],
-      ['samples', 'Samples per combination', 1000, 50000, 1000]
+      ['samples', 'Samples per combination per seed', 1000, 100000, 1000]
     ];
     const fields = {}, status = document.getElementById('status'), chart = document.getElementById('chart');
     let defaults, latest, queued = null, busy = false, debounce;
@@ -77,10 +75,10 @@
     function sync(key, value) {
       fields[key].range.value = value;
       fields[key].number.value = value;
-      if (key === 'probability') document.getElementById('off').textContent = `${100-value}%`;
     }
     function pending() {
       chart.classList.add('pending');
+      document.getElementById('overall').hidden = true;
       status.textContent = 'Inputs changed · release to update';
       status.className = '';
       document.getElementById('png').disabled = document.getElementById('json').disabled = true;
@@ -95,15 +93,24 @@
       const inputs = queued; queued = null;
       status.textContent = 'Updating simulation and figure…';
       try {
-        const started = performance.now();
         const response = await fetch('/api/evaluate?' + new URLSearchParams(inputs));
         const payload = await response.json();
         if (!response.ok) throw new Error(payload.error);
         if (JSON.stringify(inputs) === JSON.stringify(snapshot())) {
           latest = payload;
+          const totalViolations = payload.results.reduce((sum, row) => sum + row.violation_count, 0);
+          const totalTrials = payload.results.reduce((sum, row) => sum + row.iterations, 0);
+          latest.overall = {
+            violation_count: totalViolations,
+            iterations: totalTrials,
+            violation_probability: totalViolations / totalTrials,
+            composition_weighting: 'uniform'
+          };
+          document.getElementById('overall-value').textContent = `${(latest.overall.violation_probability * 100).toFixed(2)}%`;
+          document.getElementById('overall').hidden = false;
           chart.src = 'data:image/png;base64,' + payload.png;
           chart.hidden = false; chart.classList.remove('pending');
-          status.textContent = `${payload.results.length.toLocaleString()} combinations · ${inputs.samples.toLocaleString()} samples each · updated in ${((performance.now()-started)/1000).toFixed(2)} s`;
+          status.textContent = '';
           status.className = '';
           document.getElementById('rows').innerHTML = payload.results.map(row => `<tr><td>${row.S}</td><td>${row.M}</td><td>${row.L}</td><td>${row.violation_count.toLocaleString()}</td><td>${(row.violation_probability*100).toFixed(2)}%</td></tr>`).join('');
           document.getElementById('png').disabled = document.getElementById('json').disabled = false;
@@ -116,7 +123,7 @@
     }
     document.getElementById('png').onclick = () => download(chart.src, 'interactive_probability_3d.png');
     document.getElementById('json').onclick = () => {
-      const data = { inputs: latest.inputs, results: latest.results };
+      const data = { inputs: latest.inputs, source: latest.source, batch_inputs: latest.batch_inputs, overall: latest.overall, results: latest.results };
       const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
       download(url, 'interactive_results.json'); setTimeout(() => URL.revokeObjectURL(url), 1000);
     };

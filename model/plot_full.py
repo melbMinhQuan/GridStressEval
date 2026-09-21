@@ -52,12 +52,16 @@ def plot_results(payload):
         colorbar = figure.colorbar(points, ax=axis, shrink=0.7, pad=0.12 if z else 0.04)
         colorbar.set_label("Estimated violation probability")
         colorbar.ax.yaxis.set_major_formatter(PercentFormatter(xmax=1))
+        sampling_label = f"{inputs['iterations']:,} samples per combination"
+        if inputs.get("random_seeds"):
+            sampling_label = (
+                f"{len(inputs['random_seeds'])} seeds x {inputs['samples_per_seed']:,} trials"
+                f" = {inputs['iterations']:,} per combination"
+            )
         figure.suptitle(
             f"Monte Carlo: P(load > {inputs['threshold']})\n"
-            f"p(on) = {inputs['p_on']:g}; {inputs['iterations']:,} samples per combination"
+            f"p(on) = {inputs['p_on']:g}; {sampling_label}"
         )
-        figure.text(0.5, 0.025, "Blue = 0% observed violations; red = 100%. "
-                    "Zero observed does not establish zero risk.", ha="center", fontsize=10)
         figure.subplots_adjust(left=0.08, right=0.88, bottom=0.13, top=0.85)
         path = output_directory / filename
         figure.savefig(path, dpi=200, bbox_inches="tight", pad_inches=0.3)
