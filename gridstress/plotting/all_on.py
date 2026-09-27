@@ -2,7 +2,7 @@
 
 import matplotlib.pyplot as plt
 
-from gridstress.models.all_on import evaluate_all_combinations, num_customers, threshold
+from gridstress.models.one_interval.all_on import evaluate_all_combinations, num_customers, threshold
 from gridstress.config import FIGURES_DIRECTORY
 
 

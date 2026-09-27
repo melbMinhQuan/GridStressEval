@@ -7,9 +7,9 @@ import unittest
 from unittest.mock import patch
 
 from gridstress.config import ROOT, compositions
-from gridstress.models.all_on import evaluate_all_combinations as all_on
-from gridstress.models.monte_carlo import evaluate_all_combinations as monte_carlo
-from gridstress.models import interactive
+from gridstress.models.one_interval.all_on import evaluate_all_combinations as all_on
+from gridstress.models.one_interval.reference.monte_carlo import evaluate_all_combinations as monte_carlo
+from gridstress.models.one_interval.reference import interactive
 from gridstress.results import load_results, overall_probability, viewer_settings
 
 
@@ -41,14 +41,19 @@ class ModelTests(unittest.TestCase):
         self.assertEqual(rows, saved['results'])
 
     def test_published_pool_matches_archived_seeds(self):
-        saved = load_results()
         archive = ROOT / 'data/experiments/20260921_223118'
+        saved = json.loads((archive / 'pooled_results.json').read_text())
         runs = [json.loads((archive / f'seed_{seed}.json').read_text())['results']
                 for seed in saved['inputs']['random_seeds']]
         for index, row in enumerate(saved['results']):
             self.assertEqual(row['violation_count'], sum(r[index]['violation_count'] for r in runs))
             self.assertEqual(row['iterations'], 500000)
-        self.assertEqual(overall_probability(saved['results']), saved['overall'])
+        if saved['overall']['composition_weighting'] == 'uniform':
+            self.assertEqual(sum(row['violation_count'] for row in saved['results']) /
+                             sum(row['iterations'] for row in saved['results']),
+                             saved['overall']['violation_probability'])
+        else:
+            self.assertEqual(overall_probability(saved['results'], saved['inputs']['p_type']), saved['overall'])
         self.assertEqual(viewer_settings(saved)['samples'], 100000)
 
     def test_interactive_matches_all_on_at_probability_one(self):

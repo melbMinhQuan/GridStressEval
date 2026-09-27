@@ -1,4 +1,4 @@
-"""Generate figures from the published Monte Carlo results."""
+"""Generate figures from published exact or historical Monte Carlo results."""
 
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
@@ -7,6 +7,7 @@ from matplotlib.ticker import PercentFormatter
 
 from gridstress.config import FIGURES_DIRECTORY
 from gridstress.results import load_results
+from gridstress.probabilities import class_probabilities, CLASSES
 
 output_directory = FIGURES_DIRECTORY / "on_off"
 
@@ -14,6 +15,7 @@ output_directory = FIGURES_DIRECTORY / "on_off"
 def plot_results(payload):
     """Save 3D, S/M and M/L views using the same probability color scale."""
     inputs, results = payload["inputs"], payload["results"]
+    on_probabilities = class_probabilities(inputs["p_on"])
     output_directory.mkdir(parents=True, exist_ok=True)
     coordinates = {key: [row[key] for row in results] for key in ("S", "M", "L")}
     probabilities = [row["violation_probability"] for row in results]
@@ -49,17 +51,19 @@ def plot_results(payload):
             axis.grid(alpha=0.2)
             axis.set_axisbelow(True)
         colorbar = figure.colorbar(points, ax=axis, shrink=0.7, pad=0.12 if z else 0.04)
-        colorbar.set_label("Estimated violation probability")
+        colorbar.set_label("Conditional violation probability")
         colorbar.ax.yaxis.set_major_formatter(PercentFormatter(xmax=1))
-        sampling_label = f"{inputs['iterations']:,} samples per combination"
+        exact = inputs.get("method") == "exact_binomial"
+        sampling_label = "Exact binomial calculation" if exact else f"{inputs['iterations']:,} samples per combination"
         if inputs.get("random_seeds"):
             sampling_label = (
                 f"{len(inputs['random_seeds'])} seeds x {inputs['samples_per_seed']:,} trials"
                 f" = {inputs['iterations']:,} per combination"
             )
         figure.suptitle(
-            f"Monte Carlo: P(load > {inputs['threshold']})\n"
-            f"p(on) = {inputs['p_on']:g}; {sampling_label}"
+            f"{'Exact' if exact else 'Monte Carlo'}: P(A > {inputs['threshold']} | composition)\n"
+            f"p(on) S/M/L: {' / '.join(f'{on_probabilities[name]:.0%}' for name in CLASSES)}\n"
+            f"{sampling_label}"
         )
         figure.subplots_adjust(left=0.08, right=0.88, bottom=0.13, top=0.85)
         path = output_directory / filename

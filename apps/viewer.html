@@ -41,11 +41,14 @@
     <aside>
       <h2>Model inputs</h2>
       <div id="controls"></div>
+      <h2>Customer type probabilities</h2>
+      <div id="type-controls"></div>
+      <p class="note">Type proportions must sum to 100%. Equal thirds are an illustrative starting mix.</p>
       <div class="divider"><button id="reset" type="button">Reset inputs</button></div>
     </aside>
     <section>
-      <div id="status" role="status" aria-live="polite">Loading initial simulation…</div>
-      <img id="chart" hidden alt="3D scatter plot of small, medium and large customer counts, colored by estimated violation probability">
+      <div id="status" role="status" aria-live="polite">Calculating exact probabilities…</div>
+      <img id="chart" hidden alt="3D scatter plot of customer counts, colored by exact conditional violation probability">
       <div id="overall" hidden aria-live="polite">
         <span>Overall Probability:</span>
         <strong id="overall-value"></strong>
@@ -55,19 +58,23 @@
         <button id="json" type="button" disabled>Download results JSON</button>
       </div>
       <details><summary>Inspect combination probabilities</summary>
-        <div class="table-wrap"><table><thead><tr><th>S</th><th>M</th><th>L</th><th>Violations</th><th>Probability</th></tr></thead><tbody id="rows"></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>S</th><th>M</th><th>L</th><th>Conditional probability</th></tr></thead><tbody id="rows"></tbody></table></div>
       </details>
     </section>
   </main>
   <script>
     const definitions = [
-      ['small', 'Small customer load', 0, 500, 1],
-      ['medium', 'Medium customer load', 0, 500, 1],
-      ['large', 'Large customer load', 0, 500, 1],
-      ['probability', 'On probability (%)', 0, 100, 1],
+      ['small', 'Small customer current (A)', 0, 500, 1],
+      ['medium', 'Medium customer current (A)', 0, 500, 1],
+      ['large', 'Large customer current (A)', 0, 500, 1],
+      ['probability_small', 'Small On probability (%)', 0, 100, 0.1],
+      ['probability_medium', 'Medium On probability (%)', 0, 100, 0.1],
+      ['probability_large', 'Large On probability (%)', 0, 100, 0.1],
       ['customers', 'Total customers', 0, 100, 1],
       ['threshold', 'Violation threshold', 0, 50000, 1],
-      ['samples', 'Samples per combination per seed', 1000, 100000, 1000]
+      ['type_small', 'Small type (%)', 0, 100, 0.1],
+      ['type_medium', 'Medium type (%)', 0, 100, 0.1],
+      ['type_large', 'Large type (%)', 0, 100, 0.1]
     ];
     const fields = {}, status = document.getElementById('status'), chart = document.getElementById('chart');
     let defaults, latest, queued = null, busy = false, debounce;
@@ -91,28 +98,20 @@
       if (busy || !queued) return;
       busy = true;
       const inputs = queued; queued = null;
-      status.textContent = 'Updating simulation and figure…';
+      status.textContent = 'Calculating exact probabilities and figure…';
       try {
         const response = await fetch('/api/evaluate?' + new URLSearchParams(inputs));
         const payload = await response.json();
         if (!response.ok) throw new Error(payload.error);
         if (JSON.stringify(inputs) === JSON.stringify(snapshot())) {
           latest = payload;
-          const totalViolations = payload.results.reduce((sum, row) => sum + row.violation_count, 0);
-          const totalTrials = payload.results.reduce((sum, row) => sum + row.iterations, 0);
-          latest.overall = {
-            violation_count: totalViolations,
-            iterations: totalTrials,
-            violation_probability: totalViolations / totalTrials,
-            composition_weighting: 'uniform'
-          };
           document.getElementById('overall-value').textContent = `${(latest.overall.violation_probability * 100).toFixed(2)}%`;
           document.getElementById('overall').hidden = false;
           chart.src = 'data:image/png;base64,' + payload.png;
           chart.hidden = false; chart.classList.remove('pending');
           status.textContent = '';
           status.className = '';
-          document.getElementById('rows').innerHTML = payload.results.map(row => `<tr><td>${row.S}</td><td>${row.M}</td><td>${row.L}</td><td>${row.violation_count.toLocaleString()}</td><td>${(row.violation_probability*100).toFixed(2)}%</td></tr>`).join('');
+          document.getElementById('rows').innerHTML = payload.results.map(row => `<tr><td>${row.S}</td><td>${row.M}</td><td>${row.L}</td><td>${(row.violation_probability*100).toFixed(2)}%</td></tr>`).join('');
           document.getElementById('png').disabled = document.getElementById('json').disabled = false;
         }
       } catch(error) { status.textContent = error.message + ' — adjust an input to retry.'; status.className = 'error'; }
@@ -135,13 +134,15 @@
       for (const [key, label, min, max, step] of definitions) {
         const container = document.createElement('div'); container.className = 'control';
         container.innerHTML = `<div class="label"><label for="${key}-number">${label}</label><input id="${key}-number" type="number" min="${min}" max="${max}" step="${step}"></div><input id="${key}" aria-label="${label}" type="range" min="${min}" max="${max}" step="${step}">`;
-        document.getElementById('controls').appendChild(container);
+        document.getElementById(key.startsWith('type_') ? 'type-controls' : 'controls').appendChild(container);
         fields[key] = { range: document.getElementById(key), number: document.getElementById(key+'-number') };
         sync(key, defaults[key]);
         fields[key].range.oninput = event => { sync(key, +event.target.value); pending(); };
         fields[key].range.onchange = schedule;
         fields[key].number.onchange = event => {
-          const value = Math.min(max, Math.max(min, Math.round(+event.target.value || min)));
+          const entered = +event.target.value || min;
+          const isProbability = key.startsWith('type_') || key.startsWith('probability_');
+          const value = Math.min(max, Math.max(min, isProbability ? Math.round(entered * 10) / 10 : Math.round(entered)));
           sync(key, value); pending(); schedule();
         };
       }

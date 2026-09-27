@@ -1,4 +1,4 @@
-"""Reusable Monte Carlo samples for the interactive viewers.
+"""Reference-only former interactive Monte Carlo engine (not used by viewers).
 
 Samples are shared across allocations (common random numbers). Each allocation
 still has independent customers and trials; estimates across allocations are
@@ -12,17 +12,19 @@ import numpy as np
 
 
 from gridstress.config import CACHE_DIRECTORY, SEED, MAX_CUSTOMERS, MAX_SAMPLES, compositions
+from gridstress.probabilities import PROBABILITY_FIELDS, normalize_settings
 
 
 @lru_cache(maxsize=3)
-def active_counts(customers, samples, probability_percent):
+def active_counts(customers, samples, probability_small, probability_medium, probability_large):
     """One active-count bank for every group size, shape (3, n+1, k).
 
     The disk cache holds only the most recently generated bank. The three
     most recent banks are retained in memory; neither cache grows unbounded.
     """
     path = CACHE_DIRECTORY / "latest_active_counts.npz"
-    key = np.array([1, SEED, customers, samples, probability_percent])
+    probabilities = (probability_small, probability_medium, probability_large)
+    key = np.array([2, SEED, customers, samples, *probabilities])
     if path.exists():
         try:
             with np.load(path, allow_pickle=False) as saved:
@@ -40,7 +42,7 @@ def active_counts(customers, samples, probability_percent):
         for size in range(1, customers + 1):
             counts[group, size] = (
                 counts[group, size - 1]
-                + (rng.random(samples) < probability_percent / 100)
+                + (rng.random(samples) < probabilities[group] / 100)
             )
     CACHE_DIRECTORY.mkdir(parents=True, exist_ok=True)
     temporary = CACHE_DIRECTORY / "latest_active_counts.pending.npz"
@@ -53,25 +55,31 @@ def active_counts(customers, samples, probability_percent):
 def validate_settings(settings):
     ranges = {
         "small": (0, 500), "medium": (0, 500), "large": (0, 500),
-        "customers": (0, MAX_CUSTOMERS), "probability": (0, 100),
+        "customers": (0, MAX_CUSTOMERS),
+        **dict.fromkeys(PROBABILITY_FIELDS, (0, 100)),
         "threshold": (0, 50_000), "samples": (1000, MAX_SAMPLES),
     }
     if set(settings) != set(ranges):
-        raise ValueError("Expected loads, customers, probability, threshold and samples")
+        raise ValueError("Expected loads, customers, three On probabilities, threshold and samples")
     for name, (minimum, maximum) in ranges.items():
         value = settings[name]
-        if type(value) is not int or not minimum <= value <= maximum:
-            raise ValueError(f"{name} must be an integer from {minimum} to {maximum}")
+        allowed_types = (int, float) if name in PROBABILITY_FIELDS else (int,)
+        if type(value) not in allowed_types or not minimum <= value <= maximum:
+            kind = "a number" if name in PROBABILITY_FIELDS else "an integer"
+            raise ValueError(f"{name} must be {kind} from {minimum} to {maximum}")
 
 
 def evaluate(settings):
+    settings = normalize_settings(settings)
     validate_settings(settings)
     return _evaluate(**settings)
 
 
 @lru_cache(maxsize=32)
-def _evaluate(small, medium, large, customers, probability, threshold, samples):
-    counts = active_counts(customers, samples, probability)
+def _evaluate(small, medium, large, customers, probability_small, probability_medium,
+              probability_large, threshold, samples):
+    counts = active_counts(customers, samples, probability_small, probability_medium,
+                           probability_large)
     # Promote before weighting: uint16 would overflow at higher loads.
     weighted = [counts[i].astype(np.int32) * weight
                 for i, weight in enumerate((small, medium, large))]

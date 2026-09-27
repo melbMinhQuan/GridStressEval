@@ -1,10 +1,12 @@
-"""Deterministic all-on model."""
+"""Deterministic single-interval All-On model."""
 from gridstress.config import (
     LOAD_CURRENT as load_current,
     THRESHOLD as threshold,
     NUM_CUSTOMERS as num_customers,
     compositions,
+    TYPE_PROBABILITIES,
 )
+from gridstress.results import overall_probability
 
 
 def evaluate_all_combinations():
@@ -27,3 +29,5 @@ if __name__ == "__main__":
     print(f"Evaluated {len(combinations)} combinations (all customers ON).")
     print(f"Violations: {violation_count}")
     print(f"Non-violations: {len(combinations) - violation_count}")
+    risk = overall_probability(combinations, TYPE_PROBABILITIES)['violation_probability']
+    print(f"Trinomial-weighted violation probability: {risk:.6%}; p_type={TYPE_PROBABILITIES}")

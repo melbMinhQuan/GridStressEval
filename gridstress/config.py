@@ -11,7 +11,9 @@ CACHE_DIRECTORY = ROOT / "runtime" / "cache"
 LOAD_CURRENT = {"S": 20, "M": 40, "L": 100}
 THRESHOLD = 1000
 NUM_CUSTOMERS = 40
-P_ON = 0.5
+P_ON = {"S": 0.5, "M": 0.5, "L": 0.5}
+# Illustrative customer mix only; replace with measured type proportions.
+TYPE_PROBABILITIES = {"S": 1/3, "M": 1/3, "L": 1/3}
 SAMPLES = 10_000
 SEED = 42
 MAX_CUSTOMERS = 100

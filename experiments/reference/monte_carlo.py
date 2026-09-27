@@ -1,17 +1,18 @@
-"""Run five independent seeds and publish pooled results for the viewers."""
+"""Reference five-seed experiment; explicitly running this replaces published data."""
 
 import json
 from datetime import datetime
 from time import perf_counter
 
-from gridstress.models.monte_carlo import evaluate_all_combinations
+from gridstress.models.one_interval.reference.monte_carlo import evaluate_all_combinations
 from gridstress.config import (
     LOAD_CURRENT as load_current, THRESHOLD as threshold,
     NUM_CUSTOMERS as num_customers, P_ON as p_on,
-    EXPERIMENTS_DIRECTORY, RESULTS_PATH,
+    EXPERIMENTS_DIRECTORY, RESULTS_PATH, TYPE_PROBABILITIES,
 )
 from gridstress.plotting.probabilities import plot_results
 from gridstress.results import overall_probability
+from gridstress.probabilities import class_probabilities
 
 
 def main():
@@ -23,15 +24,17 @@ def main():
     pooled = None
     for seed in seeds:
         start = perf_counter()
-        rows = evaluate_all_combinations(samples=samples, seed=seed)
+        rows = evaluate_all_combinations(num_customers, load_current, threshold,
+                                         p_on, samples, seed)
         seconds = perf_counter() - start
         inputs = dict(load_current=load_current, threshold=threshold,
-                      num_customers=num_customers, p_on=p_on,
+                      num_customers=num_customers, p_on=class_probabilities(p_on),
+                      p_type=dict(TYPE_PROBABILITIES),
                       iterations=samples, random_seed=seed)
         payload = dict(inputs=inputs, results=rows)
         (directory / f'seed_{seed}.json').write_text(json.dumps(payload, indent=2))
         run = dict(seed=seed, seconds=seconds,
-                   overall_probability=overall_probability(rows)['violation_probability'])
+                   overall_probability=overall_probability(rows, TYPE_PROBABILITIES)['violation_probability'])
         runs.append(run)
         print(json.dumps(run), flush=True)
         if pooled is None:
@@ -45,7 +48,7 @@ def main():
     payload = dict(inputs=dict(inputs, iterations=samples*len(seeds), random_seed=None,
                                random_seeds=seeds, samples_per_seed=samples),
                    results=pooled,
-                   overall=overall_probability(pooled))
+                   overall=overall_probability(pooled, TYPE_PROBABILITIES))
     summary = dict(runs=runs, simulation_seconds=sum(r['seconds'] for r in runs),
                    overall=payload['overall'])
     (directory / 'summary.json').write_text(json.dumps(summary, indent=2))

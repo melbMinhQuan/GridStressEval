@@ -22,12 +22,25 @@
 
 \section{Mathematical formulation}
 
-N numbers of customers are divided into small (S), medium (M), and large (L) classes.  Let
+\(N\) customers are divided into small (S), medium (M), and large (L) classes.  Let
 \(n_S,n_M,n_L\) denote the number of customers in each class and let
 \(I_S,I_M,I_L\) denote their respective current demands.  This means: 
 \begin{equation}
     n_S+n_M+n_L=N, \qquad n_S,n_M,n_L\in\{0,1,\ldots,N\}.
 \end{equation}
+Each customer independently belongs to class S, M or L with probabilities
+\(p_S,p_M,p_L\), where \(p_S+p_M+p_L=1\) and \(p_j\geq0\).
+The random class counts follow a trinomial distribution:
+\begin{equation}
+    (N_S,N_M,N_L)\sim\operatorname{Trinomial}(N;p_S,p_M,p_L).
+\end{equation}
+For a composition \(\boldsymbol n=(n_S,n_M,n_L)\), its probability is
+\begin{equation}
+    w(\boldsymbol n)
+    =\Prob(N_S=n_S,N_M=n_M,N_L=n_L)
+    =\frac{N!}{n_S!n_M!n_L!}\,p_S^{n_S}p_M^{n_M}p_L^{n_L}.
+\end{equation}
+
 And for customer \(i\) in class \(j\in\{S,M,L\}\), define the state
 \(X_{j,i}\in\{0,1\}\), where 1 means on and 0 means off.  The aggregate current is:
 \begin{equation}
@@ -86,66 +99,59 @@ Choosing the two separator positions among \(N+2\) positions gives
     \text{Number of compositions}=\binom{N+2}{2}
     =\frac{(N+2)(N+1)}{2}.
 \end{equation}
-Empty groups are allowed.  For \(N=40\), this gives
-\(\binom{42}{2}=861\) compositions.
-The model finds 840 violating compositions.  
-\begin{equation}
-    \Prob(A>T\mid\text{uniform composition, all on})
-    =\frac{840}{861}=0.9756\quad (97.56\%).
-\end{equation}
 
 \section{On--Off model}
 
-The On-Off model treats customers as independent Bernoulli loads.  In the
-current run,
+For a fixed composition \((n_S,n_M,n_L)\), let \(q_S,q_M,q_L\) be the
+respective probabilities that a customer is on.  Customers switch
+independently, so the numbers of active customers are independent binomial
+random variables:
 \begin{equation}
-    X_{j,i}\overset{\mathrm{ind}}{\sim}\operatorname{Bernoulli}(p),
-    \qquad p=0.5.
+    Y_S\sim\operatorname{Binomial}(n_S,q_S),\quad
+    Y_M\sim\operatorname{Binomial}(n_M,q_M),\quad
+    Y_L\sim\operatorname{Binomial}(n_L,q_L).
 \end{equation}
-For each class \(j\), define \(Y_j\) as the number of active customers in that
-class.  It is the sum of the individual on--off states and therefore has a
-binomial distribution:
-\begin{equation}
-    Y_j=\sum_{i=1}^{n_j}X_{j,i}\sim\operatorname{Binomial}(n_j,p),
-    \qquad j\in\{S,M,L\}.
-\end{equation}
-The random aggregate current in one trial is then
+Here \(n_j\) is the fixed number of customers in class \(j\), whereas
+\(Y_j\in\{0,\ldots,n_j\}\) is the random number that are on.
+The aggregate current is
 \begin{equation}
     A=I_SY_S+I_MY_M+I_LY_L.
 \end{equation}
-
-
-
-The implemented model estimates the probability of violations by Monte
-Carlo simulation.  For each of the 861 feasible compositions, it performs the
-following calculation independently:
-\begin{enumerate}
-    \item draw \(Y_S,Y_M,Y_L\) from their binomial distributions;
-    \item calculate \(A=I_SY_S+I_MY_M+I_LY_L\);
-    \item record whether \(A>T\); and
-    \item run 100,000 trials for each of five seeds (42--46), giving
-    \(N_{\mathrm{trials}}=500{,}000\) pooled trials per composition.
-\end{enumerate}
-If \(N_{\mathrm{violations}}\) trials violate the limit, the reported estimator
-is
+The probability of a violation for this composition is therefore
 \begin{equation}
-    \widehat{\Prob}(A>T)
-    =\frac{N_{\mathrm{violations}}}{N_{\mathrm{trials}}}.
+    \Prob(A>T\mid n_S,n_M,n_L)
+    =\Prob(I_SY_S+I_MY_M+I_LY_L>T).
 \end{equation}
+Using independence, this probability can be calculated exactly as
+\begin{equation}
+    \Prob(A>T\mid n_S,n_M,n_L)
+    =\sum_{\substack{y_S=0,\ldots,n_S;\;y_M=0,\ldots,n_M;\;y_L=0,\ldots,n_L\\
+                      I_Sy_S+I_My_M+I_Ly_L>T}}
+       \prod_{j\in\{S,M,L\}}
+       \binom{n_j}{y_j}q_j^{y_j}(1-q_j)^{n_j-y_j}.
+\end{equation}
+
+
 
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.84\textwidth]{probability_3d.png}
-    \caption{Estimated On-Off violation probability for every customer
-    composition, pooled across five seeds with 100,000 trials per seed.}
+    \caption{Exact conditional violation probabilities
+    at \(q_S=q_M=q_L=0.5\), calculated using binomial probabilities without sampling.}
     \label{fig:on-off}
 \end{figure}
 
 
 
 
-Across all 861 equally weighted compositions, the overall Monte Carlo violation
-probability is \(213{,}644{,}734/430{,}500{,}000\approx49.62712\%\).
+For a population with customer type probabilities \(p_S,p_M,p_L\), the overall
+violation probability is
+\begin{equation}
+    \Prob(A>T)
+    =\sum_{\substack{n_S,n_M,n_L\geq0\\n_S+n_M+n_L=N}}
+       w(\boldsymbol n)\,
+       \Prob(A>T\mid n_S,n_M,n_L).
+\end{equation}
 
 \end{document}

@@ -1,4 +1,4 @@
-"""Monte Carlo model: independent on/off states for every customer."""
+"""Reference-only Monte Carlo model; current viewers use the exact model."""
 
 import json
 
@@ -9,7 +9,10 @@ from gridstress.config import (
     LOAD_CURRENT as load_current, THRESHOLD as threshold,
     NUM_CUSTOMERS as num_customers, P_ON as p_on, SAMPLES as iterations,
     SEED as random_seed, RESULTS_PATH as results_path, compositions,
+    TYPE_PROBABILITIES,
 )
+from gridstress.probabilities import class_probabilities
+from gridstress.results import overall_probability
 
 
 def evaluate_all_combinations(
@@ -25,14 +28,14 @@ def evaluate_all_combinations(
     Binomial draws count independently active customers within each group.
     Each sample uses fresh states; group sizes remain fixed for all samples.
     Memory use is proportional to samples, not the number of combinations.
+    probability_on accepts an S/M/L mapping, or a shared scalar for older callers.
     """
     currents = load_current if currents is None else currents
     if not isinstance(total_customers, int) or total_customers < 0:
         raise ValueError("total_customers must be a non-negative integer")
     if not isinstance(samples, int) or samples <= 0:
         raise ValueError("samples must be a positive integer")
-    if not 0 <= probability_on <= 1:
-        raise ValueError("probability_on must be between 0 and 1")
+    probabilities = class_probabilities(probability_on)
     if set(currents) != {"S", "M", "L"} or any(
         not np.isfinite(value) or value < 0 for value in currents.values()
     ):
@@ -44,9 +47,9 @@ def evaluate_all_combinations(
     results = []
     for small, medium, large in compositions(total_customers):
         active_load = (
-            currents["S"] * rng.binomial(small, probability_on, samples)
-            + currents["M"] * rng.binomial(medium, probability_on, samples)
-            + currents["L"] * rng.binomial(large, probability_on, samples)
+            currents["S"] * rng.binomial(small, probabilities["S"], samples)
+            + currents["M"] * rng.binomial(medium, probabilities["M"], samples)
+            + currents["L"] * rng.binomial(large, probabilities["L"], samples)
         )
         violation_count = int(np.count_nonzero(active_load > limit))
         results.append({
@@ -68,11 +71,13 @@ def run_model():
             "load_current": load_current,
             "threshold": threshold,
             "num_customers": num_customers,
-            "p_on": p_on,
+            "p_on": class_probabilities(p_on),
             "iterations": iterations,
             "random_seed": random_seed,
+            "p_type": dict(TYPE_PROBABILITIES),
         },
         "results": results,
+        "overall": overall_probability(results, TYPE_PROBABILITIES),
     }
     results_path.parent.mkdir(parents=True, exist_ok=True)
     results_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")

@@ -20,31 +20,34 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.ticker import MaxNLocator, PercentFormatter
 
-from gridstress.models.interactive import evaluate
-from gridstress.config import SEED
-from gridstress.results import load_results, viewer_settings
+from gridstress.models.one_interval.exact import evaluate, exact_settings, exact_inputs
+from gridstress.results import (
+    load_results, type_settings,
+    split_viewer_settings, overall_probability,
+)
+from gridstress.probabilities import TYPE_FIELDS, PROBABILITY_FIELDS
+from gridstress.probabilities import normalize_settings
 
 
 ROOT = Path(__file__).resolve().parent
 LOCK = threading.Lock()
 
-# Load the published batch run once at startup. Its pooled sample count is
-# distinct from the per-seed count used for fresh interactive simulations.
+# Reuse published results only when they were calculated exactly.
 SAVED = load_results()
-DEFAULTS = viewer_settings(SAVED)
+DEFAULTS = exact_settings(SAVED)
+TYPE_DEFAULTS = type_settings(SAVED)
+TYPE_DEFAULTS = {key: round(value, 1) for key, value in TYPE_DEFAULTS.items()}
+_remainder_key = max(TYPE_DEFAULTS, key=TYPE_DEFAULTS.get)
+TYPE_DEFAULTS[_remainder_key] = round(TYPE_DEFAULTS[_remainder_key] + 100 - sum(TYPE_DEFAULTS.values()), 1)
 
 
 @lru_cache(maxsize=8)
 def render(settings_json):
-    settings = json.loads(settings_json)
+    settings, type_probabilities = split_viewer_settings(
+        normalize_settings(json.loads(settings_json)))
     started = perf_counter()
-    saved_run = settings == DEFAULTS
+    saved_run = settings == DEFAULTS and SAVED['inputs'].get('method') == 'exact_binomial'
     rows = SAVED['results'] if saved_run else evaluate(settings)
-    sample_description = (
-        f"{len(SAVED['inputs']['random_seeds'])} seeds x {settings['samples']:,} samples"
-        if saved_run and SAVED['inputs'].get('random_seeds')
-        else f"{settings['samples']:,} samples"
-    )
     compute_seconds = perf_counter() - started
     figure = Figure(figsize=(10, 7.5), dpi=130)
     FigureCanvasAgg(figure)
@@ -67,26 +70,27 @@ def render(settings_json):
                 rotation=90, va="center", ha="center")
     axis.view_init(elev=25, azim=45)
     colorbar = figure.colorbar(points, ax=axis, shrink=0.72, pad=0.12)
-    colorbar.set_label("Estimated violation probability")
+    colorbar.set_label("Conditional violation probability")
     colorbar.ax.yaxis.set_major_formatter(PercentFormatter(xmax=1))
     figure.suptitle(
-        f"P(load > {settings['threshold']:,})  |  {settings['customers']} customers\n"
-        f"Loads S/M/L: {settings['small']} / {settings['medium']} / {settings['large']}"
-        f"  |  p(on): {settings['probability']}%  |  {sample_description}",
+        f"Exact P(A > {settings['threshold']:,} | composition)  |  {settings['customers']} customers\n"
+        f"Currents S/M/L: {settings['small']} / {settings['medium']} / {settings['large']} A\n"
+        f"p(on) S/M/L: {settings['probability_small']}% / "
+        f"{settings['probability_medium']}% / {settings['probability_large']}%",
         fontsize=12, y=0.96,
     )
-    figure.subplots_adjust(left=0.10, right=0.91, bottom=0.09, top=0.91)
+    figure.subplots_adjust(left=0.10, right=0.91, bottom=0.09, top=0.86)
     output = BytesIO()
     figure.savefig(output, format="png", bbox_inches="tight", pad_inches=0.3)
     return {
-        "inputs": {**settings,
-                   "random_seed": SAVED['inputs'].get('random_seed') if saved_run else SEED,
-                   "random_seeds": SAVED['inputs'].get('random_seeds') if saved_run else [SEED]},
+        "inputs": dict(SAVED['inputs'] if saved_run else exact_inputs(settings),
+                       p_type=type_probabilities, p_type_source="viewer_selection"),
+        "overall": overall_probability(rows, type_probabilities),
         "results": rows,
-        "source": "saved_batch" if saved_run else "interactive_simulation",
+        "source": "exact_binomial",
         "batch_inputs": SAVED['inputs'] if saved_run else None,
         "png": base64.b64encode(output.getvalue()).decode("ascii"),
-        "simulation_seconds": round(compute_seconds, 4),
+        "calculation_seconds": round(compute_seconds, 4),
     }
 
 
@@ -107,13 +111,14 @@ class Handler(BaseHTTPRequestHandler):
         if url.path == "/":
             return self.send_body((ROOT / "viewer.html").read_bytes(), "text/html; charset=utf-8")
         if url.path == "/api/config":
-            return self.send_body(json.dumps(DEFAULTS).encode(), "application/json")
+            return self.send_body(json.dumps({**DEFAULTS, **TYPE_DEFAULTS}).encode(), "application/json")
         if url.path == "/api/evaluate":
             try:
-                query = parse_qs(url.query)
+                query = parse_qs(url.query, keep_blank_values=True)
                 if any(len(values) != 1 for values in query.values()):
                     raise ValueError("Repeated input parameter")
-                settings = {key: int(values[0]) for key, values in query.items()}
+                settings = {key: float(values[0]) if key in (*TYPE_FIELDS, *PROBABILITY_FIELDS) else int(values[0])
+                            for key, values in query.items()}
                 started = perf_counter()
                 with LOCK:
                     response = dict(render(json.dumps(settings, sort_keys=True)))
