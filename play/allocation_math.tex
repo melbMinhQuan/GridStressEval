@@ -1,0 +1,202 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{microtype}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\newcommand{\Prob}{\mathbb{P}}
+
+\title{All-On Allocation Model with Overlapping Intervals}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Circuit}
+A circuit has \(N\) customers, each of class \(j\in\{S,M,L\}\) with current
+\(I_j\) (A) and load \(P_j=V I_j\) (kW) at voltage \(V\). A composition
+\(\boldsymbol n=(n_S,n_M,n_L)\), \(n_S+n_M+n_L=N\), occurs with probability
+\begin{equation}
+  w(\boldsymbol n)=\frac{N!}{n_S!\,n_M!\,n_L!}\,p_S^{n_S}p_M^{n_M}p_L^{n_L},
+  \qquad p_S+p_M+p_L=1 .
+\end{equation}
+
+\section{Allocation}
+There are \(K\in\{1,2,3\}\) free intervals \([s_k,e_k)\), \(k=1,\dots,K\),
+which may overlap. Each medium and large customer is assigned exactly one
+interval. Let \(m_k\) and \(l_k\) be the medium and large customers in
+interval \(k\):
+\begin{equation}
+  \sum_{k=1}^K m_k=n_M,\qquad \sum_{k=1}^K l_k=n_L,\qquad m_k,l_k\in\mathbb{Z}_{\ge0}.
+\end{equation}
+Inside its interval a customer draws its own class current and load; outside
+it, it behaves as a small customer. Small customers never change.
+
+\section{Segments}
+Only time inside at least one interval is analysed; time outside every
+interval is ignored. Cut this time at every interval edge. Each resulting
+segment \(g=[a_g,b_g)\) is covered by a non-empty set of intervals
+\(C(g)=\{k: s_k\le a_g,\ b_g\le e_k\}\); overlaps give \(|C(g)|\ge2\).
+During segment \(g\),
+\begin{equation}
+  M_g=\sum_{k\in C(g)} m_k,\qquad
+  L_g=\sum_{k\in C(g)} l_k,\qquad
+  S_g=N-M_g-L_g .
+\end{equation}
+The circuit current and the energy consumed in the segment are
+\begin{align}
+  A_g &= I_S S_g + I_M M_g + I_L L_g \quad\text{(A)},\\
+  E_g &= \bigl(P_S S_g + P_M M_g + P_L L_g\bigr)\,(b_g-a_g) \quad\text{(kWh)}.
+\end{align}
+
+\section{Solar soak}
+Let \(X_d(t)\) be the VIC1 utility-solar curtailment (MW) on day \(d\), slot \(t\)
+(\(\Delta t=5\) min). If a share \(u\) of the \(N_{\mathrm{VIC}}\) customers join the
+tariff, \(C=uN_{\mathrm{VIC}}/N\) circuits share it, so one circuit has
+\begin{equation}
+  x_d(t)=X_d(t)/C .
+\end{equation}
+Curtailment is what remains after existing demand, so only load added by the
+free intervals can soak it. In slot \(t\in g\) this is
+\begin{equation}
+  D(t)=(P_M-P_S)\,M_g+(P_L-P_S)\,L_g \quad\text{(kW)}.
+\end{equation}
+The solar soak per circuit per day, over the days \(\mathcal D\) (one chosen day, or
+all 365 days of 2025), is
+\begin{equation}
+  \text{soak}=\frac{1}{|\mathcal D|}\sum_{d\in\mathcal D}\sum_t \min\bigl(D(t),\,x_d(t)\bigr)\,\Delta t
+  \quad\text{(kWh/day)}.
+\end{equation}
+The minimum is taken day by day before averaging; since \(\min\) is concave,
+using the mean curtailment profile instead would overstate soak.
+
+Hourly outputs of the single-circuit run sum a kW series \(f\) over the slots in each
+bin \(B\): \(\sum_{t\in B} f(t)\,\Delta t\), with \(f\) the consumed load
+\(N P_S + D(t)\), the added load \(D(t)\), the curtailment share \(x_d(t)\), or the
+soak \(\min(D,x_d)\), each averaged over \(\mathcal D\).
+
+\section{Overload}
+A circuit with composition \(\boldsymbol n\) and allocation \((\boldsymbol m,\boldsymbol l)\)
+overloads if the current exceeds the limit \(T\) in any segment:
+\begin{equation}
+  r(\boldsymbol n,\boldsymbol m,\boldsymbol l)=
+  \begin{cases}1, & \max_g A_g > T,\\ 0, & \text{otherwise.}\end{cases}
+\end{equation}
+
+\section{Auto allocation and violation probability}
+The auto allocation minimises the peak current,
+\begin{equation}
+  (\boldsymbol m^*,\boldsymbol l^*)(\boldsymbol n)
+  =\arg\min_{\boldsymbol m,\boldsymbol l}\ \max_g A_g ,
+\end{equation}
+checking every integer split (ties: the first split found). If every circuit uses its
+auto allocation, the probability that a circuit overloads is
+\begin{equation}
+  \Prob(\text{violation})=\sum_{\boldsymbol n} w(\boldsymbol n)\,
+  r\bigl(\boldsymbol n,\boldsymbol m^*(\boldsymbol n),\boldsymbol l^*(\boldsymbol n)\bigr),
+\end{equation}
+skipping compositions with \(w(\boldsymbol n)<10^{-15}\). A composition has a safe
+allocation if and only if its auto allocation is safe.
+
+\section{Pareto front}
+Both objectives are averages over compositions. Each circuit may use its own
+allocation \(a(\boldsymbol n)\):
+\begin{align}
+  O_{\mathrm{safe}} &= 1-\sum_{\boldsymbol n} w(\boldsymbol n)\, r\bigl(\boldsymbol n,a(\boldsymbol n)\bigr)
+      && \text{(share of circuits without overload)},\\
+  O_{\mathrm{soak}} &= \sum_{\boldsymbol n} w(\boldsymbol n)\, \text{soak}\bigl(\boldsymbol n,a(\boldsymbol n)\bigr)
+      && \text{(expected soak per circuit, kWh/day)},
+\end{align}
+with soak averaged over all days of 2025. Both are to be maximised.
+
+For each composition every integer allocation is checked, keeping
+\begin{align}
+  \sigma_{\max}(\boldsymbol n) &= \max_a \text{soak}(\boldsymbol n,a), &
+  \sigma_{\mathrm{safe}}(\boldsymbol n) &= \max_{a:\,r(\boldsymbol n,a)=0} \text{soak}(\boldsymbol n,a).
+\end{align}
+Because \(r\in\{0,1\}\), only these two allocations can lie on the front. If
+several allocations reach \(\sigma_{\max}\), a safe one is preferred.
+Start with every composition on its \(\sigma_{\max}\) allocation (most soak).
+Composition \(\boldsymbol n\) can then be moved to its safe allocation, which raises
+\(O_{\mathrm{safe}}\) by \(w(\boldsymbol n)\) and lowers \(O_{\mathrm{soak}}\) by
+\(w(\boldsymbol n)\,\Delta(\boldsymbol n)\), where
+\begin{equation}
+  \Delta(\boldsymbol n)=\sigma_{\max}(\boldsymbol n)-\sigma_{\mathrm{safe}}(\boldsymbol n).
+\end{equation}
+Moving compositions in increasing order of \(\Delta(\boldsymbol n)\) traces the
+Pareto front; the segment between two consecutive points is reached by moving
+only part of the circuits with that composition. The front ends at
+\(O_{\mathrm{safe}}=1-\Prob(\text{violation})\) of the auto allocation.
+
+Along the front the share of medium and large customers placed in interval \(k\) is
+\begin{equation}
+  \frac{\sum_{\boldsymbol n} w(\boldsymbol n)\,\bigl(m_k+l_k\bigr)\bigl(a(\boldsymbol n)\bigr)}
+       {\sum_{\boldsymbol n} w(\boldsymbol n)\,(n_M+n_L)} .
+\end{equation}
+
+With one interval there is a single allocation, so the front is one point.
+Every allocation with fewer intervals is also available with more when the
+interval sets are nested, so the front for \(K+1\) intervals is never below
+the front for \(K\).
+
+The uptake \(u\) sets \(x_d(t)=X_d(t)/C\): at low uptake each circuit has more
+curtailment than added load, so soak is limited by load; at high uptake
+curtailment is the limit and spreading load over more hours soaks more.
+
+\section{Computation}
+Soak depends on an allocation only through \((M_g,L_g)\) in each segment, so for every
+segment a table is precomputed once:
+\begin{align}
+  F_g(M,L)&=\frac{1}{|\mathcal D|}\sum_{d}\sum_{t\in g}
+    \min\bigl((P_M-P_S)M+(P_L-P_S)L,\ x_d(t)\bigr)\,\Delta t,\\
+  \text{soak}(\boldsymbol n,a)&=\sum_g F_g(M_g,L_g).
+\end{align}
+Each composition has
+\(\binom{n_M+K-1}{K-1}\binom{n_L+K-1}{K-1}\) allocations; all are evaluated
+(\(9.4\times10^6\) over all compositions for \(K=3\)).
+
+\begin{center}
+\small
+\begin{tabular}{ll}
+\toprule
+Quantity & Code (\texttt{play/})\\
+\midrule
+Inputs, \(P_j=VI_j\), \(C\) & \texttt{config.py}: \texttt{load\_kw}, \texttt{circuits}\\
+\(x_d(t)\) & \texttt{solar.py}: \texttt{excess\_per\_circuit}\\
+Segments, \(S_g,M_g,L_g\), \(A_g\), \(w(\boldsymbol n)\) & \texttt{circuit.py}: \texttt{segments}, \texttt{active}, \texttt{peak}, \texttt{weight}\\
+Auto allocation, \(\Prob(\text{violation})\) & \texttt{circuit.py}: \texttt{auto\_allocation}, \texttt{violation\_probability}\\
+\(D(t)\), hourly energy, \(F_g\) & \texttt{soak.py}: \texttt{load\_profiles}, \texttt{kwh}, \texttt{soak\_table}\\
+\(\sigma_{\max},\sigma_{\mathrm{safe}}\), front & \texttt{frontier.py}: \texttt{evaluate}, \texttt{pareto\_front}\\
+Single-circuit run, Pareto run & \texttt{run\_allocation.py}, \texttt{run\_pareto.py}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Inputs}
+Shared inputs are in \texttt{play/config.py}; \(K\), \(\boldsymbol n\), the allocation and the
+day are set per run in \texttt{play/run\_allocation.py}, and the uptakes compared in
+\texttt{play/run\_pareto.py}.
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Symbol & Code variable & Default\\
+\midrule
+\(N\) & \texttt{N} & 40\\
+\(T\) & \texttt{T} & 1000 A\\
+\(I_S,I_M,I_L\) & \texttt{CURRENT} & 20, 40, 100 A\\
+\(V\) & \texttt{V} & 240 V\\
+\(u\) & \texttt{UPTAKE} & 0.1\\
+\(N_{\mathrm{VIC}}\) & \texttt{VIC\_CUSTOMERS} & 2{,}900{,}000\\
+\(\mathcal D\) & \texttt{SOLAR\_DAY} & 2025-11-06 (Pareto: all of 2025)\\
+\(p_S,p_M,p_L\) & \texttt{P\_TYPE} & 0.69, 0.30, 0.01\\
+\([s_k,e_k)\) & \texttt{INTERVAL\_SETS} & 11--14 \,/\, 8--11, 11--14 \,/\, 8--11, 10:30--13:30, 11--14\\
+\(K\) & \texttt{NUM\_INTERVALS} & 3\\
+\(\boldsymbol n\) & \texttt{COMPOSITION} & (32, 7, 1)\\
+\((\boldsymbol m,\boldsymbol l)\) & \texttt{ALLOCATION} & auto\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

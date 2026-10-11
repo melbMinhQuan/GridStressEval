@@ -1,0 +1,255 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\graphicspath{{../play/out/report/}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\bn}{\boldsymbol n}
+\newcommand{\ba}{\boldsymbol a}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\title{Multi-Interval Report}
+\author{Minh Quan Nguyen}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\section{Model}
+
+\paragraph{Circuit and population.}
+A circuit has \(N\) customers of class \(j\in\{S,M,L\}\) with current \(I_j\) and load \(P_j=VI_j\).
+Its composition \(\bn=(n_S,n_M,n_L)\), \(\sum_j n_j=N\), is random:
+\begin{equation}
+  \bn\sim\operatorname{Trinomial}(N;p_S,p_M,p_L),\qquad
+  w(\bn)=\frac{N!}{n_S!\,n_M!\,n_L!}\,p_S^{n_S}p_M^{n_M}p_L^{n_L}.
+\end{equation}
+
+\paragraph{Intervals.}
+A design has \(K\in\{1,2,3\}\) free intervals \(\mathcal I_k=[s_k,e_k)\) of 3 hours. Each medium and
+large customer is assigned one interval; inside it the customer draws \(I_j\), outside it \(I_S\). An
+allocation \(\ba=(m_1,\dots,m_K,\,l_1,\dots,l_K)\) gives the medium and large customers in each
+interval, with \(\sum_k m_k=n_M\) and \(\sum_k l_k=n_L\). The circuit current at time \(t\) is
+\begin{equation}
+  A_{\ba}(t)=NI_S+\sum_{k:\,t\in\mathcal I_k}\bigl((I_M-I_S)\,m_k+(I_L-I_S)\,l_k\bigr).
+\end{equation}
+
+\section{Objectives}
+
+\paragraph{Probability of overload.}
+Each circuit composition \(\bn\) uses an allocation \(\ba(\bn)\), the same in every season. It overloads
+if its current exceeds the limit \(T\) at any time:
+\begin{equation}
+  r(\bn)=\begin{cases}1, & \max_t A_{\ba(\bn)}(t)>T,\\ 0, & \text{otherwise,}\end{cases}\qquad
+  O_{\mathrm{viol}}=\sum_{\bn}w(\bn)\,r(\bn).
+\end{equation}
+
+\paragraph{Solar soak.}
+A share \(u\) of Victoria's \(N_{\mathrm{VIC}}/N\) circuits is on the plan (uptake). The plan load is
+the total load of these circuits, every customer's \(I_S\) plus the current the intervals add,
+\begin{equation}
+  L(t)=u\,\frac{N_{\mathrm{VIC}}}{N}\sum_{\bn}w(\bn)\,VA_{\ba(\bn)}(t).
+\end{equation}
+Over \(\mathcal W=\)\,10:00--15:00, the same for every design, the soak is the rooftop solar the plan load
+soaks and the excess load is the plan load rooftop solar does not cover, both as a share of the rooftop
+solar in \(\mathcal W\):
+\begin{gather}
+  O_{\mathrm{soak}}=\frac{\sum_{d\in\mathcal D}\sum_{t\in\mathcal W}\min\bigl(L(t),X_d(t)\bigr)}
+  {\sum_{d\in\mathcal D}\sum_{t\in\mathcal W}X_d(t)},\qquad
+  E=\frac{\sum_{d\in\mathcal D}\sum_{t\in\mathcal W}\max\bigl(L(t)-X_d(t),\,0\bigr)}
+  {\sum_{d\in\mathcal D}\sum_{t\in\mathcal W}X_d(t)},
+\end{gather}
+where \(X_d(t)\) is the Victorian rooftop solar generation on day \(d\) and \(\mathcal D\) are the days of
+2025.
+
+\section{Experimental Results}
+
+\subsection{Setup}
+
+\subsubsection{Parameters}
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Parameter & Value & Note\\
+\midrule
+\(N\) & 40 & customers per circuit\\
+\(T\) & 1000 A & circuit limit\\
+\((I_S,I_M,I_L)\) & (20, 40, 100) A & current per customer class\\
+\(V\) & 240 V & \\
+\((p_S,p_M,p_L)\) & (0.69, 0.30, 0.01) & today's mix\\
+\(N_{\mathrm{VIC}}\) & \(2.9\times10^6\) & Victorian customers (72{,}500 circuits)\\
+\(u\) & 13\% & uptake: 9{,}425 circuits on the plan, calibrated (Section 3.1.3)\\
+\(X_d(t)\) & 2025 VIC1 rooftop solar & Open Electricity, 5-minute steps, UTC+10\\
+\(\Delta t\) & 5 min & rooftop values change every 30 minutes\\
+Usage & All-On & full current for the whole interval\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Interval choice}
+Each season \(s\) (summer: Dec--Feb, autumn: Mar--May, winter: Jun--Aug, spring: Sep--Nov) has its own
+intervals. They are chosen to cover the most rooftop solar: with \(\bar X_s(t)\) the mean rooftop solar
+of season \(s\) at time \(t\), the chosen set maximises
+\begin{equation}
+  S_s(\mathcal I_1,\dots,\mathcal I_K)=\sum_{k=1}^{K}\sum_{t\in\mathcal I_k}\bar X_s(t)\,\Delta t,
+\end{equation}
+over 3-hour intervals that start every 0.5 hours and lie inside 08:00--16:00 (ties: the most rooftop
+solar covered by their union). Two intervals do not overlap; of three intervals, the first and last do not
+overlap and the middle one overlaps both. With one set per season, a circuit overloads if it overloads
+in any season, and soak uses each season's intervals on that season's days.
+
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Season & 1 interval & 2 intervals & 3 intervals\\
+\midrule
+Summer & 11:30--14:30 & 10:00--13:00, 13:00--16:00 & 10:00--13:00, 11:30--14:30, 13:00--16:00\\
+Autumn & 11:30--14:30 & 10:00--13:00, 13:00--16:00 & 10:00--13:00, 11:30--14:30, 13:00--16:00\\
+Winter & 11:00--14:00 & 10:00--13:00, 13:00--16:00 & 10:00--13:00, 11:00--14:00, 13:00--16:00\\
+Spring & 11:00--14:00 & 09:30--12:30, 12:30--15:30 & 09:30--12:30, 11:00--14:00, 12:30--15:30\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig1_solar.png}
+\caption{Mean rooftop solar per season and the chosen intervals. Shaded: 08:00--16:00.}
+\end{figure}
+
+\subsubsection{Uptake}
+The plan load should be able to absorb the rooftop solar: it peaks at the midday peak of the average day
+of 2025, \(\hat X\):
+\begin{gather}
+  u=\frac{\hat X}{N_{\mathrm{VIC}}\bigl(P_S+p_M(P_M-P_S)+p_L(P_L-P_S)\bigr)}=12.8\%,\\
+  \hat X=\max_t\frac{1}{|\mathcal D|}\sum_{d\in\mathcal D}X_d(t)=2{,}380\ \text{MW}.
+\end{gather}
+The resulting plan load is in Figure~\ref{fig:seasonload}.
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig1b_load.png}
+\caption{Plan load (two intervals) and mean rooftop solar.}
+\label{fig:seasonload}
+\end{figure}
+
+\subsection{Customer Mixes and Allocation}
+
+\paragraph{Other uptakes.} Besides \(u=13\%\) we show \(u=10\%\) and 20\%. The plan load grows in proportion (Figure~\ref{fig:scale}).
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig2b_load_scale.png}
+\caption{Plan load (two intervals, even split) for each uptake.}
+\label{fig:scale}
+\end{figure}
+
+
+\subsubsection{Allocation strategy}
+An allocation strategy decides how each circuit splits its medium and large customers between the
+intervals. We compare four kinds of
+strategy for each design:
+\begin{itemize}\itemsep0pt
+\item \textbf{Share rule:} every circuit uses the same split. Each share is a multiple of 5\% (0\%, 5\%,
+  \dots, 100\%), which gives 21 possible rules for two intervals and 231 for three; all are evaluated.
+\item \textbf{Random:} every circuit composition draws its own split at random, uniformly over all
+  splits; 300 such strategies per design.
+\item \textbf{Lowest overload:} every circuit composition gets its own split. If some split keeps the
+  circuit under \(T\), only those splits are used, otherwise the lowest-peak split; among these, the
+  splits maximise \(O_{\mathrm{soak}}\).
+\item \textbf{Best soak:} every circuit composition gets its own split; the splits maximise
+  \(O_{\mathrm{soak}}\), and among those \(O_{\mathrm{viol}}\) is as low as possible.
+\end{itemize}
+The optimized point is the point that has the closest distance to the red point. The distance of a strategy from it is
+\begin{equation}
+  \delta=\sqrt{O_{\mathrm{viol}}^2+\bigl(1-O_{\mathrm{soak}}\bigr)^2},
+\end{equation}
+
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig2_allocation_scatter.png}
+\caption{Every strategy at today's mix. Ring: optimised. Bottom: dashed box enlarged.}
+\end{figure}
+
+\begin{center}\footnotesize
+\begin{tabular}{llcccccc}
+\toprule
+& & & & \multicolumn{3}{c}{\(O_{\mathrm{soak}}\) (\%)} &\\
+\cmidrule(lr){5-7}
+Design & Strategy & Split (\%) & \(O_{\mathrm{viol}}\) & \(u=10\%\) & \(u=13\%\) & \(u=20\%\) & \(\delta\), \(u=13\%\)\\
+\midrule
+1 interval  & --              & 100      & 79.6\%  & 70.2 & 84.0 & 98.5 & 0.81\\
+\midrule
+2 intervals & share rule      & 53/47    & 13.6\%  & 68.5 & 82.5 & 98.5 & 0.22\\
+            & random          & 60/40    & 21.8\%  & 68.6 & 82.5 & 98.4 & 0.28\\
+            & lowest overload & 65/35    & 4.2\%   & 68.8 & 82.5 & 98.5 & 0.18\\
+            & best soak       & 65/35    & 4.2\%\(^*\) & 68.9 & 82.5 & 98.5 & 0.18\\
+\midrule
+3 intervals & share rule      & 53/0/47  & 13.6\%  & 68.5 & 82.5 & 98.5 & 0.22\\
+            & random          & 38/26/36 & 36.0\%  & 69.0 & 83.0 & 98.8 & 0.40\\
+            & lowest overload & 23/47/30 & 4.2\%   & 69.3 & 83.3 & 98.8 & 0.17\\
+            & best soak       & 6/94/0   & 79.6\%\(^*\) & 70.2 & 84.0 & 98.9 & 0.81\\
+\bottomrule
+\end{tabular}
+\end{center}
+Split and \(O_{\mathrm{viol}}\) at \(u=13\%\). \(^*\)Two intervals: 79.6\% at \(u=10\%\); three intervals: 4.3\% at
+\(u=20\%\).
+ 
+
+\paragraph{By season.} Soak at \(u=13\%\), today's mix, lowest-overload strategy, as \% of each season's
+rooftop solar between 10:00 and 15:00:
+\begin{center}\small
+\begin{tabular}{lccccc}
+\toprule
+Design & Summer & Autumn & Winter & Spring & Year\\
+\midrule
+1 interval  & 74.0 & 90.9 & 97.3 & 81.0 & 84.0\\
+2 intervals & 72.6 & 89.4 & 96.5 & 79.1 & 82.5\\
+3 intervals & 73.1 & 90.4 & 97.1 & 80.3 & 83.3\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{Evidence_for_seasonal_weights.png}
+\caption{Plan load at the calibrated uptake and rooftop solar.}
+\label{fig:load}
+\end{figure}
+
+\subsubsection{Customer mixes}
+\paragraph{Experiment.}
+We vary the share of customers who add load in a free window, \(\rho=p_M+p_L\), keeping medium and
+large customers in the ratio 30\,:\,1:
+\begin{equation}
+  p_M=\tfrac{30}{31}\rho,\qquad p_L=\tfrac{1}{31}\rho,\qquad p_S=1-\rho,\qquad
+  \rho\in\{0.31\,i/16: i=1,\dots,32\},
+\end{equation}
+so \(\rho\) runs from 1.9\% to 62\%; today's mix is \(\rho=31\%\). Each design traces one curve of
+\((O_{\mathrm{viol}},O_{\mathrm{soak}})\).
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig2_tradeoff_scale.png}
+\caption{Overload against soak (solid) and excess load (dashed) as \(\rho\) grows. Circles: today's mix.
+Bottom: dashed box enlarged.}
+\end{figure}
+
+
+
+\paragraph{Probability of avoiding an upgrade.}
+A circuit needs an upgrade if it overloads, so the probability that the scheme avoids one is
+\(1-O_{\mathrm{viol}}\). 
+
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{fig3_upgrade_heatmap.png}
+\caption{Probability of avoiding an upgrade. Green: three windows \(\div\) one.}
+\end{figure}
+
+
+
+\end{document}

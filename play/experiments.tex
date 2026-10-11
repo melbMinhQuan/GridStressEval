@@ -1,0 +1,181 @@
+\documentclass[10.5pt,a4paper]{article}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\graphicspath{{out/experiments/}}
+\newcommand{\Prob}{\mathbb{P}}
+
+\title{Experiments: Robustness and Value of Two and Three Free Intervals}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Setup}
+Model and notation as in \texttt{allocation\_math.pdf}. Defaults: \(N=40\), \(T=1000\) A,
+\((I_S,I_M,I_L)=(20,40,100)\) A, \(P_j=VI_j\) with \(V=240\) V, mix \((p_S,p_M,p_L)=(0.69,0.30,0.01)\),
+uptake \(u=10\%\), All-On, 2025 VIC1 data in market time (UTC+10). Violation uses each circuit's
+lowest-peak allocation; soak uses each circuit's best safe allocation (safest end of the Pareto
+front). Code: \texttt{play/experiments/}, run with \texttt{python3 -m play.experiments}.
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Design & Intervals & Non-overlapping intervals\\
+\midrule
+1\(\times\)3h & 11--14 & 1\\
+2\(\times\)3h & 09--12, 12--15 & 2\\
+3\(\times\)3h overlap & 08--11, 09--12, 12--15 & 2\\
+3\(\times\)2h & 09--11, 11--13, 13--15 & 3\\
+3\(\times\)3h no overlap & 08--11, 11--14, 14--17 & 3\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{E1 On-Off usage}
+Each medium/large customer's extra load is on for its whole interval with probability \(q\)
+(base load always on); the operator allocates with the All-On rule. For interval \(k\),
+\(Z_k=(I_M-I_S)Y^M_k+(I_L-I_S)Y^L_k\) with \(Y^M_k\sim\mathrm{Bin}(m_k,q)\),
+\(Y^L_k\sim\mathrm{Bin}(l_k,q)\), independent, and
+\begin{equation}
+  \Prob(\text{no overload}\mid\boldsymbol n)=\Prob\Bigl(NI_S+\sum_{k\in C(g)}Z_k\le T\ \ \forall g\Bigr),
+\end{equation}
+computed exactly over the joint distribution of \((Z_1,\dots,Z_K)\); \(q=1\) is All-On.
+
+\begin{center}\small
+\begin{tabular}{lrrrrr}
+\toprule
+\(\Prob(\text{violation})\) & \(q=0.1\) & 0.25 & 0.5 & 0.75 & 1\\
+\midrule
+1\(\times\)3h & 0.009\% & 0.495\% & 10.28\% & 42.98\% & 79.59\%\\
+2\(\times\)3h, 3\(\times\)3h overlap & 0.001\% & 0.011\% & 0.152\% & 1.065\% & 4.195\%\\
+3\(\times\)2h, 3\(\times\)3h no overlap & 0.00001\% & 0.00004\% & 0.0006\% & 0.004\% & 0.014\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+The ranking holds for every \(q\), and the gain grows as usage falls: 1 vs 2 intervals is
+19\(\times\) at \(q=1\) and 68\(\times\) at \(q=0.5\).
+
+\section{E2 Customer mix}
+All-On violation over \(p_M\in[0,0.5]\), \(p_L\in[0,0.1]\) (\(p_S=1-p_M-p_L\)), Fig.~\ref{fig:mix}.
+Two intervals keep violation below 5\% while \(p_M\le0.30\) and \(p_L\le0.01\), or \(p_M\le0.20\) and
+\(p_L\le0.02\); three non-overlapping 2 h intervals stay below 1\% up to \(p_L=0.03,\ p_M\le0.30\).
+\begin{figure}[h]\centering\includegraphics[width=\textwidth]{e02_mix.png}
+\caption{Violation (\%) by customer mix.}\label{fig:mix}\end{figure}
+
+\section{E3 Circuit size}
+\(N\in\{20,40,60,80\}\) with \(T=25N\) A. With average All-On current per customer
+\(\mu=\sum_jp_jI_j=26.8\) A and \(K\) balanced non-overlapping intervals, the busiest interval
+carries about \(N\bigl(I_S+(\mu-I_S)/K\bigr)\): \(26.8N\) for \(K=1\), \(23.4N\) for \(K=2\),
+\(22.3N\) for \(K=3\). Against \(25N\), the law of large numbers drives violation to 1 for one interval and to 0
+for two or more as \(N\) grows.
+\begin{center}\small
+\begin{tabular}{lrrrr}
+\toprule
+\(\Prob(\text{violation})\) & \(N=20\) & 40 & 60 & 80\\
+\midrule
+1 interval & 66.7\% & 79.6\% & 86.5\% & 90.7\%\\
+2 non-overlapping & 8.8\% & 4.2\% & 2.1\% & 1.0\%\\
+3 non-overlapping & 0.37\% & 0.014\% & 0.0005\% & 0.00002\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{E4/E5 Same daily energy}
+The window 09--15 is split into \(K\) equal slots of length \(L=6/K\) h; every medium/large
+customer needs \(H=2\) h of full-power use. \textbf{E4 inflexible}: full power at an uncontrolled
+time, so overload uses the full current over the slot (worst case). \textbf{E5 flexible} (smart
+charging): the energy is spread over the slot, so the extra current is \((I_j-I_S)H/L\). In both,
+soak uses the expected load \((P_j-P_S)H/L\) over the slot.
+\begin{center}\small
+\begin{tabular}{lrrrrr}
+\toprule
+Slots & E4 violation & E5 violation & soak \(u=1\%\) & 10\% & 50\%\\
+\midrule
+1\(\times\)6h & 79.59\% & 0.014\% & 92.5 & 62.8 & 24.2\\
+2\(\times\)3h & 4.195\% & 0.014\% & 92.6 & 62.8 & 24.2\\
+3\(\times\)2h & 0.014\% & 0.014\% & 92.8 & 62.8 & 24.2\\
+\bottomrule
+\end{tabular}
+\end{center}
+With equal energy, soak is the same for every \(K\). Splitting only matters for inflexible
+loads: multiple intervals do the same job as spreading the load, so they substitute for load control.
+
+\section{E6 Daylight saving}
+Interval times as local clock time: on daylight-saving days local \(t\) = market \(t+1\) h, so
+\(x^{\text{local}}_d(t)=x_d(t-1\,\text{h})\). Best 3 h designs inside 08--15 are unchanged
+(2: 09--12, 12--15; 3: 08--11, 09--12, 12--15). Soak falls by 2--8\% (e.g.\ 80.5 \(\to\) 79.1 kWh/day for
+2 intervals at 10\%), because in summer these clock times sit an hour earlier than the
+curtailment peak. The gain of 3 over 2 drops to 0.4--5\%.
+
+\section{E7 Rooftop-solar timing}
+Soak against the VIC1 rooftop-solar shape, scaled to the same annual energy as the curtailment so only timing
+changes. The ranking is unchanged and the best designs barely move. Rooftop output is
+concentrated at midday, so at 10\% uptake soak rises (2 intervals: 80.5 \(\to\) 120.3 kWh/day).
+The gain of 3 over 2 is 0.0\%, 2.6\% and 6.4\% at 1\%, 10\% and 50\% uptake (curtailment: 0.4\%, 1.5\%, 7.9\%).
+
+\section{E8 Evening peak}
+Third objective: added load in each day's top 6 demand hours,
+\(\sum_t \mathbb E[D(t)]\,f(t)\,\Delta t\), where \(f(t)\) is the share of days in which slot \(t\) is in that day's top
+6 demand hours (morning 06--09 on winter days, 16--22 most days). 3 h designs inside 08--17, \(u=10\%\).
+Selected Pareto-optimal designs:
+\begin{center}\small
+\begin{tabular}{lrrr}
+\toprule
+Design & violation & soak & peak load (kWh/day)\\
+\midrule
+11--14 & 79.6\% & 58.0 & 2.5\\
+09--12, 12--15 & 4.2\% & 80.5 & 4.9\\
+09--12, 12--15, 13--16 & 4.2\% & 82.7 & 5.7\\
+08--11, 10--13, 13--16 & 4.2\% & 84.0 & 9.3\\
+08--11, 11--14, 14--17 & 0.014\% & 84.8 & 15.0\\
+\bottomrule
+\end{tabular}
+\end{center}
+The safest design, three non-overlapping intervals to 17:00, puts 3\(\times\) more load into peak
+hours than the best 2-interval design. Ending by 15:00--16:00 keeps peak load low at 4.2\% violation.
+
+\section{E9 Grid ramp}
+State added load \(D_{\text{state}}(t)=C\,\mathbb E[D(t)]\) (MW), \(C=uN_{\mathrm{VIC}}/N=7{,}250\);
+the largest 5-minute change is the amount switching at an interval edge.
+\begin{center}\small
+\begin{tabular}{lrr}
+\toprule
+Design & largest step (MW) & peak added load (MW)\\
+\midrule
+08--11, 11--14 & 275 & 275\\
+09--12, 12--15 & 248 & 248\\
+08--11, 09--12, 12--15 & 235 & 239\\
+08--11, 10--13, 12--15 & 198 & 317\\
+09--11, 11--13, 13--15 & 158 & 175\\
+08--11, 11--14, 14--17 & 141 & 212\\
+\bottomrule
+\end{tabular}
+\end{center}
+More start times split the switching into smaller steps, which gives smaller ramps. Overlap can
+raise the peak added load, because the allocation here maximises soak, not smoothness.
+
+\section{E10 Value}
+Upgrades avoided against one interval: \((P_1-P_K)\,C\). At \(u=10\%\): 5{,}466 circuits (2 intervals)
+and 5{,}769 (3 non-overlapping); at \(u=100\%\): 54{,}662 and 57{,}693. At an \emph{illustrative}
+AUD 100{,}000 per upgrade (placeholder; replace with DNSP cost data) that is AUD 0.55 bn at 10\% uptake.
+
+\section*{Conclusions}
+\begin{itemize}\itemsep0pt
+\item Two non-overlapping intervals cut violation 19--68\(\times\) against one interval. This holds for usage
+  probability (E1), most realistic mixes (E2), every circuit size (E3, growing with \(N\)), daylight
+  saving (E6) and solar timing (E7).
+\item Three intervals improve safety only if they do not all overlap. Three non-overlapping intervals give 0.014\%,
+  but either need a window wider than two can cover (E8: more evening-peak load) or shorter intervals.
+\item With equal daily energy (E4/E5), soak does not depend on \(K\). The value of extra intervals is
+  safety for inflexible loads, plus smaller grid ramps (E9).
+\item The case rests on mix and limit data (E2, E3) and upgrade cost (E10), which need real DNSP inputs.
+\end{itemize}
+
+\end{document}

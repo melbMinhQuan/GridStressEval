@@ -1,0 +1,239 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\graphicspath{{../play/out/research/}}
+
+\title{Three Free Slots or Two?\\\large Why they looked the same, and where they differ}
+\author{Minh Quan Nguyen}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In our earlier experiments a scheme with three free slots (one overlapping both others) performed exactly
+like a scheme with two. We show why: with every customer drawing full power for the whole slot, an
+overlapping slot can never lower a circuit's peak, and our model asked a different question from the
+proposal (doc/references/New.md), in which almost everyone keeps the mandated 11:00--14:00 slot and only
+``heavy hitters'' move. Rebuilding the model around the proposal's premise (a phase can host one 40 kW
+heavy hitter on a cloudy day, but not two) and adding the objectives the proposal cares about, the
+three-slot scheme does differ. It is a dial between disruption and network safety: moving only heavy
+hitters (0.9\% of customers) raises the share of phases needing no upgrade from 83\% to 92\%, and moving
+10\% of customers raises it to 96\%, against 99.5\% for moving everyone into two slots (32\%). It keeps
+heavy users' full benefit, unlike a power cap, and it spreads switching over more times, cutting the
+largest step in Victorian load by 17\% against two slots and 57\% against the policy at 50\% uptake.
+\end{abstract}
+
+\section{Why two and three slots looked the same}
+
+\begin{enumerate}\itemsep2pt
+\item \textbf{Structure.} With the middle slot overlapping both others, the day splits into segments
+  carrying \(m_1\), \(m_1+m_2\), \(m_2+m_3\) and \(m_3\) customers' extra load. The peak
+  \(\max(m_1+m_2,\,m_2+m_3)\) is never below \(\max(m_1,m_3)\), which two slots already achieve, so a
+  customer placed in the middle can only raise it. In all 861 circuit compositions of the report's model
+  the lowest peak with three slots equals that with two (Figure~\ref{fig:r1}).
+\item \textbf{Framing.} Every medium and large customer could be moved, so ``two slots'' meant moving
+  31\% of customers away from the mandated window. Disruption was never measured, yet it is the
+  proposal's main argument.
+\item \textbf{Calibration.} In the report's model the medium users alone overload a shared slot
+  (800 A of base load plus about 240 A for twelve medium users, against a 1000 A limit). The proposal's
+  premise, that a circuit can host one heavy hitter but not two, did not hold, so moving heavy hitters
+  could not help and only moving everyone did.
+\item \textbf{Soak.} Soak depends on which hours the slots cover. The middle slot adds no hours, and
+  spreading load never loses soak, so three slots could at best tie.
+\item \textbf{Load timing.} With All-On, or with random start times, use in the middle slot overlaps use
+  in both others, so staggered slot openings cannot help.
+\item \textbf{Missing objectives.} Disruption, the benefit kept by heavy users, and the shape of the
+  system load (peak and switching steps), where the middle slot plausibly matters, were not measured.
+\end{enumerate}
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.45\textwidth]{r1_diagnosis.png}
+\caption{Lowest circuit peak with two slots (10--13, 13--16) and three slots (adding 11--14), for every
+composition of the report's model. All points lie on the diagonal.}
+\label{fig:r1}
+\end{figure}
+
+\section{What the three-slot scheme is for}
+The proposal keeps the mandated slot 11:00--14:00 for almost everyone and adds two non-overlapping relief
+slots, 9:00--12:00 and 12:00--15:00, for heavy hitters (for example two level-2 EV chargers, 40 kW). When
+two heavy hitters share a phase they move to the two relief slots, so the phase never carries both at
+once. The middle slot is not there to add network headroom; it keeps the tariff simple and keeps most
+load at peak solar. The comparison that matters is therefore the policy against the proposal, and
+against the alternatives a regulator would consider: moving everyone into two slots, or capping free
+power.
+
+\section{Model}
+\paragraph{Phase.} A circuit is one phase of a distribution line with \(N\) customers. On a cloudy day
+every customer draws a base current \(I_0\); moderate free-window users add \(\Delta I_M\) inside their
+slot and heavy hitters add \(\Delta I_H\). Customer types are random (trinomial, shares \(p_M\) and
+\(x\)). The phase limit is set so that an average phase can host one heavy hitter but not two:
+\(T=N I_0+p_M N\Delta I_M+1.25\,\Delta I_H\). The values are illustrative and would be replaced by DNSP
+data.
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Parameter & Value & Note\\
+\midrule
+\(N\) & 30 & customers per phase\\
+\(I_0\) & 5 A & 1.2 kW base load on a cloudy midday\\
+\(\Delta I_M\), \(p_M\) & 15 A, 30\% & moderate users (3.6 kW, e.g.\ hot water)\\
+\(\Delta I_H\), \(x\) & 167 A, 2\% & heavy hitters (40 kW)\\
+\(T\) & 493 A & base 150 + moderate 135 + 1.25 heavy hitters\\
+Uptake \(u\) & 50\% & share of Victorian phases on the plan\\
+Solar & 2025 VIC rooftop & seasonal weights as in the main report\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Strategies.}
+\begin{itemize}\itemsep0pt
+\item \textbf{Policy:} everyone in 11--14.
+\item \textbf{Proposal:} everyone in 11--14; a phase with two or more heavy hitters sends them to 9--12
+  and 12--15.
+\item \textbf{Three slots, middle share \(a\):} the proposal, plus a share \(1-a\) of moderate users
+  moved to the relief slots (\(a=1\) is the proposal; \(a=1/3\) splits users evenly).
+\item \textbf{Two-slot split:} every free-window user in 9--12 or 12--15, lowest peak.
+\item \textbf{Cap:} everyone in 11--14, free power capped at 7 kW per customer.
+\end{itemize}
+
+\paragraph{Metrics.} The probability that a phase needs no upgrade (its peak stays under \(T\)); the
+share of customers moved out of 11--14; rooftop solar soaked; and, for Victoria (\(u\,N_{\mathrm{VIC}}/N\)
+phases), the rise in the mean daily peak of operational demand plus the added load, the largest
+5-minute step in the added load, and the free energy each heavy hitter receives.
+
+\section{Results}
+
+\subsection{Safety against disruption}
+
+\begin{center}\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+Strategy & No upgrade & Moved & Soak & Peak rise & Largest step & Free energy\\
+& & & (MWh/day) & (MW) & (MW) & per heavy hitter\\
+\midrule
+Policy                 & 83.1\% & 0\%    & 6{,}523 & 598 & 2{,}726 & 120 kWh\\
+Proposal               & 91.8\% & 0.9\%  & 7{,}054 & 428 & 2{,}212 & 120 kWh\\
+Three slots, 1/3 each  & 97.8\% & 20.9\% & 7{,}690 & 201 & 1{,}168 & 120 kWh\\
+Two-slot split         & 99.5\% & 32.0\% & 7{,}704 & 212 & 1{,}410 & 120 kWh\\
+Cap, 7 kW              & 100\%  & 0\%    & 5{,}001 & 132 & 1{,}769 & 21 kWh\\
+\bottomrule
+\end{tabular}
+\end{center}
+Heavy hitters 2\%, \(N=30\), uptake 50\%.
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.85\textwidth]{r7_frontier.png}
+\caption{Share of phases needing no upgrade against the share of customers moved out of 11--14. The line
+traces the three-slot scheme from the proposal (middle share 100\%) to all moderate users in the relief
+slots (0\%). It uses a simple rule (moderate users split evenly, a single heavy hitter stays in 11--14),
+so its end point is below the two-slot split, which chooses each phase's lowest-peak split.}
+\end{figure}
+
+\begin{enumerate}\itemsep0pt
+\item \textbf{The proposal recovers half of the available gain while moving under 1\% of customers}
+  (83\% to 92\% of phases safe, against 99.5\% for the two-slot split, which moves 32\%).
+\item \textbf{The middle share is a dial.} Moving 7\% of customers gives 95\%, 10\% gives 96\%, 16\%
+  gives 97\%; beyond that the gain flattens. Two slots offer only the end point.
+\item \textbf{A cap is safest but defeats the benefit-sharing goal.} It keeps every phase safe without
+  moving anyone, but heavy users get 21 instead of 120 kWh of free energy a day and Victoria soaks 23\%
+  less solar than under the policy.
+\end{enumerate}
+
+\subsection{Probability of avoiding an upgrade}
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{r3_heatmaps.png}
+\caption{Probability that a phase needs no upgrade, against the share of heavy hitters and the customers
+per phase. Right: proposal with smart-charging timers, sessions of 1 hour from the slot opening and a
+third heavy hitter placed in 11--14.}
+\end{figure}
+For 30 customers per phase and 2\% heavy hitters, 83\% of phases need no upgrade under the policy and
+92\% under the proposal; at 6\% heavy hitters, 40\% and 64\%. The proposal's advantage grows with the
+number of heavy hitters, as the reference note's \(p_2/p_3\) argument predicts.
+
+\subsection{Smart-charging timers}
+If heavy hitters charge for \(d\) hours from the opening of their slot, a session in 9--12 ends before
+the moderate users' 11:00 start, and with \(d\le1\) h a third heavy hitter fits in 11--12 between the
+morning and afternoon sessions.
+\begin{figure}[H]\centering
+\includegraphics[width=0.75\textwidth]{r4_timers.png}
+\caption{Phase of 30 customers: probability of needing no upgrade against the share of heavy hitters, for
+full-slot use (All-On) and for sessions of 1 and 1.5 hours from the slot opening.}
+\end{figure}
+\begin{enumerate}\itemsep0pt
+\item \textbf{Short sessions help the proposal most}: at 6\% heavy hitters, 78\% of phases are safe with
+  1-hour sessions against 64\% with full-slot use, because morning sessions avoid the moderate users.
+\item \textbf{A third heavy hitter in the middle slot adds a further 7 points} (85\%) when sessions last
+  at most 1 hour. With 1.5-hour sessions it overlaps the afternoon session and is worse than leaving it
+  out (64\% against 78\%). The middle slot raises capacity only if sessions are shorter than the 1-hour gap between
+  the 11:00 and 12:00 openings.
+\end{enumerate}
+
+\subsection{System level}
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth]{r5_system.png}
+\caption{Victoria, against uptake: rise in the mean daily peak of operational demand plus the added load,
+largest 5-minute step in the added load, and rooftop solar soaked. Adaptive: the middle share with the
+lowest peak at each uptake (labels).}
+\end{figure}
+\begin{figure}[H]\centering
+\includegraphics[width=0.7\textwidth]{r6_shapes.png}
+\caption{Added Victorian load at 50\% uptake.}
+\end{figure}
+\begin{enumerate}\itemsep0pt
+\item \textbf{Switching steps.} Under the policy every plan customer switches on at 11:00 and off at
+  14:00, a 2.7 GW step at 50\% uptake. Two slots halve it (1.4 GW); three slots with users split evenly
+  cut it to 1.2 GW (\(-17\%\) against two slots), because load switches at five times instead of three.
+\item \textbf{Peak.} Up to 25\% uptake the added load stays below the evening peak and every strategy
+  raises the daily peak by under 65 MW. Above that, concentrating everyone in 11--14 creates a new midday
+  peak (+598 MW at 50\%, +3.2 GW at 100\%); spreading users over the relief slots keeps it to 35--40\% of that;
+  among the strategies that keep heavy users' full benefit the adaptive three-slot share is lowest
+  (+156 MW at 50\%), and only the cap is lower (+132 MW).
+\item \textbf{Soak.} Spreading load also soaks more rooftop solar at high uptake (7{,}704 against
+  6{,}523 MWh/day at 50\%); the proposal alone gains 8\%, and the cap loses 23\%.
+\end{enumerate}
+
+\section{Scorecard}
+\begin{center}\footnotesize
+\begin{tabular}{lccccc}
+\toprule
+& Network & Disruption & Heavy users' & Solar & Switching\\
+& safety & & benefit & soak & steps\\
+\midrule
+Policy           & low      & none   & full    & baseline & largest\\
+Proposal         & medium   & tiny   & full    & +8\%   & large\\
+Three slots (dial) & medium--high & chosen & full & +18\% & smallest\\
+Two-slot split   & highest  & large  & full    & +18\%  & medium\\
+Cap              & highest  & none   & cut 82\% & \(-23\%\) & medium\\
+\bottomrule
+\end{tabular}
+\end{center}
+Changes in soak against the policy at 50\% uptake.
+
+\section{What this means}
+\begin{itemize}\itemsep0pt
+\item Three slots do not beat two on circuit headroom; the overlap makes that impossible. They win where
+  the proposal's goals are: few customers disturbed, heavy users keep their benefit, and the operator can
+  trade disruption for safety and smooth the system load by choosing the middle share.
+\item The strongest case to a DNSP is the frontier: 92\% of phases safe for 0.9\% of customers moved,
+  96\% for 10\%, without rewiring or upgrades.
+\item The strongest case to the market operator is the switching step: a single mandated slot creates a
+  multi-gigawatt step at 11:00 and 14:00 at high uptake; three slots spread it.
+\end{itemize}
+
+\section{Limitations and data needed}
+The phase parameters are illustrative; DNSP data are needed on customers per phase, phase ratings,
+cloudy-day midday demand, and the number and peak power of heavy hitters. Moderate users draw for their
+whole slot; heavy-hitter timers are assumed to start at the slot opening; customers are independent.
+Switching steps assume synchronised timers; diversity in real starts would smooth them. Seasonal weights
+scale only the load counted for soak.
+
+\end{document}
